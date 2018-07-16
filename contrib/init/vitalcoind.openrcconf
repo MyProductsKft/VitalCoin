@@ -1,0 +1,33 @@
+# /etc/conf.d/vitalcoind: config file for /etc/init.d/vitalcoind
+
+# Config file location
+#VITALCOIND_CONFIGFILE="/etc/vitalcoin/vitalcoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $VITALCOIND_USER)
+#VITALCOIND_PIDDIR="/var/run/vitalcoind"
+
+# What filename to give the pidfile
+#VITALCOIND_PIDFILE="${VITALCOIND_PIDDIR}/vitalcoind.pid"
+
+# Where to write vitalcoind data (be mindful that the blockchain is large)
+#VITALCOIND_DATADIR="/var/lib/vitalcoind"
+
+# User and group to own vitalcoind process
+#VITALCOIND_USER="vitalcoin"
+#VITALCOIND_GROUP="vitalcoin"
+
+# Path to vitalcoind executable
+#VITALCOIND_BIN="/usr/bin/vitalcoind"
+
+# Nice value to run vitalcoind under
+#VITALCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#VITALCOIND_OPTS=""
+
+# The timeout in seconds OpenRC will wait for vitalcoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+VITALCOIND_SIGTERM_TIMEOUT=60
