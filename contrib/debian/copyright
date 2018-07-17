@@ -5,7 +5,7 @@ Upstream-Contact: Satoshi Nakamoto <satoshin@gmx.com>
 Source: https://github.com/vitalcoin/vitalcoin
 
 Files: *
-Copyright: 2009-2017, VitalCoin Core Developers
+Copyright: 2009-2018, VitalCoin Core Developers
 License: Expat
 Comment: The VitalCoin Core Developers encompasses the current developers listed on vitalcoin.org,
          as well as the numerous contributors to the project.
