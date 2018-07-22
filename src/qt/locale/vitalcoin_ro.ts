@@ -76,7 +76,7 @@
     </message>
 </context>
 <context>
-    <name>VitalCoinGUI</name>
+    <name>VitalcoinGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Semnează &amp;mesajul...</translation>
@@ -142,8 +142,8 @@
         <translation>Deschide &amp;URI...</translation>
     </message>
     <message>
-        <source>Send coins to a VitalCoin address</source>
-        <translation>Trimite monedele către o adresă VitalCoin</translation>
+        <source>Send coins to a Vitalcoin address</source>
+        <translation>Trimite monedele către o adresă Vitalcoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -166,8 +166,8 @@
         <translation>&amp;Verifică mesajul...</translation>
     </message>
     <message>
-        <source>VitalCoin</source>
-        <translation>VitalCoin</translation>
+        <source>Vitalcoin</source>
+        <translation>Vitalcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -194,12 +194,12 @@
         <translation>Criptează cheile private care aparțin portofelului tău.</translation>
     </message>
     <message>
-        <source>Sign messages with your VitalCoin addresses to prove you own them</source>
-        <translation>Semnează mesajele cu adresa ta de VitalCoin pentru a face dovada că îți aparțin.</translation>
+        <source>Sign messages with your Vitalcoin addresses to prove you own them</source>
+        <translation>Semnează mesajele cu adresa ta de Vitalcoin pentru a face dovada că îți aparțin.</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified VitalCoin addresses</source>
-        <translation>Verifică mesajele cu scopul de a asigura faptul că au fost semnate cu adresa de VitalCoin specificată.</translation>
+        <source>Verify messages to ensure they were signed with specified Vitalcoin addresses</source>
+        <translation>Verifică mesajele cu scopul de a asigura faptul că au fost semnate cu adresa de Vitalcoin specificată.</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -748,8 +748,8 @@
 <context>
     <name>vitalcoin-core</name>
     <message>
-        <source>VitalCoin Core</source>
-        <translation>VitalCoin Core</translation>
+        <source>Vitalcoin Core</source>
+        <translation>Vitalcoin Core</translation>
     </message>
     <message>
         <source>Information</source>

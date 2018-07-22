@@ -42,16 +42,16 @@
 #define THIN_SP_UTF8 REAL_THIN_SP_UTF8
 #define THIN_SP_HTML HTML_HACK_SP
 
-/** VitalCoin unit definitions. Encapsulates parsing and formatting
+/** Vitalcoin unit definitions. Encapsulates parsing and formatting
    and serves as list model for drop-down selection boxes.
 */
-class VitalCoinUnits : public QAbstractListModel {
+class VitalcoinUnits : public QAbstractListModel {
   Q_OBJECT
 
 public:
-  explicit VitalCoinUnits(QObject *parent);
+  explicit VitalcoinUnits(QObject *parent);
 
-  /** VitalCoin units.
+  /** Vitalcoin units.
     @note Source: https://en.vitalcoin.it/wiki/Units . Please add only sensible
     ones
    */
@@ -117,8 +117,8 @@ public:
   static CAmount maxMoney();
 
 private:
-  QList<VitalCoinUnits::Unit> unitlist;
+  QList<VitalcoinUnits::Unit> unitlist;
 };
-typedef VitalCoinUnits::Unit VitalCoinUnit;
+typedef VitalcoinUnits::Unit VitalcoinUnit;
 
 #endif // VITALCOIN_QT_VITALCOINUNITS_H

@@ -72,11 +72,11 @@ QVariant RecentRequestsTableModel::data(const QModelIndex &index,
       if (rec->recipient.amount == 0 && role == Qt::DisplayRole)
         return tr("(no amount requested)");
       else if (role == Qt::EditRole)
-        return VitalCoinUnits::format(
+        return VitalcoinUnits::format(
             walletModel->getOptionsModel()->getDisplayUnit(),
-            rec->recipient.amount, false, VitalCoinUnits::separatorNever);
+            rec->recipient.amount, false, VitalcoinUnits::separatorNever);
       else
-        return VitalCoinUnits::format(
+        return VitalcoinUnits::format(
             walletModel->getOptionsModel()->getDisplayUnit(),
             rec->recipient.amount);
     }
@@ -115,7 +115,7 @@ void RecentRequestsTableModel::updateAmountColumnTitle() {
 QString RecentRequestsTableModel::getAmountTitle() {
   return (this->walletModel->getOptionsModel() != nullptr)
              ? tr("Requested") + " (" +
-                   VitalCoinUnits::name(
+                   VitalcoinUnits::name(
                        this->walletModel->getOptionsModel()->getDisplayUnit()) +
                    ")"
              : "";

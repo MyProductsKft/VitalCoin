@@ -204,12 +204,12 @@ int CBase58Data::CompareTo(const CBase58Data &b58) const {
 }
 
 namespace {
-class CVitalCoinAddressVisitor : public boost::static_visitor<bool> {
+class CVitalcoinAddressVisitor : public boost::static_visitor<bool> {
 private:
-  CVitalCoinAddress *addr;
+  CVitalcoinAddress *addr;
 
 public:
-  CVitalCoinAddressVisitor(CVitalCoinAddress *addrIn) : addr(addrIn) {}
+  CVitalcoinAddressVisitor(CVitalcoinAddress *addrIn) : addr(addrIn) {}
 
   bool operator()(const CKeyID &id) const { return addr->Set(id); }
   bool operator()(const CScriptID &id) const { return addr->Set(id); }
@@ -218,23 +218,23 @@ public:
 
 } // namespace
 
-bool CVitalCoinAddress::Set(const CKeyID &id) {
+bool CVitalcoinAddress::Set(const CKeyID &id) {
   SetData(Params().Base58Prefix(CChainParams::PUBKEY_ADDRESS), &id, 20);
   return true;
 }
 
-bool CVitalCoinAddress::Set(const CScriptID &id) {
+bool CVitalcoinAddress::Set(const CScriptID &id) {
   SetData(Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS), &id, 20);
   return true;
 }
 
-bool CVitalCoinAddress::Set(const CTxDestination &dest) {
-  return boost::apply_visitor(CVitalCoinAddressVisitor(this), dest);
+bool CVitalcoinAddress::Set(const CTxDestination &dest) {
+  return boost::apply_visitor(CVitalcoinAddressVisitor(this), dest);
 }
 
-bool CVitalCoinAddress::IsValid() const { return IsValid(Params()); }
+bool CVitalcoinAddress::IsValid() const { return IsValid(Params()); }
 
-bool CVitalCoinAddress::IsValid(const CChainParams &params) const {
+bool CVitalcoinAddress::IsValid(const CChainParams &params) const {
   bool fCorrectSize = vchData.size() == 20;
   bool fKnownVersion =
       vchVersion == params.Base58Prefix(CChainParams::PUBKEY_ADDRESS) ||
@@ -242,7 +242,7 @@ bool CVitalCoinAddress::IsValid(const CChainParams &params) const {
   return fCorrectSize && fKnownVersion;
 }
 
-CTxDestination CVitalCoinAddress::Get() const {
+CTxDestination CVitalcoinAddress::Get() const {
   if (!IsValid())
     return CNoDestination();
   uint160 id;
@@ -255,7 +255,7 @@ CTxDestination CVitalCoinAddress::Get() const {
     return CNoDestination();
 }
 
-bool CVitalCoinAddress::GetKeyID(CKeyID &keyID) const {
+bool CVitalcoinAddress::GetKeyID(CKeyID &keyID) const {
   if (!IsValid() ||
       vchVersion != Params().Base58Prefix(CChainParams::PUBKEY_ADDRESS))
     return false;
@@ -265,12 +265,12 @@ bool CVitalCoinAddress::GetKeyID(CKeyID &keyID) const {
   return true;
 }
 
-bool CVitalCoinAddress::IsScript() const {
+bool CVitalcoinAddress::IsScript() const {
   return IsValid() &&
          vchVersion == Params().Base58Prefix(CChainParams::SCRIPT_ADDRESS);
 }
 
-void CVitalCoinSecret::SetKey(const CKey &vchSecret) {
+void CVitalcoinSecret::SetKey(const CKey &vchSecret) {
   assert(vchSecret.IsValid());
   SetData(Params().Base58Prefix(CChainParams::SECRET_KEY), vchSecret.begin(),
           vchSecret.size());
@@ -278,7 +278,7 @@ void CVitalCoinSecret::SetKey(const CKey &vchSecret) {
     vchData.push_back(1);
 }
 
-CKey CVitalCoinSecret::GetKey() {
+CKey CVitalcoinSecret::GetKey() {
   CKey ret;
   assert(vchData.size() >= 32);
   ret.Set(vchData.begin(), vchData.begin() + 32,
@@ -286,7 +286,7 @@ CKey CVitalCoinSecret::GetKey() {
   return ret;
 }
 
-bool CVitalCoinSecret::IsValid() const {
+bool CVitalcoinSecret::IsValid() const {
   bool fExpectedFormat =
       vchData.size() == 32 || (vchData.size() == 33 && vchData[32] == 1);
   bool fCorrectVersion =
@@ -294,10 +294,10 @@ bool CVitalCoinSecret::IsValid() const {
   return fExpectedFormat && fCorrectVersion;
 }
 
-bool CVitalCoinSecret::SetString(const char *pszSecret) {
+bool CVitalcoinSecret::SetString(const char *pszSecret) {
   return CBase58Data::SetString(pszSecret) && IsValid();
 }
 
-bool CVitalCoinSecret::SetString(const std::string &strSecret) {
+bool CVitalcoinSecret::SetString(const std::string &strSecret) {
   return SetString(strSecret.c_str());
 }

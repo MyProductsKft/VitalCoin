@@ -76,7 +76,7 @@ std::unique_ptr<X509_STORE, X509StoreDeleter> certStore;
 //  data directory
 //
 static QString ipcServerName() {
-  QString name("VitalCoinQt");
+  QString name("VitalcoinQt");
 
   // Append a simple hash of the datadir
   // Note that GetDataDir(true) returns a different path
@@ -227,8 +227,8 @@ void PaymentServer::ipcParseCommandLine(int argc, char *argv[]) {
       savedPaymentRequests.append(arg);
 
       SendCoinsRecipient r;
-      if (GUIUtil::parseVitalCoinURI(arg, &r) && !r.address.isEmpty()) {
-        CVitalCoinAddress address(r.address.toStdString());
+      if (GUIUtil::parseVitalcoinURI(arg, &r) && !r.address.isEmpty()) {
+        CVitalcoinAddress address(r.address.toStdString());
         auto tempChainParams = CreateChainParams(CBaseChainParams::MAIN);
 
         if (address.IsValid(*tempChainParams)) {
@@ -427,8 +427,8 @@ void PaymentServer::handleURIOrFile(const QString &s) {
     } else // normal URI
     {
       SendCoinsRecipient recipient;
-      if (GUIUtil::parseVitalCoinURI(s, &recipient)) {
-        CVitalCoinAddress address(recipient.address.toStdString());
+      if (GUIUtil::parseVitalcoinURI(s, &recipient)) {
+        CVitalcoinAddress address(recipient.address.toStdString());
         if (!address.IsValid()) {
           Q_EMIT message(
               tr("URI handling"),
@@ -440,7 +440,7 @@ void PaymentServer::handleURIOrFile(const QString &s) {
         Q_EMIT message(
             tr("URI handling"),
             tr("URI cannot be parsed! This can be caused by an invalid "
-               "VitalCoin address or malformed URI parameters."),
+               "Vitalcoin address or malformed URI parameters."),
             CClientUIInterface::ICON_WARNING);
 
       return;
@@ -554,7 +554,7 @@ bool PaymentServer::processPaymentRequest(const PaymentRequestPlus &request,
     if (ExtractDestination(sendingTo.first, dest)) {
       // Append destination address
       addresses.append(
-          QString::fromStdString(CVitalCoinAddress(dest).ToString()));
+          QString::fromStdString(CVitalcoinAddress(dest).ToString()));
     } else if (!recipient.authenticatedMerchant.isEmpty()) {
       // Unauthenticated payment requests to custom vitalcoin addresses are not
       // supported
@@ -568,7 +568,7 @@ bool PaymentServer::processPaymentRequest(const PaymentRequestPlus &request,
       return false;
     }
 
-    // VitalCoin amounts are stored as (optional) uint64 in the protobuf
+    // Vitalcoin amounts are stored as (optional) uint64 in the protobuf
     // messages (see paymentrequest.proto),
     // but CAmount is defined as int64_t. Because of that we need to verify that
     // amounts are in a valid range
@@ -586,7 +586,7 @@ bool PaymentServer::processPaymentRequest(const PaymentRequestPlus &request,
       Q_EMIT message(
           tr("Payment request error"),
           tr("Requested payment amount of %1 is too small (considered dust).")
-              .arg(VitalCoinUnits::formatWithUnit(
+              .arg(VitalcoinUnits::formatWithUnit(
                   optionsModel->getDisplayUnit(), sendingTo.second)),
           CClientUIInterface::MSG_ERROR);
 

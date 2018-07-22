@@ -68,9 +68,9 @@ can then be controlled by group membership.
 3b) Mac OS X
 
 Binary:              `/usr/local/bin/vitalcoind`  
-Configuration file:  `~/Library/Application Support/VitalCoin/vitalcoin.conf`  
-Data directory:      `~/Library/Application Support/VitalCoin`
-Lock file:           `~/Library/Application Support/VitalCoin/.lock`
+Configuration file:  `~/Library/Application Support/Vitalcoin/vitalcoin.conf`  
+Data directory:      `~/Library/Application Support/Vitalcoin`
+Lock file:           `~/Library/Application Support/Vitalcoin/.lock`
 
 4. Installing Service Configuration
 -----------------------------------

@@ -4,10 +4,10 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test RPC commands for signing and verifying messages."""
 
-from test_framework.test_framework import VitalCoinTestFramework
+from test_framework.test_framework import VitalcoinTestFramework
 from test_framework.util import assert_equal
 
-class SignMessagesTest(VitalCoinTestFramework):
+class SignMessagesTest(VitalcoinTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 1

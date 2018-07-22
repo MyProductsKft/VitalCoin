@@ -4,10 +4,10 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test the wallet accounts properly when there is a double-spend conflict."""
 
-from test_framework.test_framework import VitalCoinTestFramework
+from test_framework.test_framework import VitalcoinTestFramework
 from test_framework.util import *
 
-class TxnMallTest(VitalCoinTestFramework):
+class TxnMallTest(VitalcoinTestFramework):
     def set_test_params(self):
         self.num_nodes = 4
 

@@ -18,8 +18,8 @@ VITALCOIND_BIN=${VITALCOIND_BIN:-/usr/bin/vitalcoind}
 VITALCOIND_NICE=${VITALCOIND_NICE:-${NICELEVEL:-0}}
 VITALCOIND_OPTS="${VITALCOIND_OPTS:-${VITALCOIN_OPTS}}"
 
-name="VitalCoin Core Daemon"
-description="VitalCoin cryptocurrency P2P network daemon"
+name="Vitalcoin Core Daemon"
+description="Vitalcoin cryptocurrency P2P network daemon"
 
 command="/usr/bin/vitalcoind"
 command_args="-pid=\"${VITALCOIND_PIDFILE}\" \
@@ -84,7 +84,7 @@ checkconfig()
 		eerror "It is also recommended that you also set alertnotify so you are "
 		eerror "notified of problems:"
 		eerror ""
-		eerror "ie: alertnotify=echo %%s | mail -s \"VitalCoin Alert\"" \
+		eerror "ie: alertnotify=echo %%s | mail -s \"Vitalcoin Alert\"" \
 			"admin@foo.com"
 		eerror ""
 		return 1

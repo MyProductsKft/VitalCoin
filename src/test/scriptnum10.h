@@ -22,7 +22,7 @@ public:
 
 class CScriptNum10 {
   /**
-   * The ScriptNum implementation from VitalCoin Core 0.10.0, for
+   * The ScriptNum implementation from Vitalcoin Core 0.10.0, for
    * cross-comparison.
    */
 public:

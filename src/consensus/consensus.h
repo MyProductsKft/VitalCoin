@@ -14,7 +14,7 @@
 
 // To deal dynamically with the fork, we introduce a new structure called a
 // conforksus (consensus | fork), with two instances: the base and fork
-// version. The former uses VitalCoin parameters, but if this fork is a fork
+// version. The former uses Vitalcoin parameters, but if this fork is a fork
 // of a fork, it should use the first fork values (no effort went into
 // forking of a fork into a secondary fork, e.g. via nested list conforksus
 // objects).

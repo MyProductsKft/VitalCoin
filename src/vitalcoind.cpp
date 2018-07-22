@@ -31,9 +31,9 @@
  * \section intro_sec Introduction
  *
  * This is the developer documentation of the reference client for an
- * experimental new digital currency called VitalCoin
+ * experimental new digital currency called Vitalcoin
  * (https://www.vitalcoin.org/),
- * which enables instant payments to anyone, anywhere in the world. VitalCoin
+ * which enables instant payments to anyone, anywhere in the world. Vitalcoin
  * uses peer-to-peer technology to operate
  * with no central authority: managing transactions and issuing money are
  * carried out collectively by the network.
@@ -151,7 +151,7 @@ bool AppInit(int argc, char *argv[]) {
     }
     if (gArgs.GetBoolArg("-daemon", false)) {
 #if HAVE_DECL_DAEMON
-      fprintf(stdout, "VitalCoin server starting\n");
+      fprintf(stdout, "Vitalcoin server starting\n");
 
       // Daemonize
       if (daemon(1, 0)) { // don't chdir (1), do close FDs (0)

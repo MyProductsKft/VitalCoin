@@ -104,7 +104,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>VitalCoinGUI</name>
+    <name>VitalcoinGUI</name>
     <message>
         <source>Synchronizing with network...</source>
         <translation>Võrguga sünkroniseerimine...</translation>
@@ -130,8 +130,8 @@
         <translation>Kõvakettal olevate plokkide reindekseerimine...</translation>
     </message>
     <message>
-        <source>VitalCoin</source>
-        <translation>VitalCoin</translation>
+        <source>Vitalcoin</source>
+        <translation>Vitalcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -760,8 +760,8 @@
         <translation>Valikud:</translation>
     </message>
     <message>
-        <source>VitalCoin Core</source>
-        <translation>VitalCoin Core</translation>
+        <source>Vitalcoin Core</source>
+        <translation>Vitalcoin Core</translation>
     </message>
     <message>
         <source>Information</source>

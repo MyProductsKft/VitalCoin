@@ -25,7 +25,7 @@ class TxViewDelegate : public QAbstractItemDelegate {
   Q_OBJECT
 public:
   TxViewDelegate(const PlatformStyle *_platformStyle, QObject *parent = nullptr)
-      : QAbstractItemDelegate(parent), unit(VitalCoinUnits::VTC),
+      : QAbstractItemDelegate(parent), unit(VitalcoinUnits::VTC),
         platformStyle(_platformStyle) {}
 
   inline void paint(QPainter *painter, const QStyleOptionViewItem &option,
@@ -80,8 +80,8 @@ public:
       foreground = option.palette.color(QPalette::Text);
     }
     painter->setPen(foreground);
-    QString amountText = VitalCoinUnits::formatWithUnit(
-        unit, amount, true, VitalCoinUnits::separatorAlways);
+    QString amountText = VitalcoinUnits::formatWithUnit(
+        unit, amount, true, VitalcoinUnits::separatorAlways);
     if (!confirmed) {
       amountText = QString("[") + amountText + QString("]");
     }
@@ -165,24 +165,24 @@ void OverviewPage::setBalance(const CAmount &balance,
   currentWatchOnlyBalance = watchOnlyBalance;
   currentWatchUnconfBalance = watchUnconfBalance;
   currentWatchImmatureBalance = watchImmatureBalance;
-  ui->labelBalance->setText(VitalCoinUnits::formatWithUnit(
-      unit, balance, false, VitalCoinUnits::separatorAlways));
-  ui->labelUnconfirmed->setText(VitalCoinUnits::formatWithUnit(
-      unit, unconfirmedBalance, false, VitalCoinUnits::separatorAlways));
-  ui->labelImmature->setText(VitalCoinUnits::formatWithUnit(
-      unit, immatureBalance, false, VitalCoinUnits::separatorAlways));
-  ui->labelTotal->setText(VitalCoinUnits::formatWithUnit(
+  ui->labelBalance->setText(VitalcoinUnits::formatWithUnit(
+      unit, balance, false, VitalcoinUnits::separatorAlways));
+  ui->labelUnconfirmed->setText(VitalcoinUnits::formatWithUnit(
+      unit, unconfirmedBalance, false, VitalcoinUnits::separatorAlways));
+  ui->labelImmature->setText(VitalcoinUnits::formatWithUnit(
+      unit, immatureBalance, false, VitalcoinUnits::separatorAlways));
+  ui->labelTotal->setText(VitalcoinUnits::formatWithUnit(
       unit, balance + unconfirmedBalance + immatureBalance, false,
-      VitalCoinUnits::separatorAlways));
-  ui->labelWatchAvailable->setText(VitalCoinUnits::formatWithUnit(
-      unit, watchOnlyBalance, false, VitalCoinUnits::separatorAlways));
-  ui->labelWatchPending->setText(VitalCoinUnits::formatWithUnit(
-      unit, watchUnconfBalance, false, VitalCoinUnits::separatorAlways));
-  ui->labelWatchImmature->setText(VitalCoinUnits::formatWithUnit(
-      unit, watchImmatureBalance, false, VitalCoinUnits::separatorAlways));
-  ui->labelWatchTotal->setText(VitalCoinUnits::formatWithUnit(
+      VitalcoinUnits::separatorAlways));
+  ui->labelWatchAvailable->setText(VitalcoinUnits::formatWithUnit(
+      unit, watchOnlyBalance, false, VitalcoinUnits::separatorAlways));
+  ui->labelWatchPending->setText(VitalcoinUnits::formatWithUnit(
+      unit, watchUnconfBalance, false, VitalcoinUnits::separatorAlways));
+  ui->labelWatchImmature->setText(VitalcoinUnits::formatWithUnit(
+      unit, watchImmatureBalance, false, VitalcoinUnits::separatorAlways));
+  ui->labelWatchTotal->setText(VitalcoinUnits::formatWithUnit(
       unit, watchOnlyBalance + watchUnconfBalance + watchImmatureBalance, false,
-      VitalCoinUnits::separatorAlways));
+      VitalcoinUnits::separatorAlways));
 
   // only show immature (newly mined) balance if it's non-zero, so as not to
   // complicate things

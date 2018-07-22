@@ -84,8 +84,8 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet)
   ui->vitalcoinAtStartup->setText(
       ui->vitalcoinAtStartup->text().arg(tr(PACKAGE_NAME)));
 
-  ui->openVitalCoinConfButton->setToolTip(
-      ui->openVitalCoinConfButton->toolTip().arg(tr(PACKAGE_NAME)));
+  ui->openVitalcoinConfButton->setToolTip(
+      ui->openVitalcoinConfButton->toolTip().arg(tr(PACKAGE_NAME)));
 
   ui->lang->setToolTip(ui->lang->toolTip().arg(tr(PACKAGE_NAME)));
   ui->lang->addItem(QString("(") + tr("default") + QString(")"), QVariant(""));
@@ -130,7 +130,7 @@ OptionsDialog::OptionsDialog(QWidget *parent, bool enableWallet)
   ui->thirdPartyTxUrls->setPlaceholderText("https://example.com/tx/%s");
 #endif
 
-  ui->unit->setModel(new VitalCoinUnits(this));
+  ui->unit->setModel(new VitalcoinUnits(this));
 
   /* Widget-to-option mapper */
   mapper = new QDataWidgetMapper(this);
@@ -255,7 +255,7 @@ void OptionsDialog::on_resetButton_clicked() {
   }
 }
 
-void OptionsDialog::on_openVitalCoinConfButton_clicked() {
+void OptionsDialog::on_openVitalcoinConfButton_clicked() {
   /* explain the purpose of the config file */
   QMessageBox::information(
       this, tr("Configuration options"),
@@ -265,7 +265,7 @@ void OptionsDialog::on_openVitalCoinConfButton_clicked() {
          "configuration file."));
 
   /* show an error if there was some problem opening the file */
-  if (!GUIUtil::openVitalCoinConf())
+  if (!GUIUtil::openVitalcoinConf())
     QMessageBox::critical(this, tr("Error"),
                           tr("The configuration file could not be opened."));
 }

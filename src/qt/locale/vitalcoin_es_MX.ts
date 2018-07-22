@@ -72,7 +72,7 @@
     </message>
     </context>
 <context>
-    <name>VitalCoinGUI</name>
+    <name>VitalcoinGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Firmar &amp;mensaje</translation>
@@ -150,8 +150,8 @@
         <translation>Reindexando bloques en el disco...</translation>
     </message>
     <message>
-        <source>Send coins to a VitalCoin address</source>
-        <translation>Enviar monedas a una dirección VitalCoin</translation>
+        <source>Send coins to a Vitalcoin address</source>
+        <translation>Enviar monedas a una dirección Vitalcoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -174,8 +174,8 @@
         <translation>&amp;Verificar mensaje...</translation>
     </message>
     <message>
-        <source>VitalCoin</source>
-        <translation>VitalCoin</translation>
+        <source>Vitalcoin</source>
+        <translation>Vitalcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -418,8 +418,8 @@
         <translation>Mensaje:</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the VitalCoin network.</source>
-        <translation>Mensaje opcional para agregar a la solicitud de pago, el cual será mostrado cuando la solicitud este abierta. Nota: El mensaje no se manda con el pago a travéz de la red de VitalCoin.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Vitalcoin network.</source>
+        <translation>Mensaje opcional para agregar a la solicitud de pago, el cual será mostrado cuando la solicitud este abierta. Nota: El mensaje no se manda con el pago a travéz de la red de Vitalcoin.</translation>
     </message>
     <message>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
@@ -608,8 +608,8 @@
         <translation>Opciones:</translation>
     </message>
     <message>
-        <source>VitalCoin Core</source>
-        <translation>nucleo VitalCoin</translation>
+        <source>Vitalcoin Core</source>
+        <translation>nucleo Vitalcoin</translation>
     </message>
     <message>
         <source>&lt;category&gt; can be:</source>

@@ -22,7 +22,7 @@ class AmountSpinBox : public QAbstractSpinBox {
 
 public:
   explicit AmountSpinBox(QWidget *parent)
-      : QAbstractSpinBox(parent), currentUnit(VitalCoinUnits::VTC),
+      : QAbstractSpinBox(parent), currentUnit(VitalcoinUnits::VTC),
         singleStep(100000) // satoshis
   {
     setAlignment(Qt::AlignRight);
@@ -44,8 +44,8 @@ public:
     bool valid = false;
     CAmount val = parse(input, &valid);
     if (valid) {
-      input = VitalCoinUnits::format(currentUnit, val, false,
-                                     VitalCoinUnits::separatorAlways);
+      input = VitalcoinUnits::format(currentUnit, val, false,
+                                     VitalcoinUnits::separatorAlways);
       lineEdit()->setText(input);
     }
   }
@@ -53,8 +53,8 @@ public:
   CAmount value(bool *valid_out = 0) const { return parse(text(), valid_out); }
 
   void setValue(const CAmount &value) {
-    lineEdit()->setText(VitalCoinUnits::format(
-        currentUnit, value, false, VitalCoinUnits::separatorAlways));
+    lineEdit()->setText(VitalcoinUnits::format(
+        currentUnit, value, false, VitalcoinUnits::separatorAlways));
     Q_EMIT valueChanged();
   }
 
@@ -62,7 +62,7 @@ public:
     bool valid = false;
     CAmount val = value(&valid);
     val = val + steps * singleStep;
-    val = qMin(qMax(val, CAmount(0)), VitalCoinUnits::maxMoney());
+    val = qMin(qMax(val, CAmount(0)), VitalcoinUnits::maxMoney());
     setValue(val);
   }
 
@@ -86,9 +86,9 @@ public:
 
       const QFontMetrics fm(fontMetrics());
       int h = lineEdit()->minimumSizeHint().height();
-      int w = fm.width(VitalCoinUnits::format(VitalCoinUnits::VTC,
-                                              VitalCoinUnits::maxMoney(), false,
-                                              VitalCoinUnits::separatorAlways));
+      int w = fm.width(VitalcoinUnits::format(VitalcoinUnits::VTC,
+                                              VitalcoinUnits::maxMoney(), false,
+                                              VitalcoinUnits::separatorAlways));
       w += 2; // cursor blinking space
 
       QStyleOptionSpinBox opt;
@@ -133,9 +133,9 @@ private:
    */
   CAmount parse(const QString &text, bool *valid_out = 0) const {
     CAmount val = 0;
-    bool valid = VitalCoinUnits::parse(currentUnit, text, &val);
+    bool valid = VitalcoinUnits::parse(currentUnit, text, &val);
     if (valid) {
-      if (val < 0 || val > VitalCoinUnits::maxMoney())
+      if (val < 0 || val > VitalcoinUnits::maxMoney())
         valid = false;
     }
     if (valid_out)
@@ -171,7 +171,7 @@ protected:
     if (valid) {
       if (val > 0)
         rv |= StepDownEnabled;
-      if (val < VitalCoinUnits::maxMoney())
+      if (val < VitalcoinUnits::maxMoney())
         rv |= StepUpEnabled;
     }
     return rv;
@@ -183,7 +183,7 @@ Q_SIGNALS:
 
 #include "vitalcoinamountfield.moc"
 
-VitalCoinAmountField::VitalCoinAmountField(QWidget *parent)
+VitalcoinAmountField::VitalcoinAmountField(QWidget *parent)
     : QWidget(parent), amount(0) {
   amount = new AmountSpinBox(this);
   amount->setLocale(QLocale::c());
@@ -193,7 +193,7 @@ VitalCoinAmountField::VitalCoinAmountField(QWidget *parent)
   QHBoxLayout *layout = new QHBoxLayout(this);
   layout->addWidget(amount);
   unit = new QValueComboBox(this);
-  unit->setModel(new VitalCoinUnits(this));
+  unit->setModel(new VitalcoinUnits(this));
   layout->addWidget(unit);
   layout->addStretch(1);
   layout->setContentsMargins(0, 0, 0, 0);
@@ -211,31 +211,31 @@ VitalCoinAmountField::VitalCoinAmountField(QWidget *parent)
   unitChanged(unit->currentIndex());
 }
 
-void VitalCoinAmountField::clear() {
+void VitalcoinAmountField::clear() {
   amount->clear();
   unit->setCurrentIndex(0);
 }
 
-void VitalCoinAmountField::setEnabled(bool fEnabled) {
+void VitalcoinAmountField::setEnabled(bool fEnabled) {
   amount->setEnabled(fEnabled);
   unit->setEnabled(fEnabled);
 }
 
-bool VitalCoinAmountField::validate() {
+bool VitalcoinAmountField::validate() {
   bool valid = false;
   value(&valid);
   setValid(valid);
   return valid;
 }
 
-void VitalCoinAmountField::setValid(bool valid) {
+void VitalcoinAmountField::setValid(bool valid) {
   if (valid)
     amount->setStyleSheet("");
   else
     amount->setStyleSheet(STYLE_INVALID);
 }
 
-bool VitalCoinAmountField::eventFilter(QObject *object, QEvent *event) {
+bool VitalcoinAmountField::eventFilter(QObject *object, QEvent *event) {
   if (event->type() == QEvent::FocusIn) {
     // Clear invalid flag on focus
     setValid(true);
@@ -243,38 +243,38 @@ bool VitalCoinAmountField::eventFilter(QObject *object, QEvent *event) {
   return QWidget::eventFilter(object, event);
 }
 
-QWidget *VitalCoinAmountField::setupTabChain(QWidget *prev) {
+QWidget *VitalcoinAmountField::setupTabChain(QWidget *prev) {
   QWidget::setTabOrder(prev, amount);
   QWidget::setTabOrder(amount, unit);
   return unit;
 }
 
-CAmount VitalCoinAmountField::value(bool *valid_out) const {
+CAmount VitalcoinAmountField::value(bool *valid_out) const {
   return amount->value(valid_out);
 }
 
-void VitalCoinAmountField::setValue(const CAmount &value) {
+void VitalcoinAmountField::setValue(const CAmount &value) {
   amount->setValue(value);
 }
 
-void VitalCoinAmountField::setReadOnly(bool fReadOnly) {
+void VitalcoinAmountField::setReadOnly(bool fReadOnly) {
   amount->setReadOnly(fReadOnly);
 }
 
-void VitalCoinAmountField::unitChanged(int idx) {
+void VitalcoinAmountField::unitChanged(int idx) {
   // Use description tooltip for current unit for the combobox
   unit->setToolTip(unit->itemData(idx, Qt::ToolTipRole).toString());
 
   // Determine new unit ID
-  int newUnit = unit->itemData(idx, VitalCoinUnits::UnitRole).toInt();
+  int newUnit = unit->itemData(idx, VitalcoinUnits::UnitRole).toInt();
 
   amount->setDisplayUnit(newUnit);
 }
 
-void VitalCoinAmountField::setDisplayUnit(int newUnit) {
+void VitalcoinAmountField::setDisplayUnit(int newUnit) {
   unit->setValue(newUnit);
 }
 
-void VitalCoinAmountField::setSingleStep(const CAmount &step) {
+void VitalcoinAmountField::setSingleStep(const CAmount &step) {
   amount->setSingleStep(step);
 }

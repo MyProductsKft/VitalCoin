@@ -8,7 +8,7 @@
 #include <QDialog>
 #include <QObject>
 
-class VitalCoinGUI;
+class VitalcoinGUI;
 
 namespace Ui {
 class HelpMessageDialog;
@@ -39,7 +39,7 @@ class ShutdownWindow : public QWidget {
 
 public:
   ShutdownWindow(QWidget *parent = 0, Qt::WindowFlags f = 0);
-  static QWidget *showShutdownWindow(VitalCoinGUI *window);
+  static QWidget *showShutdownWindow(VitalcoinGUI *window);
 
 protected:
   void closeEvent(QCloseEvent *event);

@@ -125,8 +125,8 @@ BOOST_AUTO_TEST_CASE(base58_keys_valid_parse) {
   UniValue tests = read_json(std::string(
       json_tests::base58_keys_valid,
       json_tests::base58_keys_valid + sizeof(json_tests::base58_keys_valid)));
-  CVitalCoinSecret secret;
-  CVitalCoinAddress addr;
+  CVitalcoinSecret secret;
+  CVitalcoinAddress addr;
   SelectParams(CBaseChainParams::MAIN);
 
   for (unsigned int idx = 0; idx < tests.size(); idx++) {
@@ -149,8 +149,8 @@ BOOST_AUTO_TEST_CASE(base58_keys_valid_parse) {
     if (isPrivkey) {
       bool isCompressed = find_value(metadata, "isCompressed").get_bool();
       // Must be valid private key
-      // Note: CVitalCoinSecret::SetString tests isValid, whereas
-      // CVitalCoinAddress does not!
+      // Note: CVitalcoinSecret::SetString tests isValid, whereas
+      // CVitalcoinAddress does not!
       BOOST_CHECK_MESSAGE(secret.SetString(exp_base58string),
                           "!SetString:" + strTest);
       BOOST_CHECK_MESSAGE(secret.IsValid(), "!IsValid:" + strTest);
@@ -216,7 +216,7 @@ BOOST_AUTO_TEST_CASE(base58_keys_valid_gen) {
       CKey key;
       key.Set(exp_payload.begin(), exp_payload.end(), isCompressed);
       assert(key.IsValid());
-      CVitalCoinSecret secret;
+      CVitalcoinSecret secret;
       secret.SetKey(key);
       BOOST_CHECK_MESSAGE(secret.ToString() == exp_base58string,
                           "result mismatch: " + strTest);
@@ -233,7 +233,7 @@ BOOST_AUTO_TEST_CASE(base58_keys_valid_gen) {
         BOOST_ERROR("Bad addrtype: " << strTest);
         continue;
       }
-      CVitalCoinAddress addrOut;
+      CVitalcoinAddress addrOut;
       BOOST_CHECK_MESSAGE(addrOut.Set(dest), "encode dest: " + strTest);
       BOOST_CHECK_MESSAGE(addrOut.ToString() == exp_base58string,
                           "mismatch: " + strTest);
@@ -241,7 +241,7 @@ BOOST_AUTO_TEST_CASE(base58_keys_valid_gen) {
   }
 
   // Visiting a CNoDestination must fail
-  CVitalCoinAddress dummyAddr;
+  CVitalcoinAddress dummyAddr;
   CTxDestination nodest = CNoDestination();
   BOOST_CHECK(!dummyAddr.Set(nodest));
 
@@ -255,8 +255,8 @@ BOOST_AUTO_TEST_CASE(base58_keys_invalid) {
       json_tests::base58_keys_invalid,
       json_tests::base58_keys_invalid +
           sizeof(json_tests::base58_keys_invalid))); // Negative testcases
-  CVitalCoinSecret secret;
-  CVitalCoinAddress addr;
+  CVitalcoinSecret secret;
+  CVitalcoinAddress addr;
 
   for (unsigned int idx = 0; idx < tests.size(); idx++) {
     UniValue test = tests[idx];

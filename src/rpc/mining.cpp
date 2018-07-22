@@ -198,7 +198,7 @@ UniValue generatetoaddress(const JSONRPCRequest &request) {
     nMaxTries = request.params[2].get_int();
   }
 
-  CVitalCoinAddress address(request.params[1].get_str());
+  CVitalcoinAddress address(request.params[1].get_str());
   if (!address.IsValid())
     throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Error: Invalid address");
 
@@ -513,7 +513,7 @@ UniValue getblocktemplate(const JSONRPCRequest &request) {
                        "Error: Peer-to-peer functionality missing or disabled");
 
   if (g_connman->GetNodeCount(CConnman::CONNECTIONS_ALL) == 0)
-    throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "VitalCoin is not connected!");
+    throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "Vitalcoin is not connected!");
 
   if (Params().MiningRequiresPeers() && fPruneMode) {
     throw JSONRPCError(RPC_INVALID_PARAMETER,
@@ -522,7 +522,7 @@ UniValue getblocktemplate(const JSONRPCRequest &request) {
 
   if (IsInitialBlockDownload())
     throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD,
-                       "VitalCoin is downloading blocks...");
+                       "Vitalcoin is downloading blocks...");
 
   static unsigned int nTransactionsUpdatedLast;
 

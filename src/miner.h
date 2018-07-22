@@ -206,7 +206,7 @@ private:
 };
 
 /** Run the miner threads */
-void GenerateVitalCoins(bool fGenerate, int nThreads,
+void GenerateVitalcoins(bool fGenerate, int nThreads,
                         const CChainParams &chainparams);
 
 /** Modify the extranonce in a block */

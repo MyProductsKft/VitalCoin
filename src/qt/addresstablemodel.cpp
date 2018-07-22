@@ -78,7 +78,7 @@ public:
       LOCK(wallet->cs_wallet);
       for (const std::pair<CTxDestination, CAddressBookData> &item :
            wallet->mapAddressBook) {
-        const CVitalCoinAddress &address = item.first;
+        const CVitalcoinAddress &address = item.first;
         bool fMine = IsMine(*wallet, address.Get());
         AddressTableEntry::Type addressType = translateTransactionType(
             QString::fromStdString(item.second.purpose), fMine);
@@ -228,7 +228,7 @@ bool AddressTableModel::setData(const QModelIndex &index, const QVariant &value,
   if (role == Qt::EditRole) {
     LOCK(wallet->cs_wallet); /* For SetAddressBook / DelAddressBook */
     CTxDestination curAddress =
-        CVitalCoinAddress(rec->address.toStdString()).Get();
+        CVitalcoinAddress(rec->address.toStdString()).Get();
     if (index.column() == Label) {
       // Do nothing, if old label == new label
       if (rec->label == value.toString()) {
@@ -239,7 +239,7 @@ bool AddressTableModel::setData(const QModelIndex &index, const QVariant &value,
                              strPurpose);
     } else if (index.column() == Address) {
       CTxDestination newAddress =
-          CVitalCoinAddress(value.toString().toStdString()).Get();
+          CVitalcoinAddress(value.toString().toStdString()).Get();
       // Refuse to set invalid address, set error status and return false
       if (boost::get<CNoDestination>(&newAddress)) {
         editStatus = INVALID_ADDRESS;
@@ -312,7 +312,7 @@ QModelIndex AddressTableModel::index(int row, int column,
 void AddressTableModel::updateEntry(const QString &address,
                                     const QString &label, bool isMine,
                                     const QString &purpose, int status) {
-  // Update address book model from VitalCoin core
+  // Update address book model from Vitalcoin core
   priv->updateEntry(address, label, isMine, purpose, status);
 }
 
@@ -331,7 +331,7 @@ QString AddressTableModel::addRow(const QString &type, const QString &label,
     // Check for duplicate addresses
     {
       LOCK(wallet->cs_wallet);
-      if (wallet->mapAddressBook.count(CVitalCoinAddress(strAddress).Get())) {
+      if (wallet->mapAddressBook.count(CVitalcoinAddress(strAddress).Get())) {
         editStatus = DUPLICATE_ADDRESS;
         return QString();
       }
@@ -351,7 +351,7 @@ QString AddressTableModel::addRow(const QString &type, const QString &label,
         return QString();
       }
     }
-    strAddress = CVitalCoinAddress(newKey.GetID()).ToString();
+    strAddress = CVitalcoinAddress(newKey.GetID()).ToString();
   } else {
     return QString();
   }
@@ -359,7 +359,7 @@ QString AddressTableModel::addRow(const QString &type, const QString &label,
   // Add entry
   {
     LOCK(wallet->cs_wallet);
-    wallet->SetAddressBook(CVitalCoinAddress(strAddress).Get(), strLabel,
+    wallet->SetAddressBook(CVitalcoinAddress(strAddress).Get(), strLabel,
                            (type == Send ? "send" : "receive"));
   }
   return QString::fromStdString(strAddress);
@@ -376,7 +376,7 @@ bool AddressTableModel::removeRows(int row, int count,
   }
   {
     LOCK(wallet->cs_wallet);
-    wallet->DelAddressBook(CVitalCoinAddress(rec->address.toStdString()).Get());
+    wallet->DelAddressBook(CVitalcoinAddress(rec->address.toStdString()).Get());
   }
   return true;
 }
@@ -386,7 +386,7 @@ bool AddressTableModel::removeRows(int row, int count,
 QString AddressTableModel::labelForAddress(const QString &address) const {
   {
     LOCK(wallet->cs_wallet);
-    CVitalCoinAddress address_parsed(address.toStdString());
+    CVitalcoinAddress address_parsed(address.toStdString());
     std::map<CTxDestination, CAddressBookData>::iterator mi =
         wallet->mapAddressBook.find(address_parsed.Get());
     if (mi != wallet->mapAddressBook.end()) {

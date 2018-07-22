@@ -29,16 +29,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>VitalCoin-Qt</string>
+  <string>Vitalcoin-Qt</string>
   
   <key>CFBundleName</key>
-  <string>VitalCoin-Qt</string>
+  <string>Vitalcoin-Qt</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>org.vitalcoinfoundation.VitalCoin-Qt</string>
+  <string>org.vitalcoinfoundation.Vitalcoin-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -46,7 +46,7 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>org.vitalcoin.VitalCoinPayment</string>
+      <string>org.vitalcoin.VitalcoinPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
         <string>vitalcoin</string>
@@ -60,7 +60,7 @@
       <key>UTTypeIdentifier</key>
       <string>org.vitalcoin.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>VitalCoin payment request</string>
+      <string>Vitalcoin payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>

@@ -7,13 +7,13 @@ import configparser
 import os
 import struct
 
-from test_framework.test_framework import VitalCoinTestFramework, SkipTest
+from test_framework.test_framework import VitalcoinTestFramework, SkipTest
 from test_framework.util import (assert_equal,
                                  bytes_to_hex_str,
                                  hash256,
                                 )
 
-class ZMQTest (VitalCoinTestFramework):
+class ZMQTest (VitalcoinTestFramework):
     def set_test_params(self):
         self.num_nodes = 2
 

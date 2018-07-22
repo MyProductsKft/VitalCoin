@@ -254,7 +254,7 @@ void CoinControlDialog::showMenu(const QPoint &point) {
 // context menu action: copy amount
 void CoinControlDialog::copyAmount() {
   GUIUtil::setClipboard(
-      VitalCoinUnits::removeSpaces(contextMenuItem->text(COLUMN_AMOUNT)));
+      VitalcoinUnits::removeSpaces(contextMenuItem->text(COLUMN_AMOUNT)));
 }
 
 // context menu action: copy label
@@ -568,7 +568,7 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog *dialog) {
   }
 
   // actually update labels
-  int nDisplayUnit = VitalCoinUnits::VTC;
+  int nDisplayUnit = VitalcoinUnits::VTC;
   if (model && model->getOptionsModel())
     nDisplayUnit = model->getOptionsModel()->getDisplayUnit();
 
@@ -592,14 +592,14 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog *dialog) {
 
   // stats
   l1->setText(QString::number(nQuantity)); // Quantity
-  l2->setText(VitalCoinUnits::formatWithUnit(nDisplayUnit, nAmount)); // Amount
-  l3->setText(VitalCoinUnits::formatWithUnit(nDisplayUnit, nPayFee)); // Fee
+  l2->setText(VitalcoinUnits::formatWithUnit(nDisplayUnit, nAmount)); // Amount
+  l3->setText(VitalcoinUnits::formatWithUnit(nDisplayUnit, nPayFee)); // Fee
   l4->setText(
-      VitalCoinUnits::formatWithUnit(nDisplayUnit, nAfterFee)); // After Fee
+      VitalcoinUnits::formatWithUnit(nDisplayUnit, nAfterFee)); // After Fee
   l5->setText(((nBytes > 0) ? ASYMP_UTF8 : "") +
               QString::number(nBytes));                               // Bytes
   l7->setText(fDust ? tr("yes") : tr("no"));                          // Dust
-  l8->setText(VitalCoinUnits::formatWithUnit(nDisplayUnit, nChange)); // Change
+  l8->setText(VitalcoinUnits::formatWithUnit(nDisplayUnit, nChange)); // Change
   if (nPayFee > 0) {
     l3->setText(ASYMP_UTF8 + l3->text());
     l4->setText(ASYMP_UTF8 + l4->text());
@@ -705,7 +705,7 @@ void CoinControlDialog::updateView() {
       if (ExtractDestination(out.tx->tx->vout[out.i].scriptPubKey,
                              outputAddress)) {
         sAddress =
-            QString::fromStdString(CVitalCoinAddress(outputAddress).ToString());
+            QString::fromStdString(CVitalcoinAddress(outputAddress).ToString());
 
         // if listMode or change => show vitalcoin address. In tree mode,
         // address is not shown again for direct wallet address outputs
@@ -732,7 +732,7 @@ void CoinControlDialog::updateView() {
       // amount
       itemOutput->setText(
           COLUMN_AMOUNT,
-          VitalCoinUnits::format(nDisplayUnit, out.tx->tx->vout[out.i].nValue));
+          VitalcoinUnits::format(nDisplayUnit, out.tx->tx->vout[out.i].nValue));
       itemOutput->setData(
           COLUMN_AMOUNT, Qt::UserRole,
           QVariant((qlonglong)out.tx->tx->vout[out.i]
@@ -777,7 +777,7 @@ void CoinControlDialog::updateView() {
       itemWalletAddress->setText(COLUMN_CHECKBOX,
                                  "(" + QString::number(nChildren) + ")");
       itemWalletAddress->setText(COLUMN_AMOUNT,
-                                 VitalCoinUnits::format(nDisplayUnit, nSum));
+                                 VitalcoinUnits::format(nDisplayUnit, nSum));
       itemWalletAddress->setData(COLUMN_AMOUNT, Qt::UserRole,
                                  QVariant((qlonglong)nSum));
     }

@@ -1,5 +1,5 @@
 [Unit]
-Description=VitalCoin's distributed currency daemon
+Description=Vitalcoin's distributed currency daemon
 After=network.target
 
 [Service]

@@ -173,13 +173,13 @@ void DebugMessageHandler(QtMsgType type, const QMessageLogContext &context,
 }
 #endif
 
-/** Class encapsulating VitalCoin Core startup and shutdown.
+/** Class encapsulating Vitalcoin Core startup and shutdown.
  * Allows running startup and shutdown in a different thread from the UI thread.
  */
-class VitalCoinCore : public QObject {
+class VitalcoinCore : public QObject {
   Q_OBJECT
 public:
-  explicit VitalCoinCore();
+  explicit VitalcoinCore();
   /** Basic initialization, before starting initialization/shutdown thread.
    * Return true on success.
    */
@@ -202,12 +202,12 @@ private:
   void handleRunawayException(const std::exception *e);
 };
 
-/** Main VitalCoin application object */
-class VitalCoinApplication : public QApplication {
+/** Main Vitalcoin application object */
+class VitalcoinApplication : public QApplication {
   Q_OBJECT
 public:
-  explicit VitalCoinApplication(int &argc, char **argv);
-  ~VitalCoinApplication();
+  explicit VitalcoinApplication(int &argc, char **argv);
+  ~VitalcoinApplication();
 
 #ifdef ENABLE_WALLET
   /// Create payment server
@@ -230,7 +230,7 @@ public:
   /// Get process return value
   int getReturnValue() { return returnValue; }
 
-  /// Get window identifier of QMainWindow (VitalCoinGUI)
+  /// Get window identifier of QMainWindow (VitalcoinGUI)
   WId getMainWinId() const;
 
 public Q_SLOTS:
@@ -250,7 +250,7 @@ private:
   QThread *coreThread;
   OptionsModel *optionsModel;
   ClientModel *clientModel;
-  VitalCoinGUI *window;
+  VitalcoinGUI *window;
   QTimer *pollShutdownTimer;
 #ifdef ENABLE_WALLET
   PaymentServer *paymentServer;
@@ -265,14 +265,14 @@ private:
 
 #include "vitalcoin.moc"
 
-VitalCoinCore::VitalCoinCore() : QObject() {}
+VitalcoinCore::VitalcoinCore() : QObject() {}
 
-void VitalCoinCore::handleRunawayException(const std::exception *e) {
+void VitalcoinCore::handleRunawayException(const std::exception *e) {
   PrintExceptionContinue(e, "Runaway exception");
   Q_EMIT runawayException(QString::fromStdString(GetWarnings("gui")));
 }
 
-bool VitalCoinCore::baseInitialize() {
+bool VitalcoinCore::baseInitialize() {
   if (!AppInitBasicSetup()) {
     return false;
   }
@@ -288,7 +288,7 @@ bool VitalCoinCore::baseInitialize() {
   return true;
 }
 
-void VitalCoinCore::initialize() {
+void VitalcoinCore::initialize() {
   try {
     qDebug() << __func__ << ": Running initialization in thread";
     bool rv = AppInitMain(threadGroup, scheduler);
@@ -300,7 +300,7 @@ void VitalCoinCore::initialize() {
   }
 }
 
-void VitalCoinCore::shutdown() {
+void VitalcoinCore::shutdown() {
   try {
     qDebug() << __func__ << ": Running Shutdown in thread";
     Interrupt(threadGroup);
@@ -315,7 +315,7 @@ void VitalCoinCore::shutdown() {
   }
 }
 
-VitalCoinApplication::VitalCoinApplication(int &argc, char **argv)
+VitalcoinApplication::VitalcoinApplication(int &argc, char **argv)
     : QApplication(argc, argv), coreThread(0), optionsModel(0), clientModel(0),
       window(0), pollShutdownTimer(0),
 #ifdef ENABLE_WALLET
@@ -325,11 +325,11 @@ VitalCoinApplication::VitalCoinApplication(int &argc, char **argv)
   setQuitOnLastWindowClosed(false);
 
   // UI per-platform customization
-  // This must be done inside the VitalCoinApplication constructor, or after it,
+  // This must be done inside the VitalcoinApplication constructor, or after it,
   // because
   // PlatformStyle::instantiate requires a QApplication
   std::string platformName;
-  platformName = gArgs.GetArg("-uiplatform", VitalCoinGUI::DEFAULT_UIPLATFORM);
+  platformName = gArgs.GetArg("-uiplatform", VitalcoinGUI::DEFAULT_UIPLATFORM);
   platformStyle =
       PlatformStyle::instantiate(QString::fromStdString(platformName));
   if (!platformStyle) // Fall back to "other" if specified name not found
@@ -337,7 +337,7 @@ VitalCoinApplication::VitalCoinApplication(int &argc, char **argv)
   assert(platformStyle);
 }
 
-VitalCoinApplication::~VitalCoinApplication() {
+VitalcoinApplication::~VitalcoinApplication() {
   if (coreThread) {
     qDebug() << __func__ << ": Stopping thread";
     Q_EMIT stopThread();
@@ -358,24 +358,24 @@ VitalCoinApplication::~VitalCoinApplication() {
 }
 
 #ifdef ENABLE_WALLET
-void VitalCoinApplication::createPaymentServer() {
+void VitalcoinApplication::createPaymentServer() {
   paymentServer = new PaymentServer(this);
 }
 #endif
 
-void VitalCoinApplication::createOptionsModel(bool resetSettings) {
+void VitalcoinApplication::createOptionsModel(bool resetSettings) {
   optionsModel = new OptionsModel(nullptr, resetSettings);
 }
 
-void VitalCoinApplication::createWindow(const NetworkStyle *networkStyle) {
-  window = new VitalCoinGUI(platformStyle, networkStyle, 0);
+void VitalcoinApplication::createWindow(const NetworkStyle *networkStyle) {
+  window = new VitalcoinGUI(platformStyle, networkStyle, 0);
 
   pollShutdownTimer = new QTimer(window);
   connect(pollShutdownTimer, SIGNAL(timeout()), window, SLOT(detectShutdown()));
   pollShutdownTimer->start(200);
 }
 
-void VitalCoinApplication::createSplashScreen(
+void VitalcoinApplication::createSplashScreen(
     const NetworkStyle *networkStyle) {
   SplashScreen *splash = new SplashScreen(0, networkStyle);
   // We don't hold a direct pointer to the splash screen after creation, but the
@@ -387,11 +387,11 @@ void VitalCoinApplication::createSplashScreen(
   connect(this, SIGNAL(requestedShutdown()), splash, SLOT(close()));
 }
 
-void VitalCoinApplication::startThread() {
+void VitalcoinApplication::startThread() {
   if (coreThread)
     return;
   coreThread = new QThread(this);
-  VitalCoinCore *executor = new VitalCoinCore();
+  VitalcoinCore *executor = new VitalcoinCore();
   executor->moveToThread(coreThread);
 
   /*  communication to and from thread */
@@ -409,18 +409,18 @@ void VitalCoinApplication::startThread() {
   coreThread->start();
 }
 
-void VitalCoinApplication::parameterSetup() {
+void VitalcoinApplication::parameterSetup() {
   InitLogging();
   InitParameterInteraction();
 }
 
-void VitalCoinApplication::requestInitialize() {
+void VitalcoinApplication::requestInitialize() {
   qDebug() << __func__ << ": Requesting initialize";
   startThread();
   Q_EMIT requestedInitialize();
 }
 
-void VitalCoinApplication::requestShutdown() {
+void VitalcoinApplication::requestShutdown() {
   // Show a simple window indicating shutdown status
   // Do this first as some of the steps may take some time below,
   // for example the RPC console may still be executing a command.
@@ -446,7 +446,7 @@ void VitalCoinApplication::requestShutdown() {
   Q_EMIT requestedShutdown();
 }
 
-void VitalCoinApplication::initializeResult(bool success) {
+void VitalcoinApplication::initializeResult(bool success) {
   qDebug() << __func__ << ": Initialization result: " << success;
   // Set exit result.
   returnValue = success ? EXIT_SUCCESS : EXIT_FAILURE;
@@ -467,8 +467,8 @@ void VitalCoinApplication::initializeResult(bool success) {
     if (!vpwallets.empty()) {
       walletModel = new WalletModel(platformStyle, vpwallets[0], optionsModel);
 
-      window->addWallet(VitalCoinGUI::DEFAULT_WALLET, walletModel);
-      window->setCurrentWallet(VitalCoinGUI::DEFAULT_WALLET);
+      window->addWallet(VitalcoinGUI::DEFAULT_WALLET, walletModel);
+      window->setCurrentWallet(VitalcoinGUI::DEFAULT_WALLET);
 
       connect(walletModel,
               SIGNAL(coinsSent(CWallet *, SendCoinsRecipient, QByteArray)),
@@ -502,20 +502,20 @@ void VitalCoinApplication::initializeResult(bool success) {
   }
 }
 
-void VitalCoinApplication::shutdownResult() {
+void VitalcoinApplication::shutdownResult() {
   quit(); // Exit main loop after shutdown finished
 }
 
-void VitalCoinApplication::handleRunawayException(const QString &message) {
+void VitalcoinApplication::handleRunawayException(const QString &message) {
   QMessageBox::critical(
       0, "Runaway exception",
-      VitalCoinGUI::tr("A fatal error occurred. VitalCoin can no longer "
+      VitalcoinGUI::tr("A fatal error occurred. Vitalcoin can no longer "
                        "continue safely and will quit.") +
           QString("\n\n") + message);
   ::exit(EXIT_FAILURE);
 }
 
-WId VitalCoinApplication::getMainWinId() const {
+WId VitalcoinApplication::getMainWinId() const {
   if (!window)
     return 0;
 
@@ -543,7 +543,7 @@ int main(int argc, char *argv[]) {
   Q_INIT_RESOURCE(vitalcoin);
   Q_INIT_RESOURCE(vitalcoin_locale);
 
-  VitalCoinApplication app(argc, argv);
+  VitalcoinApplication app(argc, argv);
 #if QT_VERSION > 0x050100
   // Generate high-dpi pixmaps
   QApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
@@ -707,7 +707,7 @@ int main(int argc, char *argv[]) {
     // This is acceptable because this function only contains steps that are
     // quick to execute,
     // so the GUI thread won't be held up.
-    if (VitalCoinCore::baseInitialize()) {
+    if (VitalcoinCore::baseInitialize()) {
       app.requestInitialize();
 #if defined(Q_OS_WIN) && QT_VERSION >= 0x050000
       WinShutdownMonitor::registerShutdownBlockReason(

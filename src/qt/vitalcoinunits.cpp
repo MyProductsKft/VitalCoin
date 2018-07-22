@@ -8,18 +8,18 @@
 
 #include <QStringList>
 
-VitalCoinUnits::VitalCoinUnits(QObject *parent)
+VitalcoinUnits::VitalcoinUnits(QObject *parent)
     : QAbstractListModel(parent), unitlist(availableUnits()) {}
 
-QList<VitalCoinUnits::Unit> VitalCoinUnits::availableUnits() {
-  QList<VitalCoinUnits::Unit> unitlist;
+QList<VitalcoinUnits::Unit> VitalcoinUnits::availableUnits() {
+  QList<VitalcoinUnits::Unit> unitlist;
   unitlist.append(VTC);
   unitlist.append(mVTC);
   unitlist.append(uVTC);
   return unitlist;
 }
 
-bool VitalCoinUnits::valid(int unit) {
+bool VitalcoinUnits::valid(int unit) {
   switch (unit) {
   case VTC:
   case mVTC:
@@ -30,7 +30,7 @@ bool VitalCoinUnits::valid(int unit) {
   }
 }
 
-QString VitalCoinUnits::name(int unit) {
+QString VitalcoinUnits::name(int unit) {
   switch (unit) {
   case VTC:
     return QString("VTC");
@@ -43,21 +43,21 @@ QString VitalCoinUnits::name(int unit) {
   }
 }
 
-QString VitalCoinUnits::description(int unit) {
+QString VitalcoinUnits::description(int unit) {
   switch (unit) {
   case VTC:
-    return QString("VitalCoins");
+    return QString("Vitalcoins");
   case mVTC:
-    return QString("Milli-VitalCoins (1 / 1" THIN_SP_UTF8 "000)");
+    return QString("Milli-Vitalcoins (1 / 1" THIN_SP_UTF8 "000)");
   case uVTC:
-    return QString("Micro-VitalCoins (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8
+    return QString("Micro-Vitalcoins (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8
                    "000)");
   default:
     return QString("???");
   }
 }
 
-qint64 VitalCoinUnits::factor(int unit) {
+qint64 VitalcoinUnits::factor(int unit) {
   switch (unit) {
   case VTC:
     return 100000000;
@@ -70,7 +70,7 @@ qint64 VitalCoinUnits::factor(int unit) {
   }
 }
 
-int VitalCoinUnits::decimals(int unit) {
+int VitalcoinUnits::decimals(int unit) {
   switch (unit) {
   case VTC:
     return 8;
@@ -83,7 +83,7 @@ int VitalCoinUnits::decimals(int unit) {
   }
 }
 
-QString VitalCoinUnits::format(int unit, const CAmount &nIn, bool fPlus,
+QString VitalcoinUnits::format(int unit, const CAmount &nIn, bool fPlus,
                                SeparatorStyle separators) {
   // Note: not using straight sprintf here because we do NOT want
   // localized number formatting.
@@ -124,13 +124,13 @@ QString VitalCoinUnits::format(int unit, const CAmount &nIn, bool fPlus,
 // Please take care to use formatHtmlWithUnit instead, when
 // appropriate.
 
-QString VitalCoinUnits::formatWithUnit(int unit, const CAmount &amount,
+QString VitalcoinUnits::formatWithUnit(int unit, const CAmount &amount,
                                        bool plussign,
                                        SeparatorStyle separators) {
   return format(unit, amount, plussign, separators) + QString(" ") + name(unit);
 }
 
-QString VitalCoinUnits::formatHtmlWithUnit(int unit, const CAmount &amount,
+QString VitalcoinUnits::formatHtmlWithUnit(int unit, const CAmount &amount,
                                            bool plussign,
                                            SeparatorStyle separators) {
   QString str(formatWithUnit(unit, amount, plussign, separators));
@@ -138,7 +138,7 @@ QString VitalCoinUnits::formatHtmlWithUnit(int unit, const CAmount &amount,
   return QString("<span style='white-space: nowrap;'>%1</span>").arg(str);
 }
 
-bool VitalCoinUnits::parse(int unit, const QString &value, CAmount *val_out) {
+bool VitalcoinUnits::parse(int unit, const QString &value, CAmount *val_out) {
   if (!valid(unit) || value.isEmpty())
     return false; // Refuse to parse invalid unit or empty string
   int num_decimals = decimals(unit);
@@ -171,20 +171,20 @@ bool VitalCoinUnits::parse(int unit, const QString &value, CAmount *val_out) {
   return ok;
 }
 
-QString VitalCoinUnits::getAmountColumnTitle(int unit) {
+QString VitalcoinUnits::getAmountColumnTitle(int unit) {
   QString amountTitle = QObject::tr("Amount");
-  if (VitalCoinUnits::valid(unit)) {
-    amountTitle += " (" + VitalCoinUnits::name(unit) + ")";
+  if (VitalcoinUnits::valid(unit)) {
+    amountTitle += " (" + VitalcoinUnits::name(unit) + ")";
   }
   return amountTitle;
 }
 
-int VitalCoinUnits::rowCount(const QModelIndex &parent) const {
+int VitalcoinUnits::rowCount(const QModelIndex &parent) const {
   Q_UNUSED(parent);
   return unitlist.size();
 }
 
-QVariant VitalCoinUnits::data(const QModelIndex &index, int role) const {
+QVariant VitalcoinUnits::data(const QModelIndex &index, int role) const {
   int row = index.row();
   if (row >= 0 && row < unitlist.size()) {
     Unit unit = unitlist.at(row);
@@ -201,4 +201,4 @@ QVariant VitalCoinUnits::data(const QModelIndex &index, int role) const {
   return QVariant();
 }
 
-CAmount VitalCoinUnits::maxMoney() { return MAX_MONEY; }
+CAmount VitalcoinUnits::maxMoney() { return MAX_MONEY; }

@@ -120,20 +120,20 @@ void RunTest(const TestVector &test) {
     pubkey.Encode(data);
 
     // Test private key
-    CVitalCoinExtKey b58key;
+    CVitalcoinExtKey b58key;
     b58key.SetKey(key);
     BOOST_CHECK(b58key.ToString() == derive.prv);
 
-    CVitalCoinExtKey b58keyDecodeCheck(derive.prv);
+    CVitalcoinExtKey b58keyDecodeCheck(derive.prv);
     CExtKey checkKey = b58keyDecodeCheck.GetKey();
     assert(checkKey == key); // ensure a base58 decoded key also matches
 
     // Test public key
-    CVitalCoinExtPubKey b58pubkey;
+    CVitalcoinExtPubKey b58pubkey;
     b58pubkey.SetKey(pubkey);
     BOOST_CHECK(b58pubkey.ToString() == derive.pub);
 
-    CVitalCoinExtPubKey b58PubkeyDecodeCheck(derive.pub);
+    CVitalcoinExtPubKey b58PubkeyDecodeCheck(derive.pub);
     CExtPubKey checkPubKey = b58PubkeyDecodeCheck.GetKey();
     assert(checkPubKey == pubkey); // ensure a base58 decoded pubkey also
                                    // matches

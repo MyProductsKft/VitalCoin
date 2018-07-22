@@ -33,7 +33,7 @@
 #include "validationinterface.h"
 
 #if defined(NDEBUG)
-#error "VitalCoin cannot be compiled without assertions."
+#error "Vitalcoin cannot be compiled without assertions."
 #endif
 
 std::atomic<int64_t> nTimeBestReceived(

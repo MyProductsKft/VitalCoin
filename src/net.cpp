@@ -668,7 +668,7 @@ void CNode::copyStats(CNodeStats &stats) {
   }
 
   // Raw ping time is in microseconds, but show it to user as whole seconds
-  // (VitalCoin users should be well used to small numbers with many decimal
+  // (Vitalcoin users should be well used to small numbers with many decimal
   // places by now :)
   stats.dPingTime = (((double)nPingUsecTime) / 1e6);
   stats.dMinPing = (((double)nMinPingUsecTime) / 1e6);
@@ -1484,7 +1484,7 @@ void ThreadMapPort() {
       }
     }
 
-    std::string strDesc = "VitalCoin " + FormatFullVersion();
+    std::string strDesc = "Vitalcoin " + FormatFullVersion();
 
     try {
       while (true) {

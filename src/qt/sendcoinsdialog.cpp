@@ -300,7 +300,7 @@ void SendCoinsDialog::on_sendButton_clicked() {
   // process prepareStatus and on error generate message shown to user
   processSendCoinsReturn(
       prepareStatus,
-      VitalCoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(),
+      VitalcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(),
                                      currentTransaction.getTransactionFee()));
 
   if (prepareStatus.status != WalletModel::OK) {
@@ -315,7 +315,7 @@ void SendCoinsDialog::on_sendButton_clicked() {
   for (const SendCoinsRecipient &rcp : currentTransaction.getRecipients()) {
     // generate bold amount string
     QString amount =
-        "<b>" + VitalCoinUnits::formatHtmlWithUnit(
+        "<b>" + VitalcoinUnits::formatHtmlWithUnit(
                     model->getOptionsModel()->getDisplayUnit(), rcp.amount);
     amount.append("</b>");
     // generate monospace address string
@@ -355,7 +355,7 @@ void SendCoinsDialog::on_sendButton_clicked() {
   if (txFee > 0) {
     // append fee string if a fee is required
     questionString.append("<hr /><span style='color:#aa0000;'>");
-    questionString.append(VitalCoinUnits::formatHtmlWithUnit(
+    questionString.append(VitalcoinUnits::formatHtmlWithUnit(
         model->getOptionsModel()->getDisplayUnit(), txFee));
     questionString.append("</span> ");
     questionString.append(tr("added as transaction fee"));
@@ -371,14 +371,14 @@ void SendCoinsDialog::on_sendButton_clicked() {
   questionString.append("<hr />");
   CAmount totalAmount = currentTransaction.getTotalTransactionAmount() + txFee;
   QStringList alternativeUnits;
-  for (VitalCoinUnits::Unit u : VitalCoinUnits::availableUnits()) {
+  for (VitalcoinUnits::Unit u : VitalcoinUnits::availableUnits()) {
     if (u != model->getOptionsModel()->getDisplayUnit())
       alternativeUnits.append(
-          VitalCoinUnits::formatHtmlWithUnit(u, totalAmount));
+          VitalcoinUnits::formatHtmlWithUnit(u, totalAmount));
   }
   questionString.append(
       tr("Total Amount %1")
-          .arg(VitalCoinUnits::formatHtmlWithUnit(
+          .arg(VitalcoinUnits::formatHtmlWithUnit(
               model->getOptionsModel()->getDisplayUnit(), totalAmount)));
   questionString.append(
       QString(
@@ -546,7 +546,7 @@ void SendCoinsDialog::setBalance(const CAmount &balance,
   Q_UNUSED(watchImmatureBalance);
 
   if (model && model->getOptionsModel()) {
-    ui->labelBalance->setText(VitalCoinUnits::formatWithUnit(
+    ui->labelBalance->setText(VitalcoinUnits::formatWithUnit(
         model->getOptionsModel()->getDisplayUnit(), balance));
   }
 }
@@ -602,7 +602,7 @@ void SendCoinsDialog::processSendCoinsReturn(
   case WalletModel::AbsurdFee:
     msgParams.first =
         tr("A fee higher than %1 is considered an absurdly high fee.")
-            .arg(VitalCoinUnits::formatWithUnit(
+            .arg(VitalcoinUnits::formatWithUnit(
                 model->getOptionsModel()->getDisplayUnit(), maxTxFee));
     break;
   case WalletModel::PaymentRequestExpired:
@@ -663,7 +663,7 @@ void SendCoinsDialog::updateFeeMinimizedLabel() {
     ui->labelFeeMinimized->setText(ui->labelSmartFee->text());
   else {
     ui->labelFeeMinimized->setText(
-        VitalCoinUnits::formatWithUnit(
+        VitalcoinUnits::formatWithUnit(
             model->getOptionsModel()->getDisplayUnit(),
             ui->customFee->value()) +
         "/kB");
@@ -674,7 +674,7 @@ void SendCoinsDialog::updateMinFeeLabel() {
   if (model && model->getOptionsModel())
     ui->checkBoxMinimumFee->setText(
         tr("Pay only the required fee of %1")
-            .arg(VitalCoinUnits::formatWithUnit(
+            .arg(VitalcoinUnits::formatWithUnit(
                      model->getOptionsModel()->getDisplayUnit(),
                      CWallet::GetRequiredFee(1000)) +
                  "/kB"));
@@ -706,7 +706,7 @@ void SendCoinsDialog::updateSmartFeeLabel() {
       1000, coin_control, ::mempool, ::feeEstimator, &feeCalc));
 
   ui->labelSmartFee->setText(
-      VitalCoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(),
+      VitalcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(),
                                      feeRate.GetFeePerK()) +
       "/kB");
 
@@ -817,7 +817,7 @@ void SendCoinsDialog::coinControlChangeEdited(const QString &text) {
     CoinControlDialog::coinControl->destChange = CNoDestination();
     ui->labelCoinControlChangeLabel->setStyleSheet("QLabel{color:red;}");
 
-    CVitalCoinAddress addr = CVitalCoinAddress(text.toStdString());
+    CVitalcoinAddress addr = CVitalcoinAddress(text.toStdString());
 
     if (text.isEmpty()) // Nothing entered
     {
@@ -825,7 +825,7 @@ void SendCoinsDialog::coinControlChangeEdited(const QString &text) {
     } else if (!addr.IsValid()) // Invalid address
     {
       ui->labelCoinControlChangeLabel->setText(
-          tr("Warning: Invalid VitalCoin address"));
+          tr("Warning: Invalid Vitalcoin address"));
     } else // Valid address
     {
       const CTxDestination dest = addr.Get();

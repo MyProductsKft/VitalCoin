@@ -1,4 +1,4 @@
-This is a system of building and caching dependencies necessary for building VitalCoin. 
+This is a system of building and caching dependencies necessary for building Vitalcoin. 
 There are several features that make it different from most similar systems:
 
 ### It is designed to be builder and host agnostic

@@ -62,12 +62,12 @@
         <translation>Ontvanger adresse</translation>
     </message>
     <message>
-        <source>These are your VitalCoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Hierdie is die adresse vanwaar u VitalCoin betalings stuur. U moet altyd die bedrag en die adres van die ontvanger nagaan voordat u enige munte stuur.</translation>
+        <source>These are your Vitalcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Hierdie is die adresse vanwaar u Vitalcoin betalings stuur. U moet altyd die bedrag en die adres van die ontvanger nagaan voordat u enige munte stuur.</translation>
     </message>
     <message>
-        <source>These are your VitalCoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Hierdie is die adresse waar u VitalCoins sal ontvang. Ons beveel aan dat u 'n nuwe adres kies vir elke transaksie</translation>
+        <source>These are your Vitalcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Hierdie is die adresse waar u Vitalcoins sal ontvang. Ons beveel aan dat u 'n nuwe adres kies vir elke transaksie</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -228,7 +228,7 @@
     </message>
 </context>
 <context>
-    <name>VitalCoinGUI</name>
+    <name>VitalcoinGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Teken &amp;boodskap...</translation>
@@ -330,8 +330,8 @@
         <translation>Besig met herindeksering van blokke op hardeskyf...</translation>
     </message>
     <message>
-        <source>Send coins to a VitalCoin address</source>
-        <translation>Stuur munte na 'n VitalCoin adres</translation>
+        <source>Send coins to a Vitalcoin address</source>
+        <translation>Stuur munte na 'n Vitalcoin adres</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -350,8 +350,8 @@
         <translation>Maak ontfouting en diagnostiese konsole oop</translation>
     </message>
     <message>
-        <source>VitalCoin</source>
-        <translation>VitalCoin</translation>
+        <source>Vitalcoin</source>
+        <translation>Vitalcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -378,12 +378,12 @@
         <translation>Kodifiseer die private sleutes wat aan jou beursie gekoppel is.</translation>
     </message>
     <message>
-        <source>Sign messages with your VitalCoin addresses to prove you own them</source>
-        <translation>Onderteken boodskappe met u VitalCoin adresse om u eienaarskap te bewys</translation>
+        <source>Sign messages with your Vitalcoin addresses to prove you own them</source>
+        <translation>Onderteken boodskappe met u Vitalcoin adresse om u eienaarskap te bewys</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified VitalCoin addresses</source>
-        <translation>Verifieër boodskappe om seker te maak dat dit met die gespesifiseerde VitalCoin adresse</translation>
+        <source>Verify messages to ensure they were signed with specified Vitalcoin addresses</source>
+        <translation>Verifieër boodskappe om seker te maak dat dit met die gespesifiseerde Vitalcoin adresse</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -1012,8 +1012,8 @@
 <context>
     <name>vitalcoin-core</name>
     <message>
-        <source>VitalCoin Core</source>
-        <translation>VitalCoin Kern</translation>
+        <source>Vitalcoin Core</source>
+        <translation>Vitalcoin Kern</translation>
     </message>
     <message>
         <source>Information</source>

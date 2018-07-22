@@ -12,7 +12,7 @@
 /**
  * CBaseChainParams defines the base parameters (shared between vitalcoin-cli
  * and vitalcoind)
- * of a given instance of the VitalCoin system.
+ * of a given instance of the Vitalcoin system.
  */
 class CBaseChainParams {
 public:

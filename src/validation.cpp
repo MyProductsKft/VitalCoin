@@ -52,7 +52,7 @@
 #include <boost/thread.hpp>
 
 #if defined(NDEBUG)
-#error "VitalCoin cannot be compiled without assertions."
+#error "Vitalcoin cannot be compiled without assertions."
 #endif
 
 /**
@@ -95,7 +95,7 @@ static void CheckBlockIndex(const Consensus::Params &consensusParams);
 /** Constant stuff for coinbase transactions we create: */
 CScript COINBASE_FLAGS;
 
-const std::string strMessageMagic = "VitalCoin Signed Message:\n";
+const std::string strMessageMagic = "Vitalcoin Signed Message:\n";
 
 #include "net.h" // CConnman
 void conforksus_block_tip_changed(int height) {

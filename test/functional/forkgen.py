@@ -6,10 +6,10 @@
 
 import time
 import json
-from test_framework.test_framework import VitalCoinTestFramework
+from test_framework.test_framework import VitalcoinTestFramework
 from test_framework.util import *
 
-class ForkGenTest(VitalCoinTestFramework):
+class ForkGenTest(VitalcoinTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 4

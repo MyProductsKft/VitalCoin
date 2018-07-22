@@ -68,7 +68,7 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>VitalCoinGUI</name>
+    <name>VitalcoinGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Firmar &amp;mensaje...</translation>
@@ -114,8 +114,8 @@
         <translation>Reindexando bloques en el disco...</translation>
     </message>
     <message>
-        <source>Send coins to a VitalCoin address</source>
-        <translation>Enviar monedas a una dirección VitalCoin</translation>
+        <source>Send coins to a Vitalcoin address</source>
+        <translation>Enviar monedas a una dirección Vitalcoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -130,8 +130,8 @@
         <translation>Abre la consola de depuración y diágnostico</translation>
     </message>
     <message>
-        <source>VitalCoin</source>
-        <translation>VitalCoin</translation>
+        <source>Vitalcoin</source>
+        <translation>Vitalcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -158,12 +158,12 @@
         <translation>Encriptar las llaves privadas que pertenecen a tu billetera</translation>
     </message>
     <message>
-        <source>Sign messages with your VitalCoin addresses to prove you own them</source>
-        <translation>Firma mensajes con tus direcciones VitalCoin para probar que eres dueño de ellas</translation>
+        <source>Sign messages with your Vitalcoin addresses to prove you own them</source>
+        <translation>Firma mensajes con tus direcciones Vitalcoin para probar que eres dueño de ellas</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified VitalCoin addresses</source>
-        <translation>Verificar mensajes para asegurar que estaban firmados con direcciones VitalCoin especificas</translation>
+        <source>Verify messages to ensure they were signed with specified Vitalcoin addresses</source>
+        <translation>Verificar mensajes para asegurar que estaban firmados con direcciones Vitalcoin especificas</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -608,8 +608,8 @@
         <translation>Correr en segundo plano como daemon y aceptar comandos</translation>
     </message>
     <message>
-        <source>VitalCoin Core</source>
-        <translation>VitalCoin Core</translation>
+        <source>Vitalcoin Core</source>
+        <translation>Vitalcoin Core</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>

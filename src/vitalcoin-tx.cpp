@@ -294,7 +294,7 @@ static void MutateTxAddOutAddr(CMutableTransaction &tx,
 
   // extract and validate ADDRESS
   std::string strAddr = vStrInputParts[1];
-  CVitalCoinAddress addr(strAddr);
+  CVitalcoinAddress addr(strAddr);
   if (!addr.IsValid())
     throw std::runtime_error("invalid TX output address");
   // build standard output script via GetScriptForDestination()
@@ -343,7 +343,7 @@ static void MutateTxAddOutPubKey(CMutableTransaction &tx,
   if (bScriptHash) {
     // Get the address for the redeem script, then call
     // GetScriptForDestination() to construct a P2SH scriptPubKey.
-    CVitalCoinAddress redeemScriptAddr(scriptPubKey);
+    CVitalcoinAddress redeemScriptAddr(scriptPubKey);
     scriptPubKey = GetScriptForDestination(redeemScriptAddr.Get());
   }
 
@@ -422,7 +422,7 @@ static void MutateTxAddOutMultiSig(CMutableTransaction &tx,
     }
     // Get the address for the redeem script, then call
     // GetScriptForDestination() to construct a P2SH scriptPubKey.
-    CVitalCoinAddress addr(scriptPubKey);
+    CVitalcoinAddress addr(scriptPubKey);
     scriptPubKey = GetScriptForDestination(addr.Get());
   }
 
@@ -496,7 +496,7 @@ static void MutateTxAddOutScript(CMutableTransaction &tx,
           strprintf("redeemScript exceeds size limit: %d > %d",
                     scriptPubKey.size(), MAX_SCRIPT_ELEMENT_SIZE));
     }
-    CVitalCoinAddress addr(scriptPubKey);
+    CVitalcoinAddress addr(scriptPubKey);
     scriptPubKey = GetScriptForDestination(addr.Get());
   }
 
@@ -593,7 +593,7 @@ static void MutateTxSign(CMutableTransaction &tx, const std::string &flagStr) {
   for (unsigned int kidx = 0; kidx < keysObj.size(); kidx++) {
     if (!keysObj[kidx].isStr())
       throw std::runtime_error("privatekey not a std::string");
-    CVitalCoinSecret vchSecret;
+    CVitalcoinSecret vchSecret;
     bool fGood = vchSecret.SetString(keysObj[kidx].getValStr());
     if (!fGood)
       throw std::runtime_error("privatekey not valid");

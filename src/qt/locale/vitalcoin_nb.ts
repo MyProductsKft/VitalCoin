@@ -62,12 +62,12 @@
         <translation>Mottaksadresser</translation>
     </message>
     <message>
-        <source>These are your VitalCoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Dette er dine VitalCoin-adresser for sending av betalinger. Sjekk alltid beløpet og mottakeradressen før sending av mynter.</translation>
+        <source>These are your Vitalcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Dette er dine Vitalcoin-adresser for sending av betalinger. Sjekk alltid beløpet og mottakeradressen før sending av mynter.</translation>
     </message>
     <message>
-        <source>These are your VitalCoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Dette er dine VitalCoin-adresser for å sende betalinger med. Det er anbefalt å bruke en ny mottaksadresse for hver transaksjon.</translation>
+        <source>These are your Vitalcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Dette er dine Vitalcoin-adresser for å sende betalinger med. Det er anbefalt å bruke en ny mottaksadresse for hver transaksjon.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -232,7 +232,7 @@
     </message>
 </context>
 <context>
-    <name>VitalCoinGUI</name>
+    <name>VitalcoinGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>Signer &amp;melding...</translation>
@@ -334,8 +334,8 @@
         <translation>Reindekserer blokker på harddisk...</translation>
     </message>
     <message>
-        <source>Send coins to a VitalCoin address</source>
-        <translation>Send til en VitalCoin-adresse</translation>
+        <source>Send coins to a Vitalcoin address</source>
+        <translation>Send til en Vitalcoin-adresse</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -358,8 +358,8 @@
         <translation>&amp;Verifiser melding...</translation>
     </message>
     <message>
-        <source>VitalCoin</source>
-        <translation>VitalCoin</translation>
+        <source>Vitalcoin</source>
+        <translation>Vitalcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -386,12 +386,12 @@
         <translation>Krypter de private nøklene som tilhører lommeboken din</translation>
     </message>
     <message>
-        <source>Sign messages with your VitalCoin addresses to prove you own them</source>
-        <translation>Signer en melding med VitalCoin-adressene dine for å bevise at du eier dem</translation>
+        <source>Sign messages with your Vitalcoin addresses to prove you own them</source>
+        <translation>Signer en melding med Vitalcoin-adressene dine for å bevise at du eier dem</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified VitalCoin addresses</source>
-        <translation>Bekreft meldinger for å være sikker på at de ble signert av en angitt VitalCoin-adresse</translation>
+        <source>Verify messages to ensure they were signed with specified Vitalcoin addresses</source>
+        <translation>Bekreft meldinger for å være sikker på at de ble signert av en angitt Vitalcoin-adresse</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -423,15 +423,15 @@
     </message>
     <message>
         <source>Open a vitalcoin: URI or payment request</source>
-        <translation>Åpne en VitalCoin: URI eller betalingsetterspørring</translation>
+        <translation>Åpne en Vitalcoin: URI eller betalingsetterspørring</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>&amp;Kommandolinjevalg</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to VitalCoin network</source>
-        <translation><numerusform>%n aktiv forbindelse til VitalCoin-nettverket</numerusform><numerusform>%n aktive forbindelser til VitalCoin-nettverket</numerusform></translation>
+        <source>%n active connection(s) to Vitalcoin network</source>
+        <translation><numerusform>%n aktiv forbindelse til Vitalcoin-nettverket</numerusform><numerusform>%n aktive forbindelser til Vitalcoin-nettverket</numerusform></translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -532,8 +532,8 @@
         <translation>Lommeboken er &lt;b&gt;kryptert&lt;/b&gt; og for tiden &lt;b&gt;låst&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>A fatal error occurred. VitalCoin can no longer continue safely and will quit.</source>
-        <translation>En fatal feil har inntruffet. VitalCoin kan ikke lenger trygt fortsette, og må derfor avslutte.</translation>
+        <source>A fatal error occurred. Vitalcoin can no longer continue safely and will quit.</source>
+        <translation>En fatal feil har inntruffet. Vitalcoin kan ikke lenger trygt fortsette, og må derfor avslutte.</translation>
     </message>
 </context>
 <context>
@@ -960,16 +960,16 @@
         <translation>&amp;Bruk ubekreftet veksel</translation>
     </message>
     <message>
-        <source>Automatically open the VitalCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Åpne automatisk VitalCoin klientporten på ruteren. Dette virker kun om din ruter støtter UPnP og dette er påslått.</translation>
+        <source>Automatically open the Vitalcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Åpne automatisk Vitalcoin klientporten på ruteren. Dette virker kun om din ruter støtter UPnP og dette er påslått.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Sett opp port ved hjelp av &amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the VitalCoin network through a SOCKS5 proxy.</source>
-        <translation>Koble til VitalCoin-nettverket gjennom en SOCKS5 proxy.</translation>
+        <source>Connect to the Vitalcoin network through a SOCKS5 proxy.</source>
+        <translation>Koble til Vitalcoin-nettverket gjennom en SOCKS5 proxy.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -1008,8 +1008,8 @@
         <translation>Tor</translation>
     </message>
     <message>
-        <source>Connect to the VitalCoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
-        <translation>Koble til VitalCoin-nettverket gjennom en separat SOCKS5 mellomtjener for Tor skjulte tjenester.</translation>
+        <source>Connect to the Vitalcoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <translation>Koble til Vitalcoin-nettverket gjennom en separat SOCKS5 mellomtjener for Tor skjulte tjenester.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services:</source>
@@ -1103,8 +1103,8 @@
         <translation>Skjema</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the VitalCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Informasjonen som vises kan være foreldet. Din lommebok synkroniseres automatisk med VitalCoin-nettverket etter at tilkobling er opprettet, men denne prosessen er ikke ferdig enda.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Vitalcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>Informasjonen som vises kan være foreldet. Din lommebok synkroniseres automatisk med Vitalcoin-nettverket etter at tilkobling er opprettet, men denne prosessen er ikke ferdig enda.</translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -1192,8 +1192,8 @@
         <translation>Beløp</translation>
     </message>
     <message>
-        <source>Enter a VitalCoin address (e.g. %1)</source>
-        <translation>Oppgi en VitalCoin-adresse (f.eks. %1)</translation>
+        <source>Enter a Vitalcoin address (e.g. %1)</source>
+        <translation>Oppgi en Vitalcoin-adresse (f.eks. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1568,8 +1568,8 @@
         <translation>Gj&amp;enbruk en eksisterende mottaksadresse (ikke anbefalt)</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the VitalCoin network.</source>
-        <translation>En valgfri melding å tilknytte betalingsetterspørringen, som vil bli vist når forespørselen er åpnet. Meldingen vil ikke bli sendt med betalingen over VitalCoin-nettverket.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Vitalcoin network.</source>
+        <translation>En valgfri melding å tilknytte betalingsetterspørringen, som vil bli vist når forespørselen er åpnet. Meldingen vil ikke bli sendt med betalingen over Vitalcoin-nettverket.</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
@@ -1674,7 +1674,7 @@
     <name>SendCoinsDialog</name>
     <message>
         <source>Send Coins</source>
-        <translation>Send VitalCoins</translation>
+        <translation>Send Vitalcoins</translation>
     </message>
     <message>
         <source>Coin Control Features</source>
@@ -1754,7 +1754,7 @@
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for vitalcoin transactions than the network can process.</source>
-        <translation>Betaling av bare minimumsavgiften går helt fint så lenge det er mindre transaksjonsvolum enn plass i blokkene. Men vær klar over at dette kan ende opp i en transaksjon som aldri blir bekreftet når det er mer etterspørsel etter VitalCoin-transaksjoner enn nettverket kan behandle.</translation>
+        <translation>Betaling av bare minimumsavgiften går helt fint så lenge det er mindre transaksjonsvolum enn plass i blokkene. Men vær klar over at dette kan ende opp i en transaksjon som aldri blir bekreftet når det er mer etterspørsel etter Vitalcoin-transaksjoner enn nettverket kan behandle.</translation>
     </message>
     <message>
         <source>(read the tooltip)</source>
@@ -1860,8 +1860,8 @@
         <translation>Dette er en normal betaling.</translation>
     </message>
     <message>
-        <source>The VitalCoin address to send the payment to</source>
-        <translation>VitalCoin-adressen betalingen skal sendes til</translation>
+        <source>The Vitalcoin address to send the payment to</source>
+        <translation>Vitalcoin-adressen betalingen skal sendes til</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -1904,8 +1904,8 @@
         <translation>Skriv inn en merkelapp for denne adressen for å legge den til listen av brukte adresser</translation>
     </message>
     <message>
-        <source>A message that was attached to the vitalcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the VitalCoin network.</source>
-        <translation>En melding som var tilknyttet vitalcoinen: URI vil bli lagret med transaksjonen for din oversikt. Denne meldingen vil ikke bli sendt over VitalCoin-nettverket.</translation>
+        <source>A message that was attached to the vitalcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Vitalcoin network.</source>
+        <translation>En melding som var tilknyttet vitalcoinen: URI vil bli lagret med transaksjonen for din oversikt. Denne meldingen vil ikke bli sendt over Vitalcoin-nettverket.</translation>
     </message>
     <message>
         <source>Pay To:</source>
@@ -1949,8 +1949,8 @@
         <translation>Du kan signere meldinger/avtaler med adresser for å bevise at du kan motta vitalcoins sendt til dem. Vær forsiktig med å signere noe vagt eller tilfeldig, siden phishing-angrep kan prøve å lure deg til å signere din identitet over til dem. Bare signer fullt detaljerte utsagn som du er enig i.</translation>
     </message>
     <message>
-        <source>The VitalCoin address to sign the message with</source>
-        <translation>VitalCoin-adressen meldingen skal signeres med</translation>
+        <source>The Vitalcoin address to sign the message with</source>
+        <translation>Vitalcoin-adressen meldingen skal signeres med</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -1981,8 +1981,8 @@
         <translation>Kopier valgt signatur til utklippstavle</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this VitalCoin address</source>
-        <translation>Signer meldingen for å bevise at du eier denne VitalCoin-adressen</translation>
+        <source>Sign the message to prove you own this Vitalcoin address</source>
+        <translation>Signer meldingen for å bevise at du eier denne Vitalcoin-adressen</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -2005,12 +2005,12 @@
         <translation>Skriv inn mottakerens adresse, melding (forsikre deg om at du kopier linjeskift, mellomrom, faner osv. nøyaktig) og underskrift nedenfor for å bekrefte meldingen. Vær forsiktig så du ikke leser mer ut av signaturen enn hva som er i den signerte meldingen i seg selv, for å unngå å bli lurt av et man-in-the-middle-angrep. Merk at dette bare beviser at den som signerer kan motta med adressen, dette beviser ikke hvem som har sendt transaksjoner!</translation>
     </message>
     <message>
-        <source>The VitalCoin address the message was signed with</source>
-        <translation>VitalCoin-adressen meldingen ble signert med</translation>
+        <source>The Vitalcoin address the message was signed with</source>
+        <translation>Vitalcoin-adressen meldingen ble signert med</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified VitalCoin address</source>
-        <translation>Verifiser meldingen for å være sikker på at den ble signert av den angitte VitalCoin-adressen</translation>
+        <source>Verify the message to ensure it was signed with the specified Vitalcoin address</source>
+        <translation>Verifiser meldingen for å være sikker på at den ble signert av den angitte Vitalcoin-adressen</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -2254,8 +2254,8 @@
         <translation>Kunne ikke starte HTTP server. Se debug logg for detaljer.</translation>
     </message>
     <message>
-        <source>VitalCoin Core</source>
-        <translation>VitalCoin Core</translation>
+        <source>Vitalcoin Core</source>
+        <translation>Vitalcoin Core</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>

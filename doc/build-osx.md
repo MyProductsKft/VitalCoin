@@ -24,7 +24,7 @@ If you want to build the disk image with `make deploy` (.dmg / optional), you ne
 
 NOTE: Building with Qt4 is still supported, however, could result in a broken UI. Building with Qt5 is recommended.
 
-Build VitalCoin Core
+Build Vitalcoin Core
 ------------------------
 
 1. Clone the vitalcoin source code and cd into `vitalcoin`
@@ -53,19 +53,19 @@ Build VitalCoin Core
 Running
 -------
 
-VitalCoin Core is now available at `./src/vitalcoind`
+Vitalcoin Core is now available at `./src/vitalcoind`
 
 Before running, it's recommended you create an RPC configuration file.
 
-    echo -e "rpcuser=vitalcoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/VitalCoin/vitalcoin.conf"
+    echo -e "rpcuser=vitalcoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/Vitalcoin/vitalcoin.conf"
 
-    chmod 600 "/Users/${USER}/Library/Application Support/VitalCoin/vitalcoin.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/Vitalcoin/vitalcoin.conf"
 
 The first time you run vitalcoind, it will start downloading the blockchain. This process could take several hours.
 
 You can monitor the download process by looking at the debug.log file:
 
-    tail -f $HOME/Library/Application\ Support/VitalCoin/debug.log
+    tail -f $HOME/Library/Application\ Support/Vitalcoin/debug.log
 
 Other commands:
 -------

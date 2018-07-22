@@ -98,7 +98,7 @@ public:
   }
 };
 
-/** Interface to VitalCoin wallet from Qt view code. */
+/** Interface to Vitalcoin wallet from Qt view code. */
 class WalletModel : public QObject {
   Q_OBJECT
 

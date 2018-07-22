@@ -140,7 +140,7 @@ public:
 };
 
 /**
- * VitalCoin RPC command dispatcher.
+ * Vitalcoin RPC command dispatcher.
  */
 class CRPCTable {
 private:

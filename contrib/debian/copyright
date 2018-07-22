@@ -1,13 +1,13 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: VitalCoin
+Upstream-Name: Vitalcoin
 Upstream-Contact: Satoshi Nakamoto <satoshin@gmx.com>
  irc://#vitalcoin@freenode.net
 Source: https://github.com/vitalcoin/vitalcoin
 
 Files: *
-Copyright: 2009-2018, VitalCoin Core Developers
+Copyright: 2009-2018, Vitalcoin Core Developers
 License: Expat
-Comment: The VitalCoin Core Developers encompasses the current developers listed on vitalcoin.org,
+Comment: The Vitalcoin Core Developers encompasses the current developers listed on vitalcoin.org,
          as well as the numerous contributors to the project.
 
 Files: debian/*

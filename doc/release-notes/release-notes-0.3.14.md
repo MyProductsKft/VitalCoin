@@ -1,5 +1,5 @@
 Version 0.3.14 is now available
-http://sourceforge.net/projects/vitalcoin/files/VitalCoin/vitalcoin-0.3.14/
+http://sourceforge.net/projects/vitalcoin/files/Vitalcoin/vitalcoin-0.3.14/
 
 Changes:
 * Key pool feature for safer wallet backup

@@ -1,5 +1,5 @@
-VitalCoin version 0.5.0 is now available for download at:
-http://sourceforge.net/projects/vitalcoin/files/VitalCoin/vitalcoin-0.5.0/
+Vitalcoin version 0.5.0 is now available for download at:
+http://sourceforge.net/projects/vitalcoin/files/Vitalcoin/vitalcoin-0.5.0/
 
 The major change for this release is a completely new graphical interface that uses the Qt user interface toolkit.
 
@@ -13,30 +13,30 @@ For Ubuntu users, there is a new ppa maintained by Matt Corallo which you can ad
 
 MAJOR BUG FIX  (CVE-2011-4447)
 
-The wallet encryption feature introduced in VitalCoin version 0.4.0 did not sufficiently secure the private keys. An attacker who
+The wallet encryption feature introduced in Vitalcoin version 0.4.0 did not sufficiently secure the private keys. An attacker who
 managed to get a copy of your encrypted wallet.dat file might be able to recover some or all of the unencrypted keys and steal the
 associated coins.
 
-If you have a previously encrypted wallet.dat, the first time you run vitalcoin-qt or vitalcoind the wallet will be rewritten, VitalCoin will
+If you have a previously encrypted wallet.dat, the first time you run vitalcoin-qt or vitalcoind the wallet will be rewritten, Vitalcoin will
 shut down, and you will be prompted to restart it to run with the new, properly encrypted file.
 
 If you had a previously encrypted wallet.dat that might have been copied or stolen (for example, you backed it up to a public
 location) you should send all of your vitalcoins to yourself using a new vitalcoin address and stop using any previously generated addresses.
 
-Wallets encrypted with this version of VitalCoin are written properly.
+Wallets encrypted with this version of Vitalcoin are written properly.
 
 Technical note: the encrypted wallet's 'keypool' will be regenerated the first time you request a new vitalcoin address; to be certain that the
 new private keys are properly backed up you should:
 
-1. Run VitalCoin and let it rewrite the wallet.dat file
+1. Run Vitalcoin and let it rewrite the wallet.dat file
 
 2. Run it again, then ask it for a new vitalcoin address.
-VitalCoin-Qt: Address Book, then New Address...
+Vitalcoin-Qt: Address Book, then New Address...
 vitalcoind: run the 'walletpassphrase' RPC command to unlock the wallet,  then run the 'getnewaddress' RPC command.
 
 3. If your encrypted wallet.dat may have been copied or stolen, send  all of your vitalcoins to the new vitalcoin address.
 
-4. Shut down VitalCoin, then backup the wallet.dat file.
+4. Shut down Vitalcoin, then backup the wallet.dat file.
 IMPORTANT: be sure to request a new vitalcoin address before backing up, so that the 'keypool' is regenerated and backed up.
 
 "Security in depth" is always a good idea, so choosing a secure location for the backup and/or encrypting the backup before uploading it is recommended. And as in previous releases, if your machine is infected by malware there are several ways an attacker might steal your vitalcoins.

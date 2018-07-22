@@ -114,7 +114,7 @@ static std::string DummyAddress(const CChainParams &params) {
   for (int i = 0; i < 256; ++i) { // Try every trailing byte
     std::string s =
         EncodeBase58(sourcedata.data(), sourcedata.data() + sourcedata.size());
-    if (!CVitalCoinAddress(s).IsValid())
+    if (!CVitalcoinAddress(s).IsValid())
       return s;
     sourcedata[sourcedata.size() - 1] += 1;
   }
@@ -129,11 +129,11 @@ void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent) {
   // We don't want translators to use own addresses in translations
   // and this is the only place, where this address is supplied.
   widget->setPlaceholderText(
-      QObject::tr("Enter a VitalCoin address (e.g. %1)")
+      QObject::tr("Enter a Vitalcoin address (e.g. %1)")
           .arg(QString::fromStdString(DummyAddress(Params()))));
 #endif
-  widget->setValidator(new VitalCoinAddressEntryValidator(parent));
-  widget->setCheckValidator(new VitalCoinAddressCheckValidator(parent));
+  widget->setValidator(new VitalcoinAddressEntryValidator(parent));
+  widget->setCheckValidator(new VitalcoinAddressCheckValidator(parent));
 }
 
 void setupAmountWidget(QLineEdit *widget, QWidget *parent) {
@@ -144,7 +144,7 @@ void setupAmountWidget(QLineEdit *widget, QWidget *parent) {
   widget->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
 }
 
-bool parseVitalCoinURI(const QUrl &uri, SendCoinsRecipient *out) {
+bool parseVitalcoinURI(const QUrl &uri, SendCoinsRecipient *out) {
   // return if URI is not valid or is no vitalcoin: URI
   if (!uri.isValid() || uri.scheme() != QString("vitalcoin"))
     return false;
@@ -180,7 +180,7 @@ bool parseVitalCoinURI(const QUrl &uri, SendCoinsRecipient *out) {
       fShouldReturnFalse = false;
     } else if (i->first == "amount") {
       if (!i->second.isEmpty()) {
-        if (!VitalCoinUnits::parse(VitalCoinUnits::VTC, i->second,
+        if (!VitalcoinUnits::parse(VitalcoinUnits::VTC, i->second,
                                    &rv.amount)) {
           return false;
         }
@@ -197,7 +197,7 @@ bool parseVitalCoinURI(const QUrl &uri, SendCoinsRecipient *out) {
   return true;
 }
 
-bool parseVitalCoinURI(QString uri, SendCoinsRecipient *out) {
+bool parseVitalcoinURI(QString uri, SendCoinsRecipient *out) {
   // Convert vitalcoin:// to vitalcoin:
   //
   //    Cannot handle this later, because vitalcoin:// will cause Qt to see the
@@ -207,18 +207,18 @@ bool parseVitalCoinURI(QString uri, SendCoinsRecipient *out) {
     uri.replace(0, 10, "vitalcoin:");
   }
   QUrl uriInstance(uri);
-  return parseVitalCoinURI(uriInstance, out);
+  return parseVitalcoinURI(uriInstance, out);
 }
 
-QString formatVitalCoinURI(const SendCoinsRecipient &info) {
+QString formatVitalcoinURI(const SendCoinsRecipient &info) {
   QString ret = QString("vitalcoin:%1").arg(info.address);
   int paramCount = 0;
 
   if (info.amount) {
     ret +=
         QString("?amount=%1")
-            .arg(VitalCoinUnits::format(VitalCoinUnits::VTC, info.amount, false,
-                                        VitalCoinUnits::separatorNever));
+            .arg(VitalcoinUnits::format(VitalcoinUnits::VTC, info.amount, false,
+                                        VitalcoinUnits::separatorNever));
     paramCount++;
   }
 
@@ -238,7 +238,7 @@ QString formatVitalCoinURI(const SendCoinsRecipient &info) {
 }
 
 bool isDust(const QString &address, const CAmount &amount) {
-  CTxDestination dest = CVitalCoinAddress(address.toStdString()).Get();
+  CTxDestination dest = CVitalcoinAddress(address.toStdString()).Get();
   CScript script = GetScriptForDestination(dest);
   CTxOut txOut(amount, script);
   return IsDust(txOut, ::dustRelayFee);
@@ -388,7 +388,7 @@ void openDebugLogfile() {
         QUrl::fromLocalFile(boostPathToQString(pathDebug)));
 }
 
-bool openVitalCoinConf() {
+bool openVitalcoinConf() {
   boost::filesystem::path pathConfig = GetConfigFile(VITALCOIN_CONF_FILENAME);
 
   /* Create the file */
@@ -583,17 +583,17 @@ TableViewLastColumnResizingFixer::TableViewLastColumnResizingFixer(
 fs::path static StartupShortcutPath() {
   std::string chain = ChainNameFromCommandLine();
   if (chain == CBaseChainParams::MAIN)
-    return GetSpecialFolderPath(CSIDL_STARTUP) / "VitalCoin.lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / "Vitalcoin.lnk";
   if (chain == CBaseChainParams::TESTNET) // Remove this special case when
                                           // CBaseChainParams::TESTNET =
                                           // "testnet4"
-    return GetSpecialFolderPath(CSIDL_STARTUP) / "VitalCoin (testnet).lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / "Vitalcoin (testnet).lnk";
   return GetSpecialFolderPath(CSIDL_STARTUP) /
-         strprintf("VitalCoin (%s).lnk", chain);
+         strprintf("Vitalcoin (%s).lnk", chain);
 }
 
 bool GetStartOnSystemStartup() {
-  // check for VitalCoin*.lnk
+  // check for Vitalcoin*.lnk
   return fs::exists(StartupShortcutPath());
 }
 
@@ -724,9 +724,9 @@ bool SetStartOnSystemStartup(bool fAutoStart) {
     optionFile << "[Desktop Entry]\n";
     optionFile << "Type=Application\n";
     if (chain == CBaseChainParams::MAIN)
-      optionFile << "Name=VitalCoin\n";
+      optionFile << "Name=Vitalcoin\n";
     else
-      optionFile << strprintf("Name=VitalCoin (%s)\n", chain);
+      optionFile << strprintf("Name=Vitalcoin (%s)\n", chain);
     optionFile << "Exec=" << pszExePath
                << strprintf(" -min -testnet=%d -regtest=%d\n",
                             gArgs.GetBoolArg("-testnet", false),

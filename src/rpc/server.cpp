@@ -226,11 +226,11 @@ UniValue stop(const JSONRPCRequest &jsonRequest) {
   // Accept the deprecated and ignored 'detach' boolean argument
   if (jsonRequest.fHelp || jsonRequest.params.size() > 1)
     throw std::runtime_error("stop\n"
-                             "\nStop VitalCoin server.");
+                             "\nStop Vitalcoin server.");
   // Event loop will exit after current HTTP requests have been handled, so
   // this reply will get back to the client.
   StartShutdown();
-  return "VitalCoin server stopping";
+  return "Vitalcoin server stopping";
 }
 
 UniValue uptime(const JSONRPCRequest &jsonRequest) {

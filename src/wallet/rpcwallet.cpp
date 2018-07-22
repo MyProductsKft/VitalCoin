@@ -141,7 +141,7 @@ UniValue getnewaddress(const JSONRPCRequest &request) {
   if (request.fHelp || request.params.size() > 1)
     throw std::runtime_error(
         "getnewaddress ( \"account\" )\n"
-        "\nReturns a new VitalCoin address for receiving payments.\n"
+        "\nReturns a new Vitalcoin address for receiving payments.\n"
         "If 'account' is specified (DEPRECATED), it is added to the address "
         "book \n"
         "so payments received with the address will be credited to 'account'.\n"
@@ -179,10 +179,10 @@ UniValue getnewaddress(const JSONRPCRequest &request) {
 
   pwallet->SetAddressBook(keyID, strAccount, "receive");
 
-  return CVitalCoinAddress(keyID).ToString();
+  return CVitalcoinAddress(keyID).ToString();
 }
 
-CVitalCoinAddress GetAccountAddress(CWallet *const pwallet,
+CVitalcoinAddress GetAccountAddress(CWallet *const pwallet,
                                     std::string strAccount,
                                     bool bForceNew = false) {
   CPubKey pubKey;
@@ -192,7 +192,7 @@ CVitalCoinAddress GetAccountAddress(CWallet *const pwallet,
         "Error: Keypool ran out, please call keypoolrefill first");
   }
 
-  return CVitalCoinAddress(pubKey.GetID());
+  return CVitalcoinAddress(pubKey.GetID());
 }
 
 UniValue getaccountaddress(const JSONRPCRequest &request) {
@@ -204,7 +204,7 @@ UniValue getaccountaddress(const JSONRPCRequest &request) {
   if (request.fHelp || request.params.size() != 1)
     throw std::runtime_error(
         "getaccountaddress \"account\"\n"
-        "\nDEPRECATED. Returns the current VitalCoin address for receiving "
+        "\nDEPRECATED. Returns the current Vitalcoin address for receiving "
         "payments to this account.\n"
         "\nArguments:\n"
         "1. \"account\"       (string, required) The account name for the "
@@ -240,7 +240,7 @@ UniValue getrawchangeaddress(const JSONRPCRequest &request) {
   if (request.fHelp || request.params.size() > 0)
     throw std::runtime_error(
         "getrawchangeaddress\n"
-        "\nReturns a new VitalCoin address, for receiving change.\n"
+        "\nReturns a new Vitalcoin address, for receiving change.\n"
         "This is for use with raw transactions, NOT normal use.\n"
         "\nResult:\n"
         "\"address\"    (string) The address\n"
@@ -265,7 +265,7 @@ UniValue getrawchangeaddress(const JSONRPCRequest &request) {
 
   CKeyID keyID = vchPubKey.GetID();
 
-  return CVitalCoinAddress(keyID).ToString();
+  return CVitalcoinAddress(keyID).ToString();
 }
 
 UniValue setaccount(const JSONRPCRequest &request) {
@@ -291,9 +291,9 @@ UniValue setaccount(const JSONRPCRequest &request) {
 
   LOCK2(cs_main, pwallet->cs_wallet);
 
-  CVitalCoinAddress address(request.params[0].get_str());
+  CVitalcoinAddress address(request.params[0].get_str());
   if (!address.IsValid())
-    throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid VitalCoin address");
+    throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Vitalcoin address");
 
   std::string strAccount;
   if (request.params.size() > 1)
@@ -338,9 +338,9 @@ UniValue getaccount(const JSONRPCRequest &request) {
 
   LOCK2(cs_main, pwallet->cs_wallet);
 
-  CVitalCoinAddress address(request.params[0].get_str());
+  CVitalcoinAddress address(request.params[0].get_str());
   if (!address.IsValid())
-    throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid VitalCoin address");
+    throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Vitalcoin address");
 
   std::string strAccount;
   std::map<CTxDestination, CAddressBookData>::iterator mi =
@@ -379,9 +379,9 @@ UniValue getaddressesbyaccount(const JSONRPCRequest &request) {
 
   // Find all addresses that have the given account
   UniValue ret(UniValue::VARR);
-  for (const std::pair<CVitalCoinAddress, CAddressBookData> &item :
+  for (const std::pair<CVitalcoinAddress, CAddressBookData> &item :
        pwallet->mapAddressBook) {
-    const CVitalCoinAddress &address = item.first;
+    const CVitalcoinAddress &address = item.first;
     const std::string &strName = item.second.name;
     if (strName == strAccount)
       ret.push_back(address.ToString());
@@ -406,7 +406,7 @@ static void SendMoney(CWallet *const pwallet, const CTxDestination &address,
                        "Error: Peer-to-peer functionality missing or disabled");
   }
 
-  // Parse VitalCoin address
+  // Parse Vitalcoin address
   CScript scriptPubKey = GetScriptForDestination(address);
 
   // Create and send the transaction
@@ -491,9 +491,9 @@ UniValue sendtoaddress(const JSONRPCRequest &request) {
 
   LOCK2(cs_main, pwallet->cs_wallet);
 
-  CVitalCoinAddress address(request.params[0].get_str());
+  CVitalcoinAddress address(request.params[0].get_str());
   if (!address.IsValid())
-    throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid VitalCoin address");
+    throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Vitalcoin address");
 
   // Amount
   CAmount nAmount = AmountFromValue(request.params[1]);
@@ -577,13 +577,13 @@ UniValue listaddressgroupings(const JSONRPCRequest &request) {
     UniValue jsonGrouping(UniValue::VARR);
     for (CTxDestination address : grouping) {
       UniValue addressInfo(UniValue::VARR);
-      addressInfo.push_back(CVitalCoinAddress(address).ToString());
+      addressInfo.push_back(CVitalcoinAddress(address).ToString());
       addressInfo.push_back(ValueFromAmount(balances[address]));
       {
-        if (pwallet->mapAddressBook.find(CVitalCoinAddress(address).Get()) !=
+        if (pwallet->mapAddressBook.find(CVitalcoinAddress(address).Get()) !=
             pwallet->mapAddressBook.end()) {
           addressInfo.push_back(
-              pwallet->mapAddressBook.find(CVitalCoinAddress(address).Get())
+              pwallet->mapAddressBook.find(CVitalcoinAddress(address).Get())
                   ->second.name);
         }
       }
@@ -636,7 +636,7 @@ UniValue signmessage(const JSONRPCRequest &request) {
   std::string strAddress = request.params[0].get_str();
   std::string strMessage = request.params[1].get_str();
 
-  CVitalCoinAddress addr(strAddress);
+  CVitalcoinAddress addr(strAddress);
   if (!addr.IsValid())
     throw JSONRPCError(RPC_TYPE_ERROR, "Invalid address");
 
@@ -697,10 +697,10 @@ UniValue getreceivedbyaddress(const JSONRPCRequest &request) {
 
   LOCK2(cs_main, pwallet->cs_wallet);
 
-  // VitalCoin address
-  CVitalCoinAddress address = CVitalCoinAddress(request.params[0].get_str());
+  // Vitalcoin address
+  CVitalcoinAddress address = CVitalcoinAddress(request.params[0].get_str());
   if (!address.IsValid())
-    throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid VitalCoin address");
+    throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Vitalcoin address");
   CScript scriptPubKey = GetScriptForDestination(address.Get());
   if (!IsMine(*pwallet, scriptPubKey)) {
     return ValueFromAmount(0);
@@ -999,9 +999,9 @@ UniValue sendfrom(const JSONRPCRequest &request) {
   LOCK2(cs_main, pwallet->cs_wallet);
 
   std::string strAccount = AccountFromValue(request.params[0]);
-  CVitalCoinAddress address(request.params[1].get_str());
+  CVitalcoinAddress address(request.params[1].get_str());
   if (!address.IsValid())
-    throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid VitalCoin address");
+    throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Vitalcoin address");
   CAmount nAmount = AmountFromValue(request.params[2]);
   if (nAmount <= 0)
     throw JSONRPCError(RPC_TYPE_ERROR, "Invalid amount for send");
@@ -1157,16 +1157,16 @@ UniValue sendmany(const JSONRPCRequest &request) {
     }
   }
 
-  std::set<CVitalCoinAddress> setAddress;
+  std::set<CVitalcoinAddress> setAddress;
   std::vector<CRecipient> vecSend;
 
   CAmount totalAmount = 0;
   std::vector<std::string> keys = sendTo.getKeys();
   for (const std::string &name_ : keys) {
-    CVitalCoinAddress address(name_);
+    CVitalcoinAddress address(name_);
     if (!address.IsValid())
       throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY,
-                         std::string("Invalid VitalCoin address: ") + name_);
+                         std::string("Invalid Vitalcoin address: ") + name_);
 
     if (setAddress.count(address))
       throw JSONRPCError(
@@ -1235,7 +1235,7 @@ UniValue addmultisigaddress(const JSONRPCRequest &request) {
         "addmultisigaddress nrequired [\"key\",...] ( \"account\" )\n"
         "\nAdd a nrequired-to-sign multisignature address to the wallet. "
         "Requires a new wallet backup.\n"
-        "Each key is a VitalCoin address or hex-encoded public key.\n"
+        "Each key is a Vitalcoin address or hex-encoded public key.\n"
         "If 'account' is specified (DEPRECATED), assign address to that "
         "account.\n"
 
@@ -1282,7 +1282,7 @@ UniValue addmultisigaddress(const JSONRPCRequest &request) {
   pwallet->AddCScript(inner);
 
   pwallet->SetAddressBook(innerID, strAccount, "send");
-  return CVitalCoinAddress(innerID).ToString();
+  return CVitalcoinAddress(innerID).ToString();
 }
 
 class Witnessifier : public boost::static_visitor<bool> {
@@ -1383,9 +1383,9 @@ UniValue addwitnessaddress(const JSONRPCRequest &request) {
     }
   }
 
-  CVitalCoinAddress address(request.params[0].get_str());
+  CVitalcoinAddress address(request.params[0].get_str());
   if (!address.IsValid())
-    throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid VitalCoin address");
+    throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Vitalcoin address");
 
   Witnessifier w(pwallet);
   CTxDestination dest = address.Get();
@@ -1398,7 +1398,7 @@ UniValue addwitnessaddress(const JSONRPCRequest &request) {
 
   pwallet->SetAddressBook(w.result, "", "receive");
 
-  return CVitalCoinAddress(w.result).ToString();
+  return CVitalcoinAddress(w.result).ToString();
 }
 
 struct tallyitem {
@@ -1431,7 +1431,7 @@ UniValue ListReceived(CWallet *const pwallet, const UniValue &params,
       filter = filter | ISMINE_WATCH_ONLY;
 
   // Tally
-  std::map<CVitalCoinAddress, tallyitem> mapTally;
+  std::map<CVitalcoinAddress, tallyitem> mapTally;
   for (const std::pair<uint256, CWalletTx> &pairWtx : pwallet->mapWallet) {
     const CWalletTx &wtx = pairWtx.second;
 
@@ -1463,11 +1463,11 @@ UniValue ListReceived(CWallet *const pwallet, const UniValue &params,
   // Reply
   UniValue ret(UniValue::VARR);
   std::map<std::string, tallyitem> mapAccountTally;
-  for (const std::pair<CVitalCoinAddress, CAddressBookData> &item :
+  for (const std::pair<CVitalcoinAddress, CAddressBookData> &item :
        pwallet->mapAddressBook) {
-    const CVitalCoinAddress &address = item.first;
+    const CVitalcoinAddress &address = item.first;
     const std::string &strAccount = item.second.name;
-    std::map<CVitalCoinAddress, tallyitem>::iterator it =
+    std::map<CVitalcoinAddress, tallyitem>::iterator it =
         mapTally.find(address);
     if (it == mapTally.end() && !fIncludeEmpty)
       continue;
@@ -1630,7 +1630,7 @@ UniValue listreceivedbyaccount(const JSONRPCRequest &request) {
 }
 
 static void MaybePushAddress(UniValue &entry, const CTxDestination &dest) {
-  CVitalCoinAddress addr;
+  CVitalcoinAddress addr;
   if (addr.Set(dest))
     entry.push_back(Pair("address", addr.ToString()));
 }
@@ -2657,7 +2657,7 @@ UniValue encryptwallet(const JSONRPCRequest &request) {
   // slack space in .dat files; that is bad if the old data is
   // unencrypted private keys. So:
   StartShutdown();
-  return "wallet encrypted; VitalCoin server stopping, restart to run with "
+  return "wallet encrypted; Vitalcoin server stopping, restart to run with "
          "encrypted wallet. The keypool has been flushed and a new HD seed was "
          "generated (if you are using HD). You need to make a new backup.";
 }
@@ -3105,16 +3105,16 @@ UniValue listunspent(const JSONRPCRequest &request) {
     nMaxDepth = request.params[1].get_int();
   }
 
-  std::set<CVitalCoinAddress> setAddress;
+  std::set<CVitalcoinAddress> setAddress;
   if (request.params.size() > 2 && !request.params[2].isNull()) {
     RPCTypeCheckArgument(request.params[2], UniValue::VARR);
     UniValue inputs = request.params[2].get_array();
     for (unsigned int idx = 0; idx < inputs.size(); idx++) {
       const UniValue &input = inputs[idx];
-      CVitalCoinAddress address(input.get_str());
+      CVitalcoinAddress address(input.get_str());
       if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY,
-                           std::string("Invalid VitalCoin address: ") +
+                           std::string("Invalid Vitalcoin address: ") +
                                input.get_str());
       if (setAddress.count(address))
         throw JSONRPCError(
@@ -3173,7 +3173,7 @@ UniValue listunspent(const JSONRPCRequest &request) {
     entry.push_back(Pair("vout", out.i));
 
     if (fValidAddress) {
-      entry.push_back(Pair("address", CVitalCoinAddress(address).ToString()));
+      entry.push_back(Pair("address", CVitalcoinAddress(address).ToString()));
 
       if (pwallet->mapAddressBook.count(address)) {
         entry.push_back(Pair("account", pwallet->mapAddressBook[address].name));
@@ -3331,7 +3331,7 @@ UniValue fundrawtransaction(const JSONRPCRequest &request) {
           true, true);
 
       if (options.exists("changeAddress")) {
-        CVitalCoinAddress address(options["changeAddress"].get_str());
+        CVitalcoinAddress address(options["changeAddress"].get_str());
 
         if (!address.IsValid())
           throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY,
@@ -3705,7 +3705,7 @@ UniValue setgenerate(const JSONRPCRequest &request) {
 
   gArgs.ForceSetArg("-gen", (fGenerate ? "1" : "0"));
   gArgs.ForceSetArg("-genproclimit", itostr(nGenProcLimit));
-  GenerateVitalCoins(fGenerate, nGenProcLimit, Params());
+  GenerateVitalcoins(fGenerate, nGenProcLimit, Params());
 
   return NullUniValue;
 }

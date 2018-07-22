@@ -37,7 +37,7 @@ Source30:	https://raw.githubusercontent.com/vitalcoin/vitalcoin/v%{version}/cont
 Source31:	https://raw.githubusercontent.com/vitalcoin/vitalcoin/v%{version}/contrib/rpm/vitalcoin.fc
 Source32:	https://raw.githubusercontent.com/vitalcoin/vitalcoin/v%{version}/contrib/rpm/vitalcoin.if
 
-Source100:	https://upload.wikimedia.org/wikipedia/commons/4/46/VitalCoin.svg
+Source100:	https://upload.wikimedia.org/wikipedia/commons/4/46/Vitalcoin.svg
 
 %if 0%{?_use_libressl:1}
 BuildRequires:	libressl-devel
@@ -54,7 +54,7 @@ Patch0:		vitalcoin-0.12.0-libressl.patch
 
 
 %description
-VitalCoin is a digital cryptographic currency that uses peer-to-peer technology to
+Vitalcoin is a digital cryptographic currency that uses peer-to-peer technology to
 operate with no central authority or banks; managing transactions and the
 issuing of vitalcoins is carried out collectively by the network.
 
@@ -79,17 +79,17 @@ BuildRequires:	%{_bindir}/inkscape
 BuildRequires:	%{_bindir}/convert
 
 %description core
-VitalCoin is a digital cryptographic currency that uses peer-to-peer technology to
+Vitalcoin is a digital cryptographic currency that uses peer-to-peer technology to
 operate with no central authority or banks; managing transactions and the
 issuing of vitalcoins is carried out collectively by the network.
 
 This package contains the Qt based graphical client and node. If you are looking
-to run a VitalCoin wallet, this is probably the package you want.
+to run a Vitalcoin wallet, this is probably the package you want.
 %endif
 
 
 %package libs
-Summary:	VitalCoin shared libraries
+Summary:	Vitalcoin shared libraries
 Group:		System Environment/Libraries
 
 %description libs
@@ -134,7 +134,7 @@ If you use the graphical vitalcoin-core client then you almost certainly do not
 need this package.
 
 %package utils
-Summary:	VitalCoin utilities
+Summary:	Vitalcoin utilities
 Group:		Applications/System
 
 %description utils
@@ -209,7 +209,7 @@ touch -a -m -t 201504280000 %{buildroot}%{_sysconfdir}/sysconfig/vitalcoin
 mkdir -p %{buildroot}%{_unitdir}
 cat <<EOF > %{buildroot}%{_unitdir}/vitalcoin.service
 [Unit]
-Description=VitalCoin daemon
+Description=Vitalcoin daemon
 After=syslog.target network.target
 
 [Service]
@@ -265,10 +265,10 @@ mkdir -p %{buildroot}%{_datadir}/applications
 cat <<EOF > %{buildroot}%{_datadir}/applications/vitalcoin-core.desktop
 [Desktop Entry]
 Encoding=UTF-8
-Name=VitalCoin
-Comment=VitalCoin P2P Cryptocurrency
-Comment[fr]=VitalCoin, monnaie virtuelle cryptographique pair à pair
-Comment[tr]=VitalCoin, eşten eşe kriptografik sanal para birimi
+Name=Vitalcoin
+Comment=Vitalcoin P2P Cryptocurrency
+Comment[fr]=Vitalcoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Vitalcoin, eşten eşe kriptografik sanal para birimi
 Exec=vitalcoin-qt %u
 Terminal=false
 Type=Application
@@ -322,7 +322,7 @@ test/functional/test_runner.py --extended
 getent group vitalcoin >/dev/null || groupadd -r vitalcoin
 getent passwd vitalcoin >/dev/null ||
 	useradd -r -g vitalcoin -d /var/lib/vitalcoin -s /sbin/nologin \
-	-c "VitalCoin wallet server" vitalcoin
+	-c "Vitalcoin wallet server" vitalcoin
 exit 0
 
 %post server

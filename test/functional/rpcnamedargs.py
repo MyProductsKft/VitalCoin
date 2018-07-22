@@ -4,13 +4,13 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test using named arguments for RPCs."""
 
-from test_framework.test_framework import VitalCoinTestFramework
+from test_framework.test_framework import VitalcoinTestFramework
 from test_framework.util import (
     assert_equal,
     assert_raises_rpc_error,
 )
 
-class NamedArgumentTest(VitalCoinTestFramework):
+class NamedArgumentTest(VitalcoinTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
 

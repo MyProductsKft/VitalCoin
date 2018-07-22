@@ -38,7 +38,7 @@ Check out the source code in the following directory hierarchy.
     git clone https://github.com/devrandom/gitian-builder.git
     git clone https://github.com/vitalcoin/vitalcoin.git
 
-### VitalCoin maintainers/release engineers, suggestion for writing release notes
+### Vitalcoin maintainers/release engineers, suggestion for writing release notes
 
 Write release notes. git shortlog helps a lot, for example:
 
@@ -108,7 +108,7 @@ NOTE: Offline builds must use the --url flag to ensure Gitian fetches only from 
 
 The gbuild invocations below <b>DO NOT DO THIS</b> by default.
 
-### Build and sign VitalCoin Core for Linux, Windows, and OS X:
+### Build and sign Vitalcoin Core for Linux, Windows, and OS X:
 
     pushd ./gitian-builder
     ./bin/gbuild --num-make 2 --memory 3000 --commit vitalcoin=v${VERSION} ../vitalcoin/contrib/gitian-descriptors/gitian-linux.yml
@@ -275,14 +275,14 @@ vitalcoin.org (see below for vitalcoin.org update instructions).
 
 - Update vitalcoin.org version
 
-  - First, check to see if the VitalCoin.org maintainers have prepared a
+  - First, check to see if the Vitalcoin.org maintainers have prepared a
     release: https://github.com/vitalcoin-dot-org/vitalcoin.org/labels/Releases
 
       - If they have, it will have previously failed their Travis CI
         checks because the final release files weren't uploaded.
         Trigger a Travis CI rebuild---if it passes, merge.
 
-  - If they have not prepared a release, follow the VitalCoin.org release
+  - If they have not prepared a release, follow the Vitalcoin.org release
     instructions: https://github.com/vitalcoin-dot-org/vitalcoin.org#release-notes
 
   - After the pull request is merged, the website will automatically show the newest version within 15 minutes, as well
@@ -292,13 +292,13 @@ vitalcoin.org (see below for vitalcoin.org update instructions).
 
   - vitalcoin-dev and vitalcoin-core-dev mailing list
 
-  - VitalCoin Core announcements list https://vitalcoincore.org/en/list/announcements/join/
+  - Vitalcoin Core announcements list https://vitalcoincore.org/en/list/announcements/join/
 
   - vitalcoincore.org blog post
 
   - Update title of #vitalcoin on Freenode IRC
 
-  - Optionally twitter, reddit /r/VitalCoin, ... but this will usually sort out itself
+  - Optionally twitter, reddit /r/Vitalcoin, ... but this will usually sort out itself
 
   - Notify BlueMatt so that he can start building [the PPAs](https://launchpad.net/~vitalcoin/+archive/ubuntu/vitalcoin)
 

@@ -24,17 +24,17 @@ static const std::string
     strSecret1C("Kwr371tjA9u2rFSMZjTNun2PXXP3WPZu2afRHTcta6KxEUdm1vEw");
 static const std::string
     strSecret2C("L3Hq7a8FEQwJkW1M2GNKDW28546Vp5miewcCzSqUD9kCAXrJdS3g");
-static const CVitalCoinAddress addr1("1QFqqMUD55ZV3PJEJZtaKCsQmjLT6JkjvJ");
-static const CVitalCoinAddress addr2("1F5y5E5FMc5YzdJtB9hLaUe43GDxEKXENJ");
-static const CVitalCoinAddress addr1C("1NoJrossxPBKfCHuJXT4HadJrXRE9Fxiqs");
-static const CVitalCoinAddress addr2C("1CRj2HyM1CXWzHAXLQtiGLyggNT9WQqsDs");
+static const CVitalcoinAddress addr1("1QFqqMUD55ZV3PJEJZtaKCsQmjLT6JkjvJ");
+static const CVitalcoinAddress addr2("1F5y5E5FMc5YzdJtB9hLaUe43GDxEKXENJ");
+static const CVitalcoinAddress addr1C("1NoJrossxPBKfCHuJXT4HadJrXRE9Fxiqs");
+static const CVitalcoinAddress addr2C("1CRj2HyM1CXWzHAXLQtiGLyggNT9WQqsDs");
 
 static const std::string strAddressBad("1HV9Lc3sNHZxwj4Zk6fB38tEmBryq2cBiF");
 
 BOOST_FIXTURE_TEST_SUITE(key_tests, BasicTestingSetup)
 
 BOOST_AUTO_TEST_CASE(key_test1) {
-  CVitalCoinSecret bsecret1, bsecret2, bsecret1C, bsecret2C, baddress1;
+  CVitalcoinSecret bsecret1, bsecret2, bsecret1C, bsecret2C, baddress1;
   BOOST_CHECK(bsecret1.SetString(strSecret1));
   BOOST_CHECK(bsecret2.SetString(strSecret2));
   BOOST_CHECK(bsecret1C.SetString(strSecret1C));

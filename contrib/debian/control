@@ -34,7 +34,7 @@ Package: vitalcoind
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - daemon
- VitalCoin is a free open source peer-to-peer electronic cash system that
+ Vitalcoin is a free open source peer-to-peer electronic cash system that
  is completely decentralized, without the need for a central server or
  trusted parties.  Users hold the crypto keys to their own money and
  transact directly with each other, with the help of a P2P network to
@@ -47,19 +47,19 @@ Package: vitalcoin-qt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer network based digital currency - Qt GUI
- VitalCoin is a free open source peer-to-peer electronic cash system that
+ Vitalcoin is a free open source peer-to-peer electronic cash system that
  is completely decentralized, without the need for a central server or
  trusted parties.  Users hold the crypto keys to their own money and
  transact directly with each other, with the help of a P2P network to
  check for double-spending.
  .
- This package provides VitalCoin-Qt, a GUI for VitalCoin based on Qt.
+ This package provides Vitalcoin-Qt, a GUI for Vitalcoin based on Qt.
 
 Package: vitalcoin-tx
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: peer-to-peer digital currency - standalone transaction tool
- VitalCoin is a free open source peer-to-peer electronic cash system that
+ Vitalcoin is a free open source peer-to-peer electronic cash system that
  is completely decentralized, without the need for a central server or
  trusted parties.  Users hold the crypto keys to their own money and
  transact directly with each other, with the help of a P2P network to

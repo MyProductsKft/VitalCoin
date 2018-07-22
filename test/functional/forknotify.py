@@ -6,9 +6,9 @@
 import os
 import time
 
-from test_framework.test_framework import VitalCoinTestFramework
+from test_framework.test_framework import VitalcoinTestFramework
 
-class ForkNotifyTest(VitalCoinTestFramework):
+class ForkNotifyTest(VitalcoinTestFramework):
     def set_test_params(self):
         self.num_nodes = 2
 

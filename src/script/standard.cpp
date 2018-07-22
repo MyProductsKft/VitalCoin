@@ -53,7 +53,7 @@ bool Solver(const CScript &scriptPubKey, txnouttype &typeRet,
     mTemplates.insert(
         std::make_pair(TX_PUBKEY, CScript() << OP_PUBKEY << OP_CHECKSIG));
 
-    // VitalCoin address tx, sender provides hash of pubkey, receiver provides
+    // Vitalcoin address tx, sender provides hash of pubkey, receiver provides
     // signature and pubkey
     mTemplates.insert(
         std::make_pair(TX_PUBKEYHASH,

@@ -62,12 +62,12 @@
         <translation>Vastaanotto-osoitteet</translation>
     </message>
     <message>
-        <source>These are your VitalCoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Nämä ovat VitalCoin-osoitteesi maksujen lähettämistä varten. Tarkista aina määrä ja vastaanotto-osoite ennen kolikoiden lähettämistä.</translation>
+        <source>These are your Vitalcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Nämä ovat Vitalcoin-osoitteesi maksujen lähettämistä varten. Tarkista aina määrä ja vastaanotto-osoite ennen kolikoiden lähettämistä.</translation>
     </message>
     <message>
-        <source>These are your VitalCoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Tässä ovat VitalCoin vastaanotto-osoitteesi. On suositeltavaa käyttää uutta vastaanotto-osoitetta jokaista lähetystä varten.</translation>
+        <source>These are your Vitalcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Tässä ovat Vitalcoin vastaanotto-osoitteesi. On suositeltavaa käyttää uutta vastaanotto-osoitetta jokaista lähetystä varten.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -232,7 +232,7 @@
     </message>
 </context>
 <context>
-    <name>VitalCoinGUI</name>
+    <name>VitalcoinGUI</name>
     <message>
         <source>Sign &amp;message...</source>
         <translation>&amp;Allekirjoita viesti...</translation>
@@ -338,8 +338,8 @@
         <translation>Ladataan lohkoindeksiä...</translation>
     </message>
     <message>
-        <source>Send coins to a VitalCoin address</source>
-        <translation>Lähetä kolikoita VitalCoin-osoitteeseen</translation>
+        <source>Send coins to a Vitalcoin address</source>
+        <translation>Lähetä kolikoita Vitalcoin-osoitteeseen</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -362,8 +362,8 @@
         <translation>Varmista &amp;viesti...</translation>
     </message>
     <message>
-        <source>VitalCoin</source>
-        <translation>VitalCoin</translation>
+        <source>Vitalcoin</source>
+        <translation>Vitalcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -383,19 +383,19 @@
     </message>
     <message>
         <source>Show or hide the main Window</source>
-        <translation>Näytä tai piilota VitalCoin-ikkuna</translation>
+        <translation>Näytä tai piilota Vitalcoin-ikkuna</translation>
     </message>
     <message>
         <source>Encrypt the private keys that belong to your wallet</source>
         <translation>Suojaa yksityiset avaimet, jotka kuuluvat lompakkoosi</translation>
     </message>
     <message>
-        <source>Sign messages with your VitalCoin addresses to prove you own them</source>
-        <translation>Allekirjoita viestisi omalla VitalCoin -osoitteellasi todistaaksesi, että omistat ne</translation>
+        <source>Sign messages with your Vitalcoin addresses to prove you own them</source>
+        <translation>Allekirjoita viestisi omalla Vitalcoin -osoitteellasi todistaaksesi, että omistat ne</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified VitalCoin addresses</source>
-        <translation>Varmista, että viestisi on allekirjoitettu määritetyllä VitalCoin -osoitteella</translation>
+        <source>Verify messages to ensure they were signed with specified Vitalcoin addresses</source>
+        <translation>Varmista, että viestisi on allekirjoitettu määritetyllä Vitalcoin -osoitteella</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -434,8 +434,8 @@
         <translation>&amp;Komentorivin valinnat</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to VitalCoin network</source>
-        <translation><numerusform>%n aktiivinen yhteys VitalCoin-verkkoon</numerusform><numerusform>%n aktiivista yhteyttä VitalCoin-verkkoon</numerusform></translation>
+        <source>%n active connection(s) to Vitalcoin network</source>
+        <translation><numerusform>%n aktiivinen yhteys Vitalcoin-verkkoon</numerusform><numerusform>%n aktiivista yhteyttä Vitalcoin-verkkoon</numerusform></translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -478,8 +478,8 @@
         <translation>Rahansiirtohistoria on ajan tasalla</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible VitalCoin command-line options</source>
-        <translation>Näytä %1 ohjeet saadaksesi listan mahdollisista VitalCoinin komentorivivalinnoista</translation>
+        <source>Show the %1 help message to get a list with possible Vitalcoin command-line options</source>
+        <translation>Näytä %1 ohjeet saadaksesi listan mahdollisista Vitalcoinin komentorivivalinnoista</translation>
     </message>
     <message>
         <source>%1 client</source>
@@ -548,8 +548,8 @@
         <translation>Lompakko on &lt;b&gt;salattu&lt;/b&gt; ja tällä hetkellä &lt;b&gt;lukittuna&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>A fatal error occurred. VitalCoin can no longer continue safely and will quit.</source>
-        <translation>Peruuttamaton virhe on tapahtunut. VitalCoin ei voi enää jatkaa turvallisesti ja sammutetaan.</translation>
+        <source>A fatal error occurred. Vitalcoin can no longer continue safely and will quit.</source>
+        <translation>Peruuttamaton virhe on tapahtunut. Vitalcoin ei voi enää jatkaa turvallisesti ja sammutetaan.</translation>
     </message>
 </context>
 <context>
@@ -734,8 +734,8 @@
         <translation>Muokkaa lähettävää osoitetta</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid VitalCoin address.</source>
-        <translation>Antamasi osoite "%1" ei ole kelvollinen VitalCoin-osoite.</translation>
+        <source>The entered address "%1" is not a valid Vitalcoin address.</source>
+        <translation>Antamasi osoite "%1" ei ole kelvollinen Vitalcoin-osoite.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -843,8 +843,8 @@
         <translation>Tämä on ensimmäinen kerta, kun %1 on käynnistetty, joten voit valita data-hakemiston paikan.</translation>
     </message>
     <message>
-        <source>%1 will download and store a copy of the VitalCoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>%1 lataa ja tallentaa kopion VitalCoinin lohkoketjusta. Vähintään %2Gt dataa tullaan tallentamaan tähän hakemistoon, ja tarve kasvaa ajan myötä. Lompakko tullaan myös tallentamaan tähän hakemistoon.</translation>
+        <source>%1 will download and store a copy of the Vitalcoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>%1 lataa ja tallentaa kopion Vitalcoinin lohkoketjusta. Vähintään %2Gt dataa tullaan tallentamaan tähän hakemistoon, ja tarve kasvaa ajan myötä. Lompakko tullaan myös tallentamaan tähän hakemistoon.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -1020,16 +1020,16 @@
         <translation>&amp;Käytä varmistamattomia vaihtorahoja</translation>
     </message>
     <message>
-        <source>Automatically open the VitalCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Avaa VitalCoin-asiakasohjelman portti reitittimellä automaattisesti. Tämä toimii vain, jos reitittimesi tukee UPnP:tä ja se on käytössä.</translation>
+        <source>Automatically open the Vitalcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Avaa Vitalcoin-asiakasohjelman portti reitittimellä automaattisesti. Tämä toimii vain, jos reitittimesi tukee UPnP:tä ja se on käytössä.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Portin uudelleenohjaus &amp;UPnP:llä</translation>
     </message>
     <message>
-        <source>Connect to the VitalCoin network through a SOCKS5 proxy.</source>
-        <translation>Yhdistä VitalCoin-verkkoon SOCKS5-välityspalvelimen kautta.</translation>
+        <source>Connect to the Vitalcoin network through a SOCKS5 proxy.</source>
+        <translation>Yhdistä Vitalcoin-verkkoon SOCKS5-välityspalvelimen kautta.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -1068,8 +1068,8 @@
         <translation>Tor</translation>
     </message>
     <message>
-        <source>Connect to the VitalCoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
-        <translation>Yhdistä VitalCoin-verkkoon erillisen SOCKS5-välityspalvelimen kautta piilotettuja Tor-palveluja varten.</translation>
+        <source>Connect to the Vitalcoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <translation>Yhdistä Vitalcoin-verkkoon erillisen SOCKS5-välityspalvelimen kautta piilotettuja Tor-palveluja varten.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services:</source>
@@ -1159,8 +1159,8 @@
         <translation>Lomake</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the VitalCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Näytetyt tiedot eivät välttämättä ole ajantasalla. Lompakkosi synkronoituu VitalCoin-verkon kanssa automaattisesti yhteyden muodostamisen jälkeen, mutta synkronointi on vielä meneillään.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Vitalcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>Näytetyt tiedot eivät välttämättä ole ajantasalla. Lompakkosi synkronoituu Vitalcoin-verkon kanssa automaattisesti yhteyden muodostamisen jälkeen, mutta synkronointi on vielä meneillään.</translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -1200,7 +1200,7 @@
     </message>
     <message>
         <source>Your current total balance</source>
-        <translation>Tililläsi tällä hetkellä olevien VitalCoinien määrä</translation>
+        <translation>Tililläsi tällä hetkellä olevien Vitalcoinien määrä</translation>
     </message>
     <message>
         <source>Your current balance in watch-only addresses</source>
@@ -1252,8 +1252,8 @@
         <translation>Määrä</translation>
     </message>
     <message>
-        <source>Enter a VitalCoin address (e.g. %1)</source>
-        <translation>Syötä VitalCoin-osoite (esim. %1)</translation>
+        <source>Enter a Vitalcoin address (e.g. %1)</source>
+        <translation>Syötä Vitalcoin-osoite (esim. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1620,8 +1620,8 @@
         <translation>&amp;Uudelleenkäytä vastaanotto-osoitetta (ei suositella)</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the VitalCoin network.</source>
-        <translation>Valinnainen viesti liitetään maksupyyntöön ja näytetään avattaessa. Viestiä ei lähetetä VitalCoin-verkkoon.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Vitalcoin network.</source>
+        <translation>Valinnainen viesti liitetään maksupyyntöön ja näytetään avattaessa. Viestiä ei lähetetä Vitalcoin-verkkoon.</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
@@ -1746,7 +1746,7 @@
     <name>SendCoinsDialog</name>
     <message>
         <source>Send Coins</source>
-        <translation>Lähetä VitalCoineja</translation>
+        <translation>Lähetä Vitalcoineja</translation>
     </message>
     <message>
         <source>Coin Control Features</source>
@@ -1940,8 +1940,8 @@
         <translation>Tämä on normaali maksu.</translation>
     </message>
     <message>
-        <source>The VitalCoin address to send the payment to</source>
-        <translation>VitalCoin-osoite johon maksu lähetetään</translation>
+        <source>The Vitalcoin address to send the payment to</source>
+        <translation>Vitalcoin-osoite johon maksu lähetetään</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -1984,8 +1984,8 @@
         <translation>Aseta nimi tälle osoitteelle lisätäksesi sen käytettyjen osoitteiden listalle.</translation>
     </message>
     <message>
-        <source>A message that was attached to the vitalcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the VitalCoin network.</source>
-        <translation>Viesti joka liitettiin vitalcoin: URI:iin tallennetaan rahansiirtoon viitteeksi. Tätä viestiä ei lähetetä VitalCoin-verkkoon.</translation>
+        <source>A message that was attached to the vitalcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Vitalcoin network.</source>
+        <translation>Viesti joka liitettiin vitalcoin: URI:iin tallennetaan rahansiirtoon viitteeksi. Tätä viestiä ei lähetetä Vitalcoin-verkkoon.</translation>
     </message>
     <message>
         <source>Pay To:</source>
@@ -2025,8 +2025,8 @@
         <translation>&amp;Allekirjoita viesti</translation>
     </message>
     <message>
-        <source>The VitalCoin address to sign the message with</source>
-        <translation>VitalCoin-osoite jolla viesti allekirjoitetaan</translation>
+        <source>The Vitalcoin address to sign the message with</source>
+        <translation>Vitalcoin-osoite jolla viesti allekirjoitetaan</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2057,8 +2057,8 @@
         <translation>Kopioi tämänhetkinen allekirjoitus leikepöydälle</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this VitalCoin address</source>
-        <translation>Allekirjoita viesti todistaaksesi, että omistat tämän VitalCoin-osoitteen</translation>
+        <source>Sign the message to prove you own this Vitalcoin address</source>
+        <translation>Allekirjoita viesti todistaaksesi, että omistat tämän Vitalcoin-osoitteen</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -2077,12 +2077,12 @@
         <translation>&amp;Varmista viesti</translation>
     </message>
     <message>
-        <source>The VitalCoin address the message was signed with</source>
-        <translation>VitalCoin-osoite jolla viesti on allekirjoitettu</translation>
+        <source>The Vitalcoin address the message was signed with</source>
+        <translation>Vitalcoin-osoite jolla viesti on allekirjoitettu</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified VitalCoin address</source>
-        <translation>Tarkista viestin allekirjoitus varmistaaksesi, että se allekirjoitettiin tietyllä VitalCoin-osoitteella</translation>
+        <source>Verify the message to ensure it was signed with the specified Vitalcoin address</source>
+        <translation>Tarkista viestin allekirjoitus varmistaaksesi, että se allekirjoitettiin tietyllä Vitalcoin-osoitteella</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -2430,8 +2430,8 @@
         <translation>HTTP-palvelinta ei voitu käynnistää. Katso debug-lokista lisätietoja.</translation>
     </message>
     <message>
-        <source>VitalCoin Core</source>
-        <translation>VitalCoin-ydin</translation>
+        <source>Vitalcoin Core</source>
+        <translation>Vitalcoin-ydin</translation>
     </message>
     <message>
         <source>The %s developers</source>

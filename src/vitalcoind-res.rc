@@ -16,8 +16,8 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "VitalCoin"
-            VALUE "FileDescription",    "vitalcoind (VitalCoin node with a JSON-RPC server)"
+            VALUE "CompanyName",        "Vitalcoin"
+            VALUE "FileDescription",    "vitalcoind (Vitalcoin node with a JSON-RPC server)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "vitalcoind"
             VALUE "LegalCopyright",     COPYRIGHT_STR

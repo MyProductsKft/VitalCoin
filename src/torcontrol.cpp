@@ -419,7 +419,7 @@ static bool WriteBinaryFile(const fs::path &filename, const std::string &data) {
   return true;
 }
 
-/****** VitalCoin specific TorController implementation ********/
+/****** Vitalcoin specific TorController implementation ********/
 
 /** Controller that connects to Tor control socket, authenticate, then create
  * and maintain an ephemeral hidden service.

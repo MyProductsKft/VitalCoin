@@ -10,10 +10,10 @@
 - verify that getchaintips now returns two chain tips.
 """
 
-from test_framework.test_framework import VitalCoinTestFramework
+from test_framework.test_framework import VitalcoinTestFramework
 from test_framework.util import assert_equal
 
-class GetChainTipsTest (VitalCoinTestFramework):
+class GetChainTipsTest (VitalcoinTestFramework):
     def set_test_params(self):
         self.num_nodes = 4
 

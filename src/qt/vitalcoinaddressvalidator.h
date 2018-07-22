@@ -10,22 +10,22 @@
 /** Base58 entry widget validator, checks for valid characters and
  * removes some whitespace.
  */
-class VitalCoinAddressEntryValidator : public QValidator {
+class VitalcoinAddressEntryValidator : public QValidator {
   Q_OBJECT
 
 public:
-  explicit VitalCoinAddressEntryValidator(QObject *parent);
+  explicit VitalcoinAddressEntryValidator(QObject *parent);
 
   State validate(QString &input, int &pos) const;
 };
 
-/** VitalCoin address widget validator, checks for a valid vitalcoin address.
+/** Vitalcoin address widget validator, checks for a valid vitalcoin address.
  */
-class VitalCoinAddressCheckValidator : public QValidator {
+class VitalcoinAddressCheckValidator : public QValidator {
   Q_OBJECT
 
 public:
-  explicit VitalCoinAddressCheckValidator(QObject *parent);
+  explicit VitalcoinAddressCheckValidator(QObject *parent);
 
   State validate(QString &input, int &pos) const;
 };

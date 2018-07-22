@@ -12,10 +12,10 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>VitalCoinGUI</name>
+    <name>VitalcoinGUI</name>
     <message>
-        <source>VitalCoin</source>
-        <translation>VitalCoin</translation>
+        <source>Vitalcoin</source>
+        <translation>Vitalcoin</translation>
     </message>
     </context>
 <context>
@@ -156,8 +156,8 @@
 <context>
     <name>vitalcoin-core</name>
     <message>
-        <source>VitalCoin Core</source>
-        <translation>VitalCoin Jezrga</translation>
+        <source>Vitalcoin Core</source>
+        <translation>Vitalcoin Jezrga</translation>
     </message>
     </context>
 </TS>

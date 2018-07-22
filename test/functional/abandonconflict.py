@@ -10,10 +10,10 @@
  which are not included in a block and are not currently in the mempool. It has
  no effect on transactions which are already conflicted or abandoned.
 """
-from test_framework.test_framework import VitalCoinTestFramework
+from test_framework.test_framework import VitalcoinTestFramework
 from test_framework.util import *
 
-class AbandonConflictTest(VitalCoinTestFramework):
+class AbandonConflictTest(VitalcoinTestFramework):
     def set_test_params(self):
         self.num_nodes = 2
         self.extra_args = [["-minrelaytxfee=0.00001"], []]

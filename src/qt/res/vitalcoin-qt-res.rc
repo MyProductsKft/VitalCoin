@@ -19,8 +19,8 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "VitalCoin"
-            VALUE "FileDescription",    PACKAGE_NAME " (GUI node for VitalCoin)"
+            VALUE "CompanyName",        "Vitalcoin"
+            VALUE "FileDescription",    PACKAGE_NAME " (GUI node for Vitalcoin)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "vitalcoin-qt"
             VALUE "LegalCopyright",     COPYRIGHT_STR

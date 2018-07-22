@@ -21,7 +21,7 @@ from decimal import Decimal
 import http.client
 import subprocess
 
-from test_framework.test_framework import VitalCoinTestFramework
+from test_framework.test_framework import VitalcoinTestFramework
 from test_framework.util import (
     assert_equal,
     assert_raises,
@@ -30,7 +30,7 @@ from test_framework.util import (
     assert_is_hash_string,
 )
 
-class BlockchainTest(VitalCoinTestFramework):
+class BlockchainTest(VitalcoinTestFramework):
     def set_test_params(self):
         self.num_nodes = 1
         self.extra_args = [['-stopatheight=207']]

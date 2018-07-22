@@ -36,7 +36,7 @@
 
 //////////////////////////////////////////////////////////////////////////////
 //
-// VitalCoinMiner
+// VitalcoinMiner
 //
 
 //
@@ -555,7 +555,7 @@ static bool ProcessBlockFound(const std::shared_ptr<const CBlock> pblock,
   {
     LOCK(cs_main);
     if (pblock->hashPrevBlock != chainActive.Tip()->GetBlockHash())
-      return error("VitalCoinMiner: generated block is stale");
+      return error("VitalcoinMiner: generated block is stale");
   }
 
   // // Inform about the new block
@@ -564,13 +564,13 @@ static bool ProcessBlockFound(const std::shared_ptr<const CBlock> pblock,
   // Process this block the same as if we had received it from another node
   CValidationState state;
   if (!ProcessNewBlock(chainparams, pblock, true, NULL))
-    return error("VitalCoinMiner: ProcessNewBlock, block not accepted");
+    return error("VitalcoinMiner: ProcessNewBlock, block not accepted");
 
   return true;
 }
 
-void static VitalCoinMiner(const CChainParams &chainparams) {
-  LogPrintf("VitalCoinMiner started\n");
+void static VitalcoinMiner(const CChainParams &chainparams) {
+  LogPrintf("VitalcoinMiner started\n");
   // SetThreadPriority(THREAD_PRIORITY_LOWEST);
   RenameThread("vitalcoin-miner");
 
@@ -608,7 +608,7 @@ void static VitalCoinMiner(const CChainParams &chainparams) {
       auto pblocktemplate(BlockAssembler(Params()).CreateNewBlock(
           coinbaseScript->reserveScript));
       if (!pblocktemplate.get()) {
-        LogPrintf("Error in VitalCoinMiner: Keypool ran out, please call "
+        LogPrintf("Error in VitalcoinMiner: Keypool ran out, please call "
                   "keypoolrefill before restarting the mining thread\n");
         return;
       }
@@ -616,7 +616,7 @@ void static VitalCoinMiner(const CChainParams &chainparams) {
           std::make_shared<CBlock>(pblocktemplate->block);
       IncrementExtraNonce(pblock.get(), pindexPrev, nExtraNonce);
 
-      // LogPrintf("Running VitalCoinMiner with %u transactions in block (%u
+      // LogPrintf("Running VitalcoinMiner with %u transactions in block (%u
       // bytes)\n", pblock->vtx.size(),
       //     ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
 
@@ -636,7 +636,7 @@ void static VitalCoinMiner(const CChainParams &chainparams) {
             assert(hash == pblock->GetHash());
 
             // SetThreadPriority(THREAD_PRIORITY_NORMAL);
-            LogPrintf("VitalCoinMiner:\n");
+            LogPrintf("VitalcoinMiner:\n");
             LogPrintf("proof-of-work found  \n  hash: %s  \ntarget: %s\n",
                       hash.GetHex(), hashTarget.GetHex());
             ProcessBlockFound(pblock, chainparams);
@@ -679,15 +679,15 @@ void static VitalCoinMiner(const CChainParams &chainparams) {
       }
     }
   } catch (const boost::thread_interrupted &) {
-    LogPrintf("VitalCoinMiner terminated\n");
+    LogPrintf("VitalcoinMiner terminated\n");
     throw;
   } catch (const std::runtime_error &e) {
-    LogPrintf("VitalCoinMiner runtime error: %s\n", e.what());
+    LogPrintf("VitalcoinMiner runtime error: %s\n", e.what());
     return;
   }
 }
 
-void GenerateVitalCoins(bool fGenerate, int nThreads,
+void GenerateVitalcoins(bool fGenerate, int nThreads,
                         const CChainParams &chainparams) {
   static boost::thread_group *minerThreads = NULL;
 
@@ -711,5 +711,5 @@ void GenerateVitalCoins(bool fGenerate, int nThreads,
   minerThreads = new boost::thread_group();
   for (int i = 0; i < nThreads; i++)
     minerThreads->create_thread(
-        boost::bind(&VitalCoinMiner, boost::cref(chainparams)));
+        boost::bind(&VitalcoinMiner, boost::cref(chainparams)));
 }

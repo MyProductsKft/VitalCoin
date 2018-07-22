@@ -170,7 +170,7 @@ void WalletModel::updateWatchOnlyFlag(bool fHaveWatchonly) {
 }
 
 bool WalletModel::validateAddress(const QString &address) {
-  CVitalCoinAddress addressParsed(address.toStdString());
+  CVitalcoinAddress addressParsed(address.toStdString());
   return addressParsed.IsValid();
 }
 
@@ -225,7 +225,7 @@ WalletModel::prepareTransaction(WalletModelTransaction &transaction,
       ++nAddresses;
 
       CScript scriptPubKey = GetScriptForDestination(
-          CVitalCoinAddress(rcp.address.toStdString()).Get());
+          CVitalcoinAddress(rcp.address.toStdString()).Get());
       CRecipient recipient = {scriptPubKey, rcp.amount,
                               rcp.fSubtractFeeFromAmount};
       vecSend.push_back(recipient);
@@ -323,7 +323,7 @@ WalletModel::sendCoins(WalletModelTransaction &transaction) {
     // Don't touch the address book when we have a payment request
     if (!rcp.paymentRequest.IsInitialized()) {
       std::string strAddress = rcp.address.toStdString();
-      CTxDestination dest = CVitalCoinAddress(strAddress).Get();
+      CTxDestination dest = CVitalcoinAddress(strAddress).Get();
       std::string strLabel = rcp.label.toStdString();
       {
         LOCK(wallet->cs_wallet);
@@ -422,7 +422,7 @@ static void NotifyAddressBookChanged(WalletModel *walletmodel, CWallet *wallet,
                                      const std::string &purpose,
                                      ChangeType status) {
   QString strAddress =
-      QString::fromStdString(CVitalCoinAddress(address).ToString());
+      QString::fromStdString(CVitalcoinAddress(address).ToString());
   QString strLabel = QString::fromStdString(label);
   QString strPurpose = QString::fromStdString(purpose);
 
@@ -555,7 +555,7 @@ void WalletModel::listCoins(
     std::map<QString, std::vector<COutput>> &mapCoins) const {
   for (auto &group : wallet->ListCoins()) {
     auto &resultGroup = mapCoins[QString::fromStdString(
-        CVitalCoinAddress(group.first).ToString())];
+        CVitalcoinAddress(group.first).ToString())];
     for (auto &coin : group.second) {
       resultGroup.emplace_back(std::move(coin));
     }
@@ -590,7 +590,7 @@ void WalletModel::loadReceiveRequests(
 bool WalletModel::saveReceiveRequest(const std::string &sAddress,
                                      const int64_t nId,
                                      const std::string &sRequest) {
-  CTxDestination dest = CVitalCoinAddress(sAddress).Get();
+  CTxDestination dest = CVitalcoinAddress(sAddress).Get();
 
   std::stringstream ss;
   ss << nId;
@@ -648,17 +648,17 @@ bool WalletModel::bumpFee(uint256 hash) {
   questionString.append("<tr><td>");
   questionString.append(tr("Current fee:"));
   questionString.append("</td><td>");
-  questionString.append(VitalCoinUnits::formatHtmlWithUnit(
+  questionString.append(VitalcoinUnits::formatHtmlWithUnit(
       getOptionsModel()->getDisplayUnit(), oldFee));
   questionString.append("</td></tr><tr><td>");
   questionString.append(tr("Increase:"));
   questionString.append("</td><td>");
-  questionString.append(VitalCoinUnits::formatHtmlWithUnit(
+  questionString.append(VitalcoinUnits::formatHtmlWithUnit(
       getOptionsModel()->getDisplayUnit(), newFee - oldFee));
   questionString.append("</td></tr><tr><td>");
   questionString.append(tr("New fee:"));
   questionString.append("</td><td>");
-  questionString.append(VitalCoinUnits::formatHtmlWithUnit(
+  questionString.append(VitalcoinUnits::formatHtmlWithUnit(
       getOptionsModel()->getDisplayUnit(), newFee));
   questionString.append("</td></tr></table>");
   SendConfirmationDialog confirmationDialog(tr("Confirm fee bump"),

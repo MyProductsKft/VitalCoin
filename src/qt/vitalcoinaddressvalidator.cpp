@@ -15,10 +15,10 @@
   - All lower-case letters except for 'l'
 */
 
-VitalCoinAddressEntryValidator::VitalCoinAddressEntryValidator(QObject *parent)
+VitalcoinAddressEntryValidator::VitalcoinAddressEntryValidator(QObject *parent)
     : QValidator(parent) {}
 
-QValidator::State VitalCoinAddressEntryValidator::validate(QString &input,
+QValidator::State VitalcoinAddressEntryValidator::validate(QString &input,
                                                            int &pos) const {
   Q_UNUSED(pos);
 
@@ -71,14 +71,14 @@ QValidator::State VitalCoinAddressEntryValidator::validate(QString &input,
   return state;
 }
 
-VitalCoinAddressCheckValidator::VitalCoinAddressCheckValidator(QObject *parent)
+VitalcoinAddressCheckValidator::VitalcoinAddressCheckValidator(QObject *parent)
     : QValidator(parent) {}
 
-QValidator::State VitalCoinAddressCheckValidator::validate(QString &input,
+QValidator::State VitalcoinAddressCheckValidator::validate(QString &input,
                                                            int &pos) const {
   Q_UNUSED(pos);
-  // Validate the passed VitalCoin address
-  CVitalCoinAddress addr(input.toStdString());
+  // Validate the passed Vitalcoin address
+  CVitalcoinAddress addr(input.toStdString());
   if (addr.IsValid())
     return QValidator::Acceptable;
 

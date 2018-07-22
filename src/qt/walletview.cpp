@@ -91,7 +91,7 @@ WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent)
 
 WalletView::~WalletView() {}
 
-void WalletView::setVitalCoinGUI(VitalCoinGUI *gui) {
+void WalletView::setVitalcoinGUI(VitalcoinGUI *gui) {
   if (gui) {
     // Clicking on a transaction on the overview page simply sends you to
     // transaction history page

@@ -310,7 +310,7 @@ bool CWallet::LoadCScript(const CScript &redeemScript) {
    * that never can be redeemed. However, old wallets may still contain
    * these. Do not add them to the wallet and warn. */
   if (redeemScript.size() > MAX_SCRIPT_ELEMENT_SIZE) {
-    std::string strAddr = CVitalCoinAddress(CScriptID(redeemScript)).ToString();
+    std::string strAddr = CVitalcoinAddress(CScriptID(redeemScript)).ToString();
     LogPrintf("%s: Warning: This wallet contains a redeemScript of size %i "
               "which exceeds maximum size %i thus can never be redeemed. Do "
               "not use address %s.\n",
@@ -3283,10 +3283,10 @@ bool CWallet::SetAddressBook(const CTxDestination &address,
                            ::IsMine(*this, address) != ISMINE_NO, strPurpose,
                            (fUpdated ? CT_UPDATED : CT_NEW));
   if (!strPurpose.empty() &&
-      !CWalletDB(*dbw).WritePurpose(CVitalCoinAddress(address).ToString(),
+      !CWalletDB(*dbw).WritePurpose(CVitalcoinAddress(address).ToString(),
                                     strPurpose))
     return false;
-  return CWalletDB(*dbw).WriteName(CVitalCoinAddress(address).ToString(),
+  return CWalletDB(*dbw).WriteName(CVitalcoinAddress(address).ToString(),
                                    strName);
 }
 
@@ -3295,7 +3295,7 @@ bool CWallet::DelAddressBook(const CTxDestination &address) {
     LOCK(cs_wallet); // mapAddressBook
 
     // Delete destdata tuples associated with address
-    std::string strAddress = CVitalCoinAddress(address).ToString();
+    std::string strAddress = CVitalcoinAddress(address).ToString();
     for (const std::pair<std::string, std::string> &item :
          mapAddressBook[address].destdata) {
       CWalletDB(*dbw).EraseDestData(strAddress, item.first);
@@ -3306,8 +3306,8 @@ bool CWallet::DelAddressBook(const CTxDestination &address) {
   NotifyAddressBookChanged(
       this, address, "", ::IsMine(*this, address) != ISMINE_NO, "", CT_DELETED);
 
-  CWalletDB(*dbw).ErasePurpose(CVitalCoinAddress(address).ToString());
-  return CWalletDB(*dbw).EraseName(CVitalCoinAddress(address).ToString());
+  CWalletDB(*dbw).ErasePurpose(CVitalcoinAddress(address).ToString());
+  return CWalletDB(*dbw).EraseName(CVitalcoinAddress(address).ToString());
 }
 
 const std::string &CWallet::GetAccountName(const CScript &scriptPubKey) const {
@@ -3938,7 +3938,7 @@ bool CWallet::AddDestData(const CTxDestination &dest, const std::string &key,
     return false;
 
   mapAddressBook[dest].destdata.insert(std::make_pair(key, value));
-  return CWalletDB(*dbw).WriteDestData(CVitalCoinAddress(dest).ToString(), key,
+  return CWalletDB(*dbw).WriteDestData(CVitalcoinAddress(dest).ToString(), key,
                                        value);
 }
 
@@ -3946,7 +3946,7 @@ bool CWallet::EraseDestData(const CTxDestination &dest,
                             const std::string &key) {
   if (!mapAddressBook[dest].destdata.erase(key))
     return false;
-  return CWalletDB(*dbw).EraseDestData(CVitalCoinAddress(dest).ToString(), key);
+  return CWalletDB(*dbw).EraseDestData(CVitalcoinAddress(dest).ToString(), key);
 }
 
 bool CWallet::LoadDestData(const CTxDestination &dest, const std::string &key,

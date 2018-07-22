@@ -80,12 +80,12 @@
     </message>
     <message>
         <location line="+7"/>
-        <source>These are your VitalCoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Vitalcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+4"/>
-        <source>These are your VitalCoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Vitalcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -297,7 +297,7 @@
     </message>
 </context>
 <context>
-    <name>VitalCoinGUI</name>
+    <name>VitalcoinGUI</name>
     <message>
         <location filename="../vitalcoingui.cpp" line="+357"/>
         <source>Sign &amp;message...</source>
@@ -430,8 +430,8 @@
     </message>
     <message>
         <location line="-510"/>
-        <source>Send coins to a VitalCoin address</source>
-        <translation>Send coins to a VitalCoin address</translation>
+        <source>Send coins to a Vitalcoin address</source>
+        <translation>Send coins to a Vitalcoin address</translation>
     </message>
     <message>
         <location line="+67"/>
@@ -460,8 +460,8 @@
     </message>
     <message>
         <location line="+516"/>
-        <source>VitalCoin</source>
-        <translation>VitalCoin</translation>
+        <source>Vitalcoin</source>
+        <translation>Vitalcoin</translation>
     </message>
     <message>
         <location line="-741"/>
@@ -495,13 +495,13 @@
     </message>
     <message>
         <location line="+7"/>
-        <source>Sign messages with your VitalCoin addresses to prove you own them</source>
-        <translation>Sign messages with your VitalCoin addresses to prove you own them</translation>
+        <source>Sign messages with your Vitalcoin addresses to prove you own them</source>
+        <translation>Sign messages with your Vitalcoin addresses to prove you own them</translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Verify messages to ensure they were signed with specified VitalCoin addresses</source>
-        <translation>Verify messages to ensure they were signed with specified VitalCoin addresses</translation>
+        <source>Verify messages to ensure they were signed with specified Vitalcoin addresses</source>
+        <translation>Verify messages to ensure they were signed with specified Vitalcoin addresses</translation>
     </message>
     <message>
         <location line="+58"/>
@@ -550,10 +550,10 @@
     </message>
     <message numerus="yes">
         <location line="+356"/>
-        <source>%n active connection(s) to VitalCoin network</source>
+        <source>%n active connection(s) to Vitalcoin network</source>
         <translation>
-            <numerusform>%n active connection to VitalCoin network</numerusform>
-            <numerusform>%n active connections to VitalCoin network</numerusform>
+            <numerusform>%n active connection to Vitalcoin network</numerusform>
+            <numerusform>%n active connections to Vitalcoin network</numerusform>
         </translation>
     </message>
     <message>
@@ -611,7 +611,7 @@
     </message>
     <message>
         <location line="-440"/>
-        <source>Show the %1 help message to get a list with possible VitalCoin command-line options</source>
+        <source>Show the %1 help message to get a list with possible Vitalcoin command-line options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -691,7 +691,7 @@
     </message>
     <message>
         <location filename="../vitalcoin.cpp" line="+534"/>
-        <source>A fatal error occurred. VitalCoin can no longer continue safely and will quit.</source>
+        <source>A fatal error occurred. Vitalcoin can no longer continue safely and will quit.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -934,7 +934,7 @@
     </message>
     <message>
         <location line="+71"/>
-        <source>The entered address &quot;%1&quot; is not a valid VitalCoin address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid Vitalcoin address.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1094,8 +1094,8 @@
     </message>
     <message>
         <location filename="../intro.cpp" line="+20"/>
-        <source>VitalCoin</source>
-        <translation type="unfinished">VitalCoin</translation>
+        <source>Vitalcoin</source>
+        <translation type="unfinished">Vitalcoin</translation>
     </message>
     <message>
         <location line="+6"/>
@@ -1109,7 +1109,7 @@
     </message>
     <message>
         <location line="+8"/>
-        <source>%1 will download and store a copy of the VitalCoin block chain.</source>
+        <source>%1 will download and store a copy of the Vitalcoin block chain.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1376,8 +1376,8 @@
     </message>
     <message>
         <location line="+30"/>
-        <source>Automatically open the VitalCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Automatically open the VitalCoin client port on the router. This only works when your router supports UPnP and it is enabled.</translation>
+        <source>Automatically open the Vitalcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Automatically open the Vitalcoin client port on the router. This only works when your router supports UPnP and it is enabled.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1386,7 +1386,7 @@
     </message>
     <message>
         <location line="+17"/>
-        <source>Connect to the VitalCoin network through a SOCKS5 proxy.</source>
+        <source>Connect to the Vitalcoin network through a SOCKS5 proxy.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1434,7 +1434,7 @@
     </message>
     <message>
         <location line="+25"/>
-        <source>Connect to the VitalCoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <source>Connect to the Vitalcoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1579,8 +1579,8 @@
     <message>
         <location line="+62"/>
         <location line="+386"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the VitalCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>The displayed information may be out of date. Your wallet automatically synchronizes with the VitalCoin network after a connection is established, but this process has not completed yet.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Vitalcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>The displayed information may be out of date. Your wallet automatically synchronizes with the Vitalcoin network after a connection is established, but this process has not completed yet.</translation>
     </message>
     <message>
         <location line="-139"/>
@@ -1699,7 +1699,7 @@
     </message>
     <message>
         <location line="+8"/>
-        <source>URI cannot be parsed! This can be caused by an invalid VitalCoin address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Vitalcoin address or malformed URI parameters.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1821,7 +1821,7 @@
     </message>
     <message>
         <location filename="../guiutil.cpp" line="+130"/>
-        <source>Enter a VitalCoin address (e.g. %1)</source>
+        <source>Enter a Vitalcoin address (e.g. %1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2407,7 +2407,7 @@
     <message>
         <location line="+14"/>
         <location line="+23"/>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the VitalCoin network.</source>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Vitalcoin network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2921,7 +2921,7 @@
     </message>
     <message>
         <location line="+101"/>
-        <source>Warning: Invalid VitalCoin address</source>
+        <source>Warning: Invalid Vitalcoin address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2976,7 +2976,7 @@
     </message>
     <message>
         <location line="+39"/>
-        <source>The VitalCoin address to send the payment to</source>
+        <source>The Vitalcoin address to send the payment to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3033,7 +3033,7 @@
     </message>
     <message>
         <location line="+47"/>
-        <source>A message that was attached to the vitalcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the VitalCoin network.</source>
+        <source>A message that was attached to the vitalcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Vitalcoin network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3095,7 +3095,7 @@
     </message>
     <message>
         <location line="+18"/>
-        <source>The VitalCoin address to sign the message with</source>
+        <source>The Vitalcoin address to sign the message with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3137,8 +3137,8 @@
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this VitalCoin address</source>
-        <translation>Sign the message to prove you own this VitalCoin address</translation>
+        <source>Sign the message to prove you own this Vitalcoin address</source>
+        <translation>Sign the message to prove you own this Vitalcoin address</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -3168,13 +3168,13 @@
     </message>
     <message>
         <location line="+21"/>
-        <source>The VitalCoin address the message was signed with</source>
+        <source>The Vitalcoin address the message was signed with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+37"/>
-        <source>Verify the message to ensure it was signed with the specified VitalCoin address</source>
-        <translation>Verify the message to ensure it was signed with the specified VitalCoin address</translation>
+        <source>Verify the message to ensure it was signed with the specified Vitalcoin address</source>
+        <translation>Verify the message to ensure it was signed with the specified Vitalcoin address</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -4066,8 +4066,8 @@
     </message>
     <message>
         <location line="-384"/>
-        <source>VitalCoin Core</source>
-        <translation type="unfinished">VitalCoin Core</translation>
+        <source>Vitalcoin Core</source>
+        <translation type="unfinished">Vitalcoin Core</translation>
     </message>
     <message>
         <location line="+1"/>

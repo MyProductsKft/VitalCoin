@@ -3,10 +3,10 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test vitalcoin-cli"""
-from test_framework.test_framework import VitalCoinTestFramework
+from test_framework.test_framework import VitalcoinTestFramework
 from test_framework.util import assert_equal
 
-class TestVitalCoinCli(VitalCoinTestFramework):
+class TestVitalcoinCli(VitalcoinTestFramework):
 
     def set_test_params(self):
         self.setup_clean_chain = True
@@ -22,4 +22,4 @@ class TestVitalCoinCli(VitalCoinTestFramework):
         assert_equal(cli_get_info, rpc_get_info)
 
 if __name__ == '__main__':
-    TestVitalCoinCli().main()
+    TestVitalcoinCli().main()

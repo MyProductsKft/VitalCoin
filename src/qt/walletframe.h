@@ -8,7 +8,7 @@
 #include <QFrame>
 #include <QMap>
 
-class VitalCoinGUI;
+class VitalcoinGUI;
 class ClientModel;
 class PlatformStyle;
 class SendCoinsRecipient;
@@ -21,9 +21,9 @@ QT_END_NAMESPACE
 
 /**
  * A container for embedding all wallet-related
- * controls into VitalCoinGUI. The purpose of this class is to allow future
+ * controls into VitalcoinGUI. The purpose of this class is to allow future
  * refinements of the wallet controls with minimal need for further
- * modifications to VitalCoinGUI, thus greatly simplifying merges while
+ * modifications to VitalcoinGUI, thus greatly simplifying merges while
  * reducing the risk of breaking top-level stuff.
  */
 class WalletFrame : public QFrame {
@@ -31,7 +31,7 @@ class WalletFrame : public QFrame {
 
 public:
   explicit WalletFrame(const PlatformStyle *platformStyle,
-                       VitalCoinGUI *_gui = 0);
+                       VitalcoinGUI *_gui = 0);
   ~WalletFrame();
 
   void setClientModel(ClientModel *clientModel);
@@ -52,7 +52,7 @@ Q_SIGNALS:
 
 private:
   QStackedWidget *walletStack;
-  VitalCoinGUI *gui;
+  VitalcoinGUI *gui;
   ClientModel *clientModel;
   QMap<QString, WalletView *> mapWalletViews;
 

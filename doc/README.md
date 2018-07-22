@@ -1,15 +1,15 @@
-VitalCoin Core
+Vitalcoin Core
 =============
 
 Setup
 ---------------------
-VitalCoin Core is the original VitalCoin client and it builds the backbone of the network. It downloads and, by default, stores the entire history of VitalCoin transactions (which is currently more than 100 GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
+Vitalcoin Core is the original Vitalcoin client and it builds the backbone of the network. It downloads and, by default, stores the entire history of Vitalcoin transactions (which is currently more than 100 GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
 
-To download VitalCoin Core, visit [vitalcoincore.org](https://vitalcoincore.org/en/releases/).
+To download Vitalcoin Core, visit [vitalcoincore.org](https://vitalcoincore.org/en/releases/).
 
 Running
 ---------------------
-The following are some helpful notes on how to run VitalCoin on your native platform.
+The following are some helpful notes on how to run Vitalcoin on your native platform.
 
 ### Unix
 
@@ -24,18 +24,18 @@ Unpack the files into a directory, and then run vitalcoin-qt.exe.
 
 ### OS X
 
-Drag VitalCoin-Core to your applications folder, and then run VitalCoin-Core.
+Drag Vitalcoin-Core to your applications folder, and then run Vitalcoin-Core.
 
 ### Need Help?
 
-* See the documentation at the [VitalCoin Wiki](https://en.vitalcoin.it/wiki/Main_Page)
+* See the documentation at the [Vitalcoin Wiki](https://en.vitalcoin.it/wiki/Main_Page)
 for help and more information.
 * Ask for help on [#vitalcoin](http://webchat.freenode.net?channels=vitalcoin) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=vitalcoin).
-* Ask for help on the [VitalCoinTalk](https://vitalcointalk.org/) forums, in the [Technical Support board](https://vitalcointalk.org/index.php?board=4.0).
+* Ask for help on the [VitalcoinTalk](https://vitalcointalk.org/) forums, in the [Technical Support board](https://vitalcointalk.org/index.php?board=4.0).
 
 Building
 ---------------------
-The following are developer notes on how to build VitalCoin on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build Vitalcoin on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [OS X Build Notes](build-osx.md)
 - [Unix Build Notes](build-unix.md)
@@ -45,7 +45,7 @@ The following are developer notes on how to build VitalCoin on your native platf
 
 Development
 ---------------------
-The VitalCoin repo's [root README](/README.md) contains relevant information on the development process and automated testing.
+The Vitalcoin repo's [root README](/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Release Notes](release-notes.md)
@@ -61,9 +61,9 @@ The VitalCoin repo's [root README](/README.md) contains relevant information on 
 - [Benchmarking](benchmarking.md)
 
 ### Resources
-* Discuss on the [VitalCoinTalk](https://vitalcointalk.org/) forums, in the [Development & Technical Discussion board](https://vitalcointalk.org/index.php?board=6.0).
+* Discuss on the [VitalcoinTalk](https://vitalcointalk.org/) forums, in the [Development & Technical Discussion board](https://vitalcointalk.org/index.php?board=6.0).
 * Discuss project-specific development on #vitalcoin-core-dev on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=vitalcoin-core-dev).
-* Discuss general VitalCoin development on #vitalcoin-dev on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=vitalcoin-dev).
+* Discuss general Vitalcoin development on #vitalcoin-dev on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net/?channels=vitalcoin-dev).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)

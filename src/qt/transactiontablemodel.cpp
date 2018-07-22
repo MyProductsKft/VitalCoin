@@ -231,7 +231,7 @@ TransactionTableModel::TransactionTableModel(
       priv(new TransactionTablePriv(_wallet, this)),
       fProcessingQueuedTransactions(false), platformStyle(_platformStyle) {
   columns << QString() << QString() << tr("Date") << tr("Type") << tr("Label")
-          << VitalCoinUnits::getAmountColumnTitle(
+          << VitalcoinUnits::getAmountColumnTitle(
                  walletModel->getOptionsModel()->getDisplayUnit());
   priv->refreshWallet();
 
@@ -249,7 +249,7 @@ TransactionTableModel::~TransactionTableModel() {
 /** Updates the column title to "Amount (DisplayUnit)" and emits
  * headerDataChanged() signal for table headers to react. */
 void TransactionTableModel::updateAmountColumnTitle() {
-  columns[Amount] = VitalCoinUnits::getAmountColumnTitle(
+  columns[Amount] = VitalcoinUnits::getAmountColumnTitle(
       walletModel->getOptionsModel()->getDisplayUnit());
   Q_EMIT headerDataChanged(Qt::Horizontal, Amount, Amount);
 }
@@ -439,9 +439,9 @@ TransactionTableModel::addressColor(const TransactionRecord *wtx) const {
 
 QString TransactionTableModel::formatTxAmount(
     const TransactionRecord *wtx, bool showUnconfirmed,
-    VitalCoinUnits::SeparatorStyle separators) const {
+    VitalcoinUnits::SeparatorStyle separators) const {
   QString str =
-      VitalCoinUnits::format(walletModel->getOptionsModel()->getDisplayUnit(),
+      VitalcoinUnits::format(walletModel->getOptionsModel()->getDisplayUnit(),
                              wtx->credit + wtx->debit, false, separators);
   if (showUnconfirmed) {
     if (!wtx->status.countsForBalance) {
@@ -543,7 +543,7 @@ QVariant TransactionTableModel::data(const QModelIndex &index, int role) const {
     case ToAddress:
       return formatTxToAddress(rec, false);
     case Amount:
-      return formatTxAmount(rec, true, VitalCoinUnits::separatorAlways);
+      return formatTxAmount(rec, true, VitalcoinUnits::separatorAlways);
     }
     break;
   case Qt::EditRole:
@@ -633,14 +633,14 @@ QVariant TransactionTableModel::data(const QModelIndex &index, int role) const {
       details.append(QString::fromStdString(rec->address));
       details.append(" ");
     }
-    details.append(formatTxAmount(rec, false, VitalCoinUnits::separatorNever));
+    details.append(formatTxAmount(rec, false, VitalcoinUnits::separatorNever));
     return details;
   }
   case ConfirmedRole:
     return rec->status.countsForBalance;
   case FormattedAmountRole:
     // Used for copy/export, so don't include separators
-    return formatTxAmount(rec, false, VitalCoinUnits::separatorNever);
+    return formatTxAmount(rec, false, VitalcoinUnits::separatorNever);
   case StatusRole:
     return rec->status.status;
   }

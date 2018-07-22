@@ -43,7 +43,7 @@ TEST_EXIT_PASSED = 0
 TEST_EXIT_FAILED = 1
 TEST_EXIT_SKIPPED = 77
 
-class VitalCoinTestFramework(object):
+class VitalcoinTestFramework(object):
     """Base class for a vitalcoin test script.
 
     Individual vitalcoin test scripts should subclass this class and override the set_test_params() and run_test() methods.
@@ -362,7 +362,7 @@ class VitalCoinTestFramework(object):
         self.log.addHandler(ch)
 
         if self.options.trace_rpc:
-            rpc_logger = logging.getLogger("VitalCoinRPC")
+            rpc_logger = logging.getLogger("VitalcoinRPC")
             rpc_logger.setLevel(logging.DEBUG)
             rpc_handler = logging.StreamHandler(sys.stdout)
             rpc_handler.setLevel(logging.DEBUG)
@@ -445,7 +445,7 @@ class VitalCoinTestFramework(object):
         for i in range(self.num_nodes):
             initialize_datadir(self.options.tmpdir, i)
 
-class ComparisonTestFramework(VitalCoinTestFramework):
+class ComparisonTestFramework(VitalcoinTestFramework):
     """Test framework for doing p2p comparison testing
 
     Sets up some vitalcoind binaries:

@@ -1,4 +1,4 @@
-VitalCoin Core version *0.15.1* is now available from:
+Vitalcoin Core version *0.15.1* is now available from:
 
   <https://vitalcoincore.org/bin/vitalcoin-core-0.15.x/>
 
@@ -22,7 +22,7 @@ How to Upgrade
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the 
-installer (on Windows) or just copy over `/Applications/VitalCoin-Qt` (on Mac)
+installer (on Windows) or just copy over `/Applications/Vitalcoin-Qt` (on Mac)
 or `vitalcoind`/`vitalcoin-qt` (on Linux).
 
 The first time you run version 0.15.0 or higher, your chainstate database will
@@ -52,10 +52,10 @@ processing the entire blockchain.
 Compatibility
 ==============
 
-VitalCoin Core is extensively tested on multiple operating systems using
+Vitalcoin Core is extensively tested on multiple operating systems using
 the Linux kernel, macOS 10.8+, and Windows Vista and later. Windows XP is not supported.
 
-VitalCoin Core should also work on most other Unix-like systems but is not
+Vitalcoin Core should also work on most other Unix-like systems but is not
 frequently tested on them.
 
 

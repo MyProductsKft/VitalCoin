@@ -1,27 +1,27 @@
-VitalCoin Core integration/staging tree
+Vitalcoin Core integration/staging tree
 =====================================
 
 [![Build Status](https://travis-ci.org/vitalcoin/vitalcoin.svg?branch=master)](https://travis-ci.org/vitalcoin/vitalcoin)
 
 https://vitalcoincore.org
 
-What is VitalCoin?
+What is Vitalcoin?
 ----------------
 
-VitalCoin is an experimental digital currency that enables instant payments to
-anyone, anywhere in the world. VitalCoin uses peer-to-peer technology to operate
+Vitalcoin is an experimental digital currency that enables instant payments to
+anyone, anywhere in the world. Vitalcoin uses peer-to-peer technology to operate
 with no central authority: managing transactions and issuing money are carried
-out collectively by the network. VitalCoin Core is the name of open source
+out collectively by the network. Vitalcoin Core is the name of open source
 software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the VitalCoin Core software, see https://vitalcoin.org/en/download, or read the
+the Vitalcoin Core software, see https://vitalcoin.org/en/download, or read the
 [original whitepaper](https://vitalcoincore.org/vitalcoin.pdf).
 
 License
 -------
 
-VitalCoin Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+Vitalcoin Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
 
 Development Process
@@ -29,7 +29,7 @@ Development Process
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
 completely stable. [Tags](https://github.com/vitalcoin/vitalcoin/tags) are created
-regularly to indicate new official, stable release versions of VitalCoin Core.
+regularly to indicate new official, stable release versions of Vitalcoin Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -71,7 +71,7 @@ Translations
 ------------
 
 Changes to translations as well as new translations can be submitted to
-[VitalCoin Core's Transifex page](https://www.transifex.com/projects/p/vitalcoin/).
+[Vitalcoin Core's Transifex page](https://www.transifex.com/projects/p/vitalcoin/).
 
 Translations are periodically pulled from Transifex and merged into the git repository. See the
 [translation process](doc/translation_process.md) for details on how this works.

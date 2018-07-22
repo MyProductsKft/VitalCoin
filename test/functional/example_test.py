@@ -24,7 +24,7 @@ from test_framework.mininode import (
     msg_block,
     msg_getdata,
 )
-from test_framework.test_framework import VitalCoinTestFramework
+from test_framework.test_framework import VitalcoinTestFramework
 from test_framework.util import (
     assert_equal,
     connect_nodes,
@@ -67,11 +67,11 @@ def custom_function():
 
     If this function is more generally useful for other tests, consider
     moving it to a module in test_framework."""
-    # self.log.info("running custom_function")  # Oops! Can't run self.log outside the VitalCoinTestFramework
+    # self.log.info("running custom_function")  # Oops! Can't run self.log outside the VitalcoinTestFramework
     pass
 
-class ExampleTest(VitalCoinTestFramework):
-    # Each functional test is a subclass of the VitalCoinTestFramework class.
+class ExampleTest(VitalcoinTestFramework):
+    # Each functional test is a subclass of the VitalcoinTestFramework class.
 
     # Override the set_test_params(), add_options(), setup_chain(), setup_network()
     # and setup_nodes() methods to customize the test setup as required.
@@ -126,7 +126,7 @@ class ExampleTest(VitalCoinTestFramework):
 
         Define it in a method here because you're going to use it repeatedly.
         If you think it's useful in general, consider moving it to the base
-        VitalCoinTestFramework class so other tests can use it."""
+        VitalcoinTestFramework class so other tests can use it."""
 
         self.log.info("Running custom_method")
 

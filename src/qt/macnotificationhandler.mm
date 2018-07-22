@@ -13,7 +13,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"org.vitalcoinfoundation.VitalCoin-Qt";
+        return @"org.vitalcoinfoundation.Vitalcoin-Qt";
     } else {
         return [self __bundleIdentifier];
     }

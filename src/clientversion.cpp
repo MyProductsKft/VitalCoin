@@ -13,7 +13,7 @@
  * for both vitalcoind and vitalcoin-core, to make it harder for attackers to
  * target servers or GUI users specifically.
  */
-const std::string CLIENT_NAME("VitalCoin");
+const std::string CLIENT_NAME("Vitalcoin");
 
 /**
  * Client version number

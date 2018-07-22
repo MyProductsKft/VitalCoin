@@ -13,7 +13,7 @@
 #include <QLabel>
 
 WalletFrame::WalletFrame(const PlatformStyle *_platformStyle,
-                         VitalCoinGUI *_gui)
+                         VitalcoinGUI *_gui)
     : QFrame(_gui), gui(_gui), platformStyle(_platformStyle) {
   // Leave HBox hook for adding a list view later
   QHBoxLayout *walletFrameLayout = new QHBoxLayout(this);
@@ -38,7 +38,7 @@ bool WalletFrame::addWallet(const QString &name, WalletModel *walletModel) {
     return false;
 
   WalletView *walletView = new WalletView(platformStyle, this);
-  walletView->setVitalCoinGUI(gui);
+  walletView->setVitalcoinGUI(gui);
   walletView->setClientModel(clientModel);
   walletView->setWalletModel(walletModel);
   walletView->showOutOfSyncWarning(bOutOfSync);

@@ -1,6 +1,6 @@
 ### TestGen ###
 
-Utilities to generate test vectors for the data-driven VitalCoin tests.
+Utilities to generate test vectors for the data-driven Vitalcoin tests.
 
 Usage: 
 

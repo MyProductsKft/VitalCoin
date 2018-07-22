@@ -3,7 +3,7 @@ Shared Libraries
 
 ## vitalcoinconsensus
 
-The purpose of this library is to make the verification functionality that is critical to VitalCoin's consensus available to other applications, e.g. to language bindings.
+The purpose of this library is to make the verification functionality that is critical to Vitalcoin's consensus available to other applications, e.g. to language bindings.
 
 ### API
 
@@ -43,7 +43,7 @@ The interface is defined in the C header `vitalcoinconsensus.h` located in  `src
 - `vitalcoinconsensus_ERR_AMOUNT_REQUIRED` - Input amount is required if WITNESS is used
 
 ### Example Implementations
-- [NVitalCoin](https://github.com/NicolasDorier/NVitalCoin/blob/master/NVitalCoin/Script.cs#L814) (.NET Bindings)
+- [NVitalcoin](https://github.com/NicolasDorier/NVitalcoin/blob/master/NVitalcoin/Script.cs#L814) (.NET Bindings)
 - [node-libvitalcoinconsensus](https://github.com/bitpay/node-libvitalcoinconsensus) (Node.js Bindings)
 - [java-libvitalcoinconsensus](https://github.com/dexX7/java-libvitalcoinconsensus) (Java Bindings)
 - [vitalcoinconsensus-php](https://github.com/Bit-Wasp/vitalcoinconsensus-php) (PHP Bindings)

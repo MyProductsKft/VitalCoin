@@ -1,10 +1,10 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=VitalCoin Core
-Comment=Connect to the VitalCoin P2P Network
-Comment[de]=Verbinde mit dem VitalCoin peer-to-peer Netzwerk
-Comment[fr]=VitalCoin, monnaie virtuelle cryptographique pair à pair
-Comment[tr]=VitalCoin, eşten eşe kriptografik sanal para birimi
+Name=Vitalcoin Core
+Comment=Connect to the Vitalcoin P2P Network
+Comment[de]=Verbinde mit dem Vitalcoin peer-to-peer Netzwerk
+Comment[fr]=Vitalcoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Vitalcoin, eşten eşe kriptografik sanal para birimi
 Exec=vitalcoin-qt %u
 Terminal=false
 Type=Application

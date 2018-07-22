@@ -11,7 +11,7 @@ static const int MODEL_UPDATE_DELAY = 250;
 /* AskPassphraseDialog -- Maximum passphrase length */
 static const int MAX_PASSPHRASE_SIZE = 1024;
 
-/* VitalCoinGUI -- Size of icons in status bar */
+/* VitalcoinGUI -- Size of icons in status bar */
 static const int STATUSBAR_ICONSIZE = 16;
 
 static const bool DEFAULT_SPLASHSCREEN = true;
@@ -48,9 +48,9 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 36
 
-#define QAPP_ORG_NAME "VitalCoin"
+#define QAPP_ORG_NAME "Vitalcoin"
 #define QAPP_ORG_DOMAIN "vitalcoin.org"
-#define QAPP_APP_NAME_DEFAULT "VitalCoin-Qt"
-#define QAPP_APP_NAME_TESTNET "VitalCoin-Qt-testnet"
+#define QAPP_APP_NAME_DEFAULT "Vitalcoin-Qt"
+#define QAPP_APP_NAME_TESTNET "Vitalcoin-Qt-testnet"
 
 #endif // VITALCOIN_QT_GUICONSTANTS_H

@@ -1,7 +1,7 @@
-VitalCoin version 0.7.0 is now available for download at:
-  http://sourceforge.net/projects/vitalcoin/files/VitalCoin/vitalcoin-0.7.0/
+Vitalcoin version 0.7.0 is now available for download at:
+  http://sourceforge.net/projects/vitalcoin/files/Vitalcoin/vitalcoin-0.7.0/
 
-We recommend that everybody running prior versions of vitalcoind/VitalCoin-Qt
+We recommend that everybody running prior versions of vitalcoind/Vitalcoin-Qt
 upgrade to this release, except for users running Mac OSX 10.5.
 
 Please report bugs using the issue tracker at github:
@@ -27,7 +27,7 @@ If you are running an older version, shut it down. Wait
 until it has completely shut down (which might take a few minutes for older
 versions), then run the installer (on Windows) or just copy over
 Code:
-/Applications/VitalCoin-Qt
+/Applications/Vitalcoin-Qt
 (on Mac) or
 Code:
 vitalcoind/vitalcoin-qt
@@ -45,7 +45,7 @@ Incompatible Changes
   and 'getrawmempool' commands.
 * Remove deprecated RPC 'getblocknumber'
 
-VitalCoin Improvement Proposals implemented
+Vitalcoin Improvement Proposals implemented
 
 BIP 22 - 'getblocktemplate', 'submitblock' RPCs
 BIP 34 - block version 2, height in coinbase

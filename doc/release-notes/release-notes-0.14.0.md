@@ -1,4 +1,4 @@
-VitalCoin Core version 0.14.0 is now available from:
+Vitalcoin Core version 0.14.0 is now available from:
 
   <https://vitalcoin.org/bin/vitalcoin-core-0.14.0/>
 
@@ -16,7 +16,7 @@ To receive security and update notifications, please subscribe to:
 Compatibility
 ==============
 
-VitalCoin Core is extensively tested on multiple operating systems using
+Vitalcoin Core is extensively tested on multiple operating systems using
 the Linux kernel, macOS 10.8+, and Windows Vista and later.
 
 Microsoft ended support for Windows XP on [April 8th, 2014](https://www.microsoft.com/en-us/WindowsForBusiness/end-of-xp-support),
@@ -24,7 +24,7 @@ No attempt is made to prevent installing or running the software on Windows XP, 
 can still do so at your own risk but be aware that there are known instabilities and issues.
 Please do not report issues about Windows XP to the issue tracker.
 
-VitalCoin Core should also work on most other Unix-like systems but is not
+Vitalcoin Core should also work on most other Unix-like systems but is not
 frequently tested on them.
 
 Notable changes
@@ -55,7 +55,7 @@ improved, leading to much shorter sync and initial block download times.
 Manual Pruning
 --------------
 
-VitalCoin Core has supported automatically pruning the blockchain since 0.11. Pruning
+Vitalcoin Core has supported automatically pruning the blockchain since 0.11. Pruning
 the blockchain allows for significant storage space savings as the vast majority of
 the downloaded data can be discarded after processing so very little of it remains
 on the disk.
@@ -129,7 +129,7 @@ the same thing as the GUI icon. The command takes one boolean parameter,
 Out-of-sync Modal Info Layer
 ----------------------------
 
-When VitalCoin Core is out-of-sync on startup, a semi-transparent information
+When Vitalcoin Core is out-of-sync on startup, a semi-transparent information
 layer will be shown over top of the normal display. This layer contains
 details about the current sync progress and estimates the amount of time
 remaining to finish syncing. This layer can also be hidden and subsequently
@@ -189,7 +189,7 @@ commands such as `prioritisetransaction` so that those changes will not be lost.
 Final Alert
 -----------
 
-The Alert System was [disabled and deprecated](https://vitalcoin.org/en/alert/2016-11-01-alert-retirement) in VitalCoin Core 0.12.1 and removed in 0.13.0. 
+The Alert System was [disabled and deprecated](https://vitalcoin.org/en/alert/2016-11-01-alert-retirement) in Vitalcoin Core 0.12.1 and removed in 0.13.0. 
 The Alert System was retired with a maximum sequence final alert which causes any nodes
 supporting the Alert System to display a static hard-coded "Alert Key Compromised" message which also
 prevents any other alerts from overriding it. This final alert is hard-coded into this release
@@ -241,7 +241,7 @@ Low-level RPC changes
    the mempool or if `txindex` is enabled.
 
  - A new RPC command `getmemoryinfo` has been added which will return information
-   about the memory usage of VitalCoin Core. This was added in conjunction with
+   about the memory usage of Vitalcoin Core. This was added in conjunction with
    optimizations to memory management. See [Pull #8753](https://github.com/vitalcoin/vitalcoin/pull/8753)
    for more information.
 

@@ -64,7 +64,7 @@
 #include <QUrlQuery>
 #endif
 
-const std::string VitalCoinGUI::DEFAULT_UIPLATFORM =
+const std::string VitalcoinGUI::DEFAULT_UIPLATFORM =
 #if defined(Q_OS_MAC)
     "macosx"
 #elif defined(Q_OS_WIN)
@@ -76,9 +76,9 @@ const std::string VitalCoinGUI::DEFAULT_UIPLATFORM =
 
 /** Display name for default wallet name. Uses tilde to avoid name
  * collisions in the future with additional wallets */
-const QString VitalCoinGUI::DEFAULT_WALLET = "~Default";
+const QString VitalcoinGUI::DEFAULT_WALLET = "~Default";
 
-VitalCoinGUI::VitalCoinGUI(const PlatformStyle *_platformStyle,
+VitalcoinGUI::VitalcoinGUI(const PlatformStyle *_platformStyle,
                            const NetworkStyle *networkStyle, QWidget *parent)
     : QMainWindow(parent), enableWallet(false), clientModel(0), walletFrame(0),
       unitDisplayControl(0), labelWalletEncryptionIcon(0),
@@ -239,7 +239,7 @@ VitalCoinGUI::VitalCoinGUI(const PlatformStyle *_platformStyle,
 #endif
 }
 
-VitalCoinGUI::~VitalCoinGUI() {
+VitalcoinGUI::~VitalcoinGUI() {
   // Unsubscribe from notifications from core
   unsubscribeFromCoreSignals();
 
@@ -256,7 +256,7 @@ VitalCoinGUI::~VitalCoinGUI() {
   delete rpcConsole;
 }
 
-void VitalCoinGUI::createActions() {
+void VitalcoinGUI::createActions() {
   QActionGroup *tabGroup = new QActionGroup(this);
 
   overviewAction =
@@ -270,7 +270,7 @@ void VitalCoinGUI::createActions() {
 
   sendCoinsAction = new QAction(platformStyle->SingleColorIcon(":/icons/send"),
                                 tr("&Send"), this);
-  sendCoinsAction->setStatusTip(tr("Send coins to a VitalCoin address"));
+  sendCoinsAction->setStatusTip(tr("Send coins to a Vitalcoin address"));
   sendCoinsAction->setToolTip(sendCoinsAction->statusTip());
   sendCoinsAction->setCheckable(true);
   sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
@@ -376,12 +376,12 @@ void VitalCoinGUI::createActions() {
   signMessageAction = new QAction(platformStyle->TextColorIcon(":/icons/edit"),
                                   tr("Sign &message..."), this);
   signMessageAction->setStatusTip(
-      tr("Sign messages with your VitalCoin addresses to prove you own them"));
+      tr("Sign messages with your Vitalcoin addresses to prove you own them"));
   verifyMessageAction =
       new QAction(platformStyle->TextColorIcon(":/icons/verify"),
                   tr("&Verify message..."), this);
   verifyMessageAction->setStatusTip(
-      tr("Verify messages to ensure they were signed with specified VitalCoin "
+      tr("Verify messages to ensure they were signed with specified Vitalcoin "
          "addresses"));
 
   openRPCConsoleAction =
@@ -412,7 +412,7 @@ void VitalCoinGUI::createActions() {
                   tr("&Command-line options"), this);
   showHelpMessageAction->setMenuRole(QAction::NoRole);
   showHelpMessageAction->setStatusTip(
-      tr("Show the %1 help message to get a list with possible VitalCoin "
+      tr("Show the %1 help message to get a list with possible Vitalcoin "
          "command-line options")
           .arg(tr(PACKAGE_NAME)));
 
@@ -455,7 +455,7 @@ void VitalCoinGUI::createActions() {
                 SLOT(showDebugWindow()));
 }
 
-void VitalCoinGUI::createMenuBar() {
+void VitalcoinGUI::createMenuBar() {
 #ifdef Q_OS_MAC
   // Create a decoupled menu bar on Mac which stays even if the window is closed
   appMenuBar = new QMenuBar();
@@ -496,7 +496,7 @@ void VitalCoinGUI::createMenuBar() {
   help->addAction(aboutQtAction);
 }
 
-void VitalCoinGUI::createToolBars() {
+void VitalcoinGUI::createToolBars() {
   if (walletFrame) {
     QToolBar *toolbar = addToolBar(tr("Tabs toolbar"));
     toolbar->setMovable(false);
@@ -509,7 +509,7 @@ void VitalCoinGUI::createToolBars() {
   }
 }
 
-void VitalCoinGUI::setClientModel(ClientModel *_clientModel) {
+void VitalcoinGUI::setClientModel(ClientModel *_clientModel) {
   this->clientModel = _clientModel;
   if (_clientModel) {
     // Create system tray menu (or setup the dock menu) that late to prevent
@@ -579,20 +579,20 @@ void VitalCoinGUI::setClientModel(ClientModel *_clientModel) {
 }
 
 #ifdef ENABLE_WALLET
-bool VitalCoinGUI::addWallet(const QString &name, WalletModel *walletModel) {
+bool VitalcoinGUI::addWallet(const QString &name, WalletModel *walletModel) {
   if (!walletFrame)
     return false;
   setWalletActionsEnabled(true);
   return walletFrame->addWallet(name, walletModel);
 }
 
-bool VitalCoinGUI::setCurrentWallet(const QString &name) {
+bool VitalcoinGUI::setCurrentWallet(const QString &name) {
   if (!walletFrame)
     return false;
   return walletFrame->setCurrentWallet(name);
 }
 
-void VitalCoinGUI::removeAllWallets() {
+void VitalcoinGUI::removeAllWallets() {
   if (!walletFrame)
     return;
   setWalletActionsEnabled(false);
@@ -600,7 +600,7 @@ void VitalCoinGUI::removeAllWallets() {
 }
 #endif // ENABLE_WALLET
 
-void VitalCoinGUI::setWalletActionsEnabled(bool enabled) {
+void VitalcoinGUI::setWalletActionsEnabled(bool enabled) {
   overviewAction->setEnabled(enabled);
   sendCoinsAction->setEnabled(enabled);
   sendCoinsMenuAction->setEnabled(enabled);
@@ -617,7 +617,7 @@ void VitalCoinGUI::setWalletActionsEnabled(bool enabled) {
   openAction->setEnabled(enabled);
 }
 
-void VitalCoinGUI::createTrayIcon(const NetworkStyle *networkStyle) {
+void VitalcoinGUI::createTrayIcon(const NetworkStyle *networkStyle) {
 #ifndef Q_OS_MAC
   trayIcon = new QSystemTrayIcon(this);
   QString toolTip = tr("%1 client").arg(tr(PACKAGE_NAME)) + " " +
@@ -631,7 +631,7 @@ void VitalCoinGUI::createTrayIcon(const NetworkStyle *networkStyle) {
       new Notificator(QApplication::applicationName(), trayIcon, this);
 }
 
-void VitalCoinGUI::createTrayIconMenu() {
+void VitalcoinGUI::createTrayIconMenu() {
 #ifndef Q_OS_MAC
   // return if trayIcon is unset (only on non-Mac OSes)
   if (!trayIcon)
@@ -667,7 +667,7 @@ void VitalCoinGUI::createTrayIconMenu() {
 }
 
 #ifndef Q_OS_MAC
-void VitalCoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason) {
+void VitalcoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason) {
   if (reason == QSystemTrayIcon::Trigger) {
     // Click on system tray icon triggers show/hide of the main window
     toggleHidden();
@@ -675,7 +675,7 @@ void VitalCoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason) {
 }
 #endif
 
-void VitalCoinGUI::optionsClicked() {
+void VitalcoinGUI::optionsClicked() {
   if (!clientModel || !clientModel->getOptionsModel())
     return;
 
@@ -684,7 +684,7 @@ void VitalCoinGUI::optionsClicked() {
   dlg.exec();
 }
 
-void VitalCoinGUI::aboutClicked() {
+void VitalcoinGUI::aboutClicked() {
   if (!clientModel)
     return;
 
@@ -692,64 +692,64 @@ void VitalCoinGUI::aboutClicked() {
   dlg.exec();
 }
 
-void VitalCoinGUI::showDebugWindow() {
+void VitalcoinGUI::showDebugWindow() {
   rpcConsole->showNormal();
   rpcConsole->show();
   rpcConsole->raise();
   rpcConsole->activateWindow();
 }
 
-void VitalCoinGUI::showDebugWindowActivateConsole() {
+void VitalcoinGUI::showDebugWindowActivateConsole() {
   rpcConsole->setTabFocus(RPCConsole::TAB_CONSOLE);
   showDebugWindow();
 }
 
-void VitalCoinGUI::showHelpMessageClicked() { helpMessageDialog->show(); }
+void VitalcoinGUI::showHelpMessageClicked() { helpMessageDialog->show(); }
 
 #ifdef ENABLE_WALLET
-void VitalCoinGUI::openClicked() {
+void VitalcoinGUI::openClicked() {
   OpenURIDialog dlg(this);
   if (dlg.exec()) {
     Q_EMIT receivedURI(dlg.getURI());
   }
 }
 
-void VitalCoinGUI::gotoOverviewPage() {
+void VitalcoinGUI::gotoOverviewPage() {
   overviewAction->setChecked(true);
   if (walletFrame)
     walletFrame->gotoOverviewPage();
 }
 
-void VitalCoinGUI::gotoHistoryPage() {
+void VitalcoinGUI::gotoHistoryPage() {
   historyAction->setChecked(true);
   if (walletFrame)
     walletFrame->gotoHistoryPage();
 }
 
-void VitalCoinGUI::gotoReceiveCoinsPage() {
+void VitalcoinGUI::gotoReceiveCoinsPage() {
   receiveCoinsAction->setChecked(true);
   if (walletFrame)
     walletFrame->gotoReceiveCoinsPage();
 }
 
-void VitalCoinGUI::gotoSendCoinsPage(QString addr) {
+void VitalcoinGUI::gotoSendCoinsPage(QString addr) {
   sendCoinsAction->setChecked(true);
   if (walletFrame)
     walletFrame->gotoSendCoinsPage(addr);
 }
 
-void VitalCoinGUI::gotoSignMessageTab(QString addr) {
+void VitalcoinGUI::gotoSignMessageTab(QString addr) {
   if (walletFrame)
     walletFrame->gotoSignMessageTab(addr);
 }
 
-void VitalCoinGUI::gotoVerifyMessageTab(QString addr) {
+void VitalcoinGUI::gotoVerifyMessageTab(QString addr) {
   if (walletFrame)
     walletFrame->gotoVerifyMessageTab(addr);
 }
 #endif // ENABLE_WALLET
 
-void VitalCoinGUI::updateNetworkState() {
+void VitalcoinGUI::updateNetworkState() {
   int count = clientModel->getNumConnections();
   QString icon;
   switch (count) {
@@ -779,7 +779,7 @@ void VitalCoinGUI::updateNetworkState() {
   QString tooltip;
 
   if (clientModel->getNetworkActive()) {
-    tooltip = tr("%n active connection(s) to VitalCoin network", "", count) +
+    tooltip = tr("%n active connection(s) to Vitalcoin network", "", count) +
               QString(".<br>") + tr("Click to disable network activity.");
   } else {
     tooltip = tr("Network activity disabled.") + QString("<br>") +
@@ -795,13 +795,13 @@ void VitalCoinGUI::updateNetworkState() {
       STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
 }
 
-void VitalCoinGUI::setNumConnections(int count) { updateNetworkState(); }
+void VitalcoinGUI::setNumConnections(int count) { updateNetworkState(); }
 
-void VitalCoinGUI::setNetworkActive(bool networkActive) {
+void VitalcoinGUI::setNetworkActive(bool networkActive) {
   updateNetworkState();
 }
 
-void VitalCoinGUI::updateHeadersSyncProgressLabel() {
+void VitalcoinGUI::updateHeadersSyncProgressLabel() {
   int64_t headersTipTime = clientModel->getHeaderTipTime();
   int headersTipHeight = clientModel->getHeaderTipHeight();
   int estHeadersLeft =
@@ -814,7 +814,7 @@ void VitalCoinGUI::updateHeadersSyncProgressLabel() {
                                  'f', 1)));
 }
 
-void VitalCoinGUI::setNumBlocks(int count, const QDateTime &blockDate,
+void VitalcoinGUI::setNumBlocks(int count, const QDateTime &blockDate,
                                 double nVerificationProgress, bool header) {
   if (modalOverlay) {
     if (header)
@@ -923,9 +923,9 @@ void VitalCoinGUI::setNumBlocks(int count, const QDateTime &blockDate,
   progressBar->setToolTip(tooltip);
 }
 
-void VitalCoinGUI::message(const QString &title, const QString &message,
+void VitalcoinGUI::message(const QString &title, const QString &message,
                            unsigned int style, bool *ret) {
-  QString strTitle = tr("VitalCoin"); // default title
+  QString strTitle = tr("Vitalcoin"); // default title
   // Default to information icon
   int nMBoxIcon = QMessageBox::Information;
   int nNotifyIcon = Notificator::Information;
@@ -950,7 +950,7 @@ void VitalCoinGUI::message(const QString &title, const QString &message,
       break;
     }
   }
-  // Append title to "VitalCoin - "
+  // Append title to "Vitalcoin - "
   if (!msgType.isEmpty())
     strTitle += " - " + msgType;
 
@@ -981,7 +981,7 @@ void VitalCoinGUI::message(const QString &title, const QString &message,
     notificator->notify((Notificator::Class)nNotifyIcon, strTitle, message);
 }
 
-void VitalCoinGUI::changeEvent(QEvent *e) {
+void VitalcoinGUI::changeEvent(QEvent *e) {
   QMainWindow::changeEvent(e);
 #ifndef Q_OS_MAC // Ignored on Mac
   if (e->type() == QEvent::WindowStateChange) {
@@ -998,7 +998,7 @@ void VitalCoinGUI::changeEvent(QEvent *e) {
 #endif
 }
 
-void VitalCoinGUI::closeEvent(QCloseEvent *event) {
+void VitalcoinGUI::closeEvent(QCloseEvent *event) {
 #ifndef Q_OS_MAC // Ignored on Mac
   if (clientModel && clientModel->getOptionsModel()) {
     if (!clientModel->getOptionsModel()->getMinimizeOnClose()) {
@@ -1017,7 +1017,7 @@ void VitalCoinGUI::closeEvent(QCloseEvent *event) {
 #endif
 }
 
-void VitalCoinGUI::showEvent(QShowEvent *event) {
+void VitalcoinGUI::showEvent(QShowEvent *event) {
   // enable the debug window when the main window shows up
   openRPCConsoleAction->setEnabled(true);
   aboutAction->setEnabled(true);
@@ -1025,7 +1025,7 @@ void VitalCoinGUI::showEvent(QShowEvent *event) {
 }
 
 #ifdef ENABLE_WALLET
-void VitalCoinGUI::incomingTransaction(const QString &date, int unit,
+void VitalcoinGUI::incomingTransaction(const QString &date, int unit,
                                        const CAmount &amount,
                                        const QString &type,
                                        const QString &address,
@@ -1033,7 +1033,7 @@ void VitalCoinGUI::incomingTransaction(const QString &date, int unit,
   // On new transaction, make an info balloon
   QString msg = tr("Date: %1\n").arg(date) +
                 tr("Amount: %1\n")
-                    .arg(VitalCoinUnits::formatWithUnit(unit, amount, true)) +
+                    .arg(VitalcoinUnits::formatWithUnit(unit, amount, true)) +
                 tr("Type: %1\n").arg(type);
   if (!label.isEmpty())
     msg += tr("Label: %1\n").arg(label);
@@ -1044,13 +1044,13 @@ void VitalCoinGUI::incomingTransaction(const QString &date, int unit,
 }
 #endif // ENABLE_WALLET
 
-void VitalCoinGUI::dragEnterEvent(QDragEnterEvent *event) {
+void VitalcoinGUI::dragEnterEvent(QDragEnterEvent *event) {
   // Accept only URIs
   if (event->mimeData()->hasUrls())
     event->acceptProposedAction();
 }
 
-void VitalCoinGUI::dropEvent(QDropEvent *event) {
+void VitalcoinGUI::dropEvent(QDropEvent *event) {
   if (event->mimeData()->hasUrls()) {
     for (const QUrl &uri : event->mimeData()->urls()) {
       Q_EMIT receivedURI(uri.toString());
@@ -1059,7 +1059,7 @@ void VitalCoinGUI::dropEvent(QDropEvent *event) {
   event->acceptProposedAction();
 }
 
-bool VitalCoinGUI::eventFilter(QObject *object, QEvent *event) {
+bool VitalcoinGUI::eventFilter(QObject *object, QEvent *event) {
   // Catch status tip events
   if (event->type() == QEvent::StatusTip) {
     // Prevent adding text from setStatusTip(), if we currently use the status
@@ -1071,7 +1071,7 @@ bool VitalCoinGUI::eventFilter(QObject *object, QEvent *event) {
 }
 
 #ifdef ENABLE_WALLET
-bool VitalCoinGUI::handlePaymentRequest(const SendCoinsRecipient &recipient) {
+bool VitalcoinGUI::handlePaymentRequest(const SendCoinsRecipient &recipient) {
   // URI has to be valid
   if (walletFrame && walletFrame->handlePaymentRequest(recipient)) {
     showNormalIfMinimized();
@@ -1081,7 +1081,7 @@ bool VitalCoinGUI::handlePaymentRequest(const SendCoinsRecipient &recipient) {
   return false;
 }
 
-void VitalCoinGUI::setHDStatus(int hdEnabled) {
+void VitalcoinGUI::setHDStatus(int hdEnabled) {
   labelWalletHDStatusIcon->setPixmap(
       platformStyle
           ->SingleColorIcon(hdEnabled ? ":/icons/hd_enabled"
@@ -1095,7 +1095,7 @@ void VitalCoinGUI::setHDStatus(int hdEnabled) {
   labelWalletHDStatusIcon->setEnabled(hdEnabled);
 }
 
-void VitalCoinGUI::setEncryptionStatus(int status) {
+void VitalcoinGUI::setEncryptionStatus(int status) {
   switch (status) {
   case WalletModel::Unencrypted:
     labelWalletEncryptionIcon->hide();
@@ -1131,7 +1131,7 @@ void VitalCoinGUI::setEncryptionStatus(int status) {
 }
 #endif // ENABLE_WALLET
 
-void VitalCoinGUI::showNormalIfMinimized(bool fToggleHidden) {
+void VitalcoinGUI::showNormalIfMinimized(bool fToggleHidden) {
   if (!clientModel)
     return;
 
@@ -1149,9 +1149,9 @@ void VitalCoinGUI::showNormalIfMinimized(bool fToggleHidden) {
     hide();
 }
 
-void VitalCoinGUI::toggleHidden() { showNormalIfMinimized(true); }
+void VitalcoinGUI::toggleHidden() { showNormalIfMinimized(true); }
 
-void VitalCoinGUI::detectShutdown() {
+void VitalcoinGUI::detectShutdown() {
   if (ShutdownRequested()) {
     if (rpcConsole)
       rpcConsole->hide();
@@ -1159,7 +1159,7 @@ void VitalCoinGUI::detectShutdown() {
   }
 }
 
-void VitalCoinGUI::showProgress(const QString &title, int nProgress) {
+void VitalcoinGUI::showProgress(const QString &title, int nProgress) {
   if (nProgress == 0) {
     progressDialog = new QProgressDialog(title, "", 0, 100);
     progressDialog->setWindowModality(Qt::ApplicationModal);
@@ -1176,19 +1176,19 @@ void VitalCoinGUI::showProgress(const QString &title, int nProgress) {
     progressDialog->setValue(nProgress);
 }
 
-void VitalCoinGUI::setTrayIconVisible(bool fHideTrayIcon) {
+void VitalcoinGUI::setTrayIconVisible(bool fHideTrayIcon) {
   if (trayIcon) {
     trayIcon->setVisible(!fHideTrayIcon);
   }
 }
 
-void VitalCoinGUI::showModalOverlay() {
+void VitalcoinGUI::showModalOverlay() {
   if (modalOverlay &&
       (progressBar->isVisible() || modalOverlay->isLayerVisible()))
     modalOverlay->toggleVisibility();
 }
 
-static bool ThreadSafeMessageBox(VitalCoinGUI *gui, const std::string &message,
+static bool ThreadSafeMessageBox(VitalcoinGUI *gui, const std::string &message,
                                  const std::string &caption,
                                  unsigned int style) {
   bool modal = (style & CClientUIInterface::MODAL);
@@ -1207,7 +1207,7 @@ static bool ThreadSafeMessageBox(VitalCoinGUI *gui, const std::string &message,
   return ret;
 }
 
-void VitalCoinGUI::subscribeToCoreSignals() {
+void VitalcoinGUI::subscribeToCoreSignals() {
   // Connect signals to client
   uiInterface.ThreadSafeMessageBox.connect(
       boost::bind(ThreadSafeMessageBox, this, _1, _2, _3));
@@ -1215,7 +1215,7 @@ void VitalCoinGUI::subscribeToCoreSignals() {
       boost::bind(ThreadSafeMessageBox, this, _1, _3, _4));
 }
 
-void VitalCoinGUI::unsubscribeFromCoreSignals() {
+void VitalcoinGUI::unsubscribeFromCoreSignals() {
   // Disconnect signals from client
   uiInterface.ThreadSafeMessageBox.disconnect(
       boost::bind(ThreadSafeMessageBox, this, _1, _2, _3));
@@ -1223,7 +1223,7 @@ void VitalCoinGUI::unsubscribeFromCoreSignals() {
       boost::bind(ThreadSafeMessageBox, this, _1, _3, _4));
 }
 
-void VitalCoinGUI::toggleNetworkActive() {
+void VitalcoinGUI::toggleNetworkActive() {
   if (clientModel) {
     clientModel->setNetworkActive(!clientModel->getNetworkActive());
   }
@@ -1234,11 +1234,11 @@ UnitDisplayStatusBarControl::UnitDisplayStatusBarControl(
     : optionsModel(0), menu(0) {
   createContextMenu();
   setToolTip(tr("Unit to show amounts in. Click to select another unit."));
-  QList<VitalCoinUnits::Unit> units = VitalCoinUnits::availableUnits();
+  QList<VitalcoinUnits::Unit> units = VitalcoinUnits::availableUnits();
   int max_width = 0;
   const QFontMetrics fm(font());
-  for (const VitalCoinUnits::Unit unit : units) {
-    max_width = qMax(max_width, fm.width(VitalCoinUnits::name(unit)));
+  for (const VitalcoinUnits::Unit unit : units) {
+    max_width = qMax(max_width, fm.width(VitalcoinUnits::name(unit)));
   }
   setMinimumSize(max_width, 0);
   setAlignment(Qt::AlignRight | Qt::AlignVCenter);
@@ -1255,8 +1255,8 @@ void UnitDisplayStatusBarControl::mousePressEvent(QMouseEvent *event) {
  * mouse events. */
 void UnitDisplayStatusBarControl::createContextMenu() {
   menu = new QMenu(this);
-  for (VitalCoinUnits::Unit u : VitalCoinUnits::availableUnits()) {
-    QAction *menuAction = new QAction(QString(VitalCoinUnits::name(u)), this);
+  for (VitalcoinUnits::Unit u : VitalcoinUnits::availableUnits()) {
+    QAction *menuAction = new QAction(QString(VitalcoinUnits::name(u)), this);
     menuAction->setData(QVariant(u));
     menu->addAction(menuAction);
   }
@@ -1281,7 +1281,7 @@ void UnitDisplayStatusBarControl::setOptionsModel(OptionsModel *_optionsModel) {
 /** When Display Units are changed on OptionsModel it will refresh the display
  * text of the control on the status bar */
 void UnitDisplayStatusBarControl::updateDisplayUnit(int newUnits) {
-  setText(VitalCoinUnits::name(newUnits));
+  setText(VitalcoinUnits::name(newUnits));
 }
 
 /** Shows context menu with Display Unit options by the mouse coordinates */

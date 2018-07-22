@@ -1,5 +1,5 @@
-VitalCoin version 0.4.0 is now available for download at:
-http://sourceforge.net/projects/vitalcoin/files/VitalCoin/vitalcoin-0.4.0/
+Vitalcoin version 0.4.0 is now available for download at:
+http://sourceforge.net/projects/vitalcoin/files/Vitalcoin/vitalcoin-0.4.0/
 
 The main feature in this release is wallet private key encryption;
 you can set a passphrase that must be entered before sending coins.
@@ -27,14 +27,14 @@ Optimize database writes for large (lots of inputs) transactions
 
 Wallet Encryption
 
-VitalCoin supports native wallet encryption so that people who steal your
-wallet file don't automatically get access to all of your VitalCoins.
+Vitalcoin supports native wallet encryption so that people who steal your
+wallet file don't automatically get access to all of your Vitalcoins.
 In order to enable this feature, choose "Encrypt Wallet" from the
 Options menu.  You will be prompted to enter a passphrase, which
 will be used as the key to encrypt your wallet and will be needed
-every time you wish to send VitalCoins.  If you lose this passphrase,
+every time you wish to send Vitalcoins.  If you lose this passphrase,
 you will lose access to spend all of the vitalcoins in your wallet,
-no one, not even the VitalCoin developers can recover your VitalCoins.
+no one, not even the Vitalcoin developers can recover your Vitalcoins.
 This means you are responsible for your own security, store your
 passphrase in a secure location and do not forget it.
 
@@ -46,24 +46,24 @@ relevant transactions, you are only protected from someone spending
 your coins.
 
 It is recommended that you backup your wallet file before you
-encrypt your wallet.  To do this, close the VitalCoin client and
+encrypt your wallet.  To do this, close the Vitalcoin client and
 copy the wallet.dat file from ~/.vitalcoin/ on Linux, /Users/(user
-name)/Application Support/VitalCoin/ on Mac OSX, and %APPDATA%/VitalCoin/
-on Windows (that is /Users/(user name)/AppData/Roaming/VitalCoin on
+name)/Application Support/Vitalcoin/ on Mac OSX, and %APPDATA%/Vitalcoin/
+on Windows (that is /Users/(user name)/AppData/Roaming/Vitalcoin on
 Windows Vista and 7 and /Documents and Settings/(user name)/Application
-Data/VitalCoin on Windows XP).  Once you have copied that file to a
-safe location, reopen the VitalCoin client and Encrypt your wallet.
+Data/Vitalcoin on Windows XP).  Once you have copied that file to a
+safe location, reopen the Vitalcoin client and Encrypt your wallet.
 If everything goes fine, delete the backup and enjoy your encrypted
 wallet.  Note that once you encrypt your wallet, you will never be
-able to go back to a version of the VitalCoin client older than 0.4.
+able to go back to a version of the Vitalcoin client older than 0.4.
 
 Keep in mind that you are always responsible for your own security.
 All it takes is a slightly more advanced wallet-stealing trojan which
 installs a keylogger to steal your wallet passphrase as you enter it
-in addition to your wallet file and you have lost all your VitalCoins.
+in addition to your wallet file and you have lost all your Vitalcoins.
 Wallet encryption cannot keep you safe if you do not practice
 good security, such as running up-to-date antivirus software, only
-entering your wallet passphrase in the VitalCoin client and using the
+entering your wallet passphrase in the Vitalcoin client and using the
 same passphrase only as your wallet passphrase.
 
 See the doc/README file in the vitalcoin source for technical details

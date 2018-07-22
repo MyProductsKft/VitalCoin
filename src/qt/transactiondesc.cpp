@@ -88,8 +88,8 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx,
     // Offline transaction
     if (nNet > 0) {
       // Credit
-      if (CVitalCoinAddress(rec->address).IsValid()) {
-        CTxDestination address = CVitalCoinAddress(rec->address).Get();
+      if (CVitalcoinAddress(rec->address).IsValid()) {
+        CTxDestination address = CVitalcoinAddress(rec->address).Get();
         if (wallet->mapAddressBook.count(address)) {
           strHTML += "<b>" + tr("From") + ":</b> " + tr("unknown") + "<br>";
           strHTML += "<b>" + tr("To") + ":</b> ";
@@ -117,7 +117,7 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx,
     // Online transaction
     std::string strAddress = wtx.mapValue["to"];
     strHTML += "<b>" + tr("To") + ":</b> ";
-    CTxDestination dest = CVitalCoinAddress(strAddress).Get();
+    CTxDestination dest = CVitalcoinAddress(strAddress).Get();
     if (wallet->mapAddressBook.count(dest) &&
         !wallet->mapAddressBook[dest].name.empty())
       strHTML += GUIUtil::HtmlEscape(wallet->mapAddressBook[dest].name) + " ";
@@ -137,7 +137,7 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx,
     strHTML += "<b>" + tr("Credit") + ":</b> ";
     if (wtx.IsInMainChain())
       strHTML +=
-          VitalCoinUnits::formatHtmlWithUnit(unit, nUnmatured) + " (" +
+          VitalcoinUnits::formatHtmlWithUnit(unit, nUnmatured) + " (" +
           tr("matures in %n more block(s)", "", wtx.GetBlocksToMaturity()) +
           ")";
     else
@@ -148,7 +148,7 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx,
     // Credit
     //
     strHTML += "<b>" + tr("Credit") + ":</b> " +
-               VitalCoinUnits::formatHtmlWithUnit(unit, nNet) + "<br>";
+               VitalcoinUnits::formatHtmlWithUnit(unit, nNet) + "<br>";
   } else {
     isminetype fAllFromMe = ISMINE_SPENDABLE;
     for (const CTxIn &txin : wtx.tx->vin) {
@@ -188,7 +188,7 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx,
                   GUIUtil::HtmlEscape(wallet->mapAddressBook[address].name) +
                   " ";
             strHTML +=
-                GUIUtil::HtmlEscape(CVitalCoinAddress(address).ToString());
+                GUIUtil::HtmlEscape(CVitalcoinAddress(address).ToString());
             if (toSelf == ISMINE_SPENDABLE)
               strHTML += " (own address)";
             else if (toSelf & ISMINE_WATCH_ONLY)
@@ -198,11 +198,11 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx,
         }
 
         strHTML += "<b>" + tr("Debit") + ":</b> " +
-                   VitalCoinUnits::formatHtmlWithUnit(unit, -txout.nValue) +
+                   VitalcoinUnits::formatHtmlWithUnit(unit, -txout.nValue) +
                    "<br>";
         if (toSelf)
           strHTML += "<b>" + tr("Credit") + ":</b> " +
-                     VitalCoinUnits::formatHtmlWithUnit(unit, txout.nValue) +
+                     VitalcoinUnits::formatHtmlWithUnit(unit, txout.nValue) +
                      "<br>";
       }
 
@@ -211,15 +211,15 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx,
         CAmount nChange = wtx.GetChange();
         CAmount nValue = nCredit - nChange;
         strHTML += "<b>" + tr("Total debit") + ":</b> " +
-                   VitalCoinUnits::formatHtmlWithUnit(unit, -nValue) + "<br>";
+                   VitalcoinUnits::formatHtmlWithUnit(unit, -nValue) + "<br>";
         strHTML += "<b>" + tr("Total credit") + ":</b> " +
-                   VitalCoinUnits::formatHtmlWithUnit(unit, nValue) + "<br>";
+                   VitalcoinUnits::formatHtmlWithUnit(unit, nValue) + "<br>";
       }
 
       CAmount nTxFee = nDebit - wtx.tx->GetValueOut();
       if (nTxFee > 0)
         strHTML += "<b>" + tr("Transaction fee") + ":</b> " +
-                   VitalCoinUnits::formatHtmlWithUnit(unit, -nTxFee) + "<br>";
+                   VitalcoinUnits::formatHtmlWithUnit(unit, -nTxFee) + "<br>";
     } else {
       //
       // Mixed debit transaction
@@ -227,20 +227,20 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx,
       for (const CTxIn &txin : wtx.tx->vin)
         if (wallet->IsMine(txin))
           strHTML += "<b>" + tr("Debit") + ":</b> " +
-                     VitalCoinUnits::formatHtmlWithUnit(
+                     VitalcoinUnits::formatHtmlWithUnit(
                          unit, -wallet->GetDebit(txin, ISMINE_ALL)) +
                      "<br>";
       for (const CTxOut &txout : wtx.tx->vout)
         if (wallet->IsMine(txout))
           strHTML += "<b>" + tr("Credit") + ":</b> " +
-                     VitalCoinUnits::formatHtmlWithUnit(
+                     VitalcoinUnits::formatHtmlWithUnit(
                          unit, wallet->GetCredit(txout, ISMINE_ALL)) +
                      "<br>";
     }
   }
 
   strHTML += "<b>" + tr("Net amount") + ":</b> " +
-             VitalCoinUnits::formatHtmlWithUnit(unit, nNet, true) + "<br>";
+             VitalcoinUnits::formatHtmlWithUnit(unit, nNet, true) + "<br>";
 
   //
   // Message
@@ -300,13 +300,13 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx,
     for (const CTxIn &txin : wtx.tx->vin)
       if (wallet->IsMine(txin))
         strHTML += "<b>" + tr("Debit") + ":</b> " +
-                   VitalCoinUnits::formatHtmlWithUnit(
+                   VitalcoinUnits::formatHtmlWithUnit(
                        unit, -wallet->GetDebit(txin, ISMINE_ALL)) +
                    "<br>";
     for (const CTxOut &txout : wtx.tx->vout)
       if (wallet->IsMine(txout))
         strHTML += "<b>" + tr("Credit") + ":</b> " +
-                   VitalCoinUnits::formatHtmlWithUnit(
+                   VitalcoinUnits::formatHtmlWithUnit(
                        unit, wallet->GetCredit(txout, ISMINE_ALL)) +
                    "<br>";
 
@@ -332,10 +332,10 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx,
                   GUIUtil::HtmlEscape(wallet->mapAddressBook[address].name) +
                   " ";
             strHTML +=
-                QString::fromStdString(CVitalCoinAddress(address).ToString());
+                QString::fromStdString(CVitalcoinAddress(address).ToString());
           }
           strHTML = strHTML + " " + tr("Amount") + "=" +
-                    VitalCoinUnits::formatHtmlWithUnit(unit, vout.nValue);
+                    VitalcoinUnits::formatHtmlWithUnit(unit, vout.nValue);
           strHTML = strHTML + " IsMine=" +
                     (wallet->IsMine(vout) & ISMINE_SPENDABLE ? tr("true")
                                                              : tr("false")) +

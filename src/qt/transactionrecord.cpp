@@ -49,9 +49,9 @@ TransactionRecord::decomposeTransaction(const CWallet *wallet,
         sub.involvesWatchAddress = mine & ISMINE_WATCH_ONLY;
         if (ExtractDestination(txout.scriptPubKey, address) &&
             IsMine(*wallet, address)) {
-          // Received by VitalCoin Address
+          // Received by Vitalcoin Address
           sub.type = TransactionRecord::RecvWithAddress;
-          sub.address = CVitalCoinAddress(address).ToString();
+          sub.address = CVitalcoinAddress(address).ToString();
         } else {
           // Received by IP connection (deprecated features), or a
           // multisignature or other non-simple transaction
@@ -116,9 +116,9 @@ TransactionRecord::decomposeTransaction(const CWallet *wallet,
 
         CTxDestination address;
         if (ExtractDestination(txout.scriptPubKey, address)) {
-          // Sent to VitalCoin Address
+          // Sent to Vitalcoin Address
           sub.type = TransactionRecord::SendToAddress;
-          sub.address = CVitalCoinAddress(address).ToString();
+          sub.address = CVitalcoinAddress(address).ToString();
         } else {
           // Sent to IP, or other non-address transaction like OP_EVAL
           sub.type = TransactionRecord::SendToOther;

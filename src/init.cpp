@@ -1075,7 +1075,7 @@ void ThreadImport(std::vector<fs::path> vImportFiles) {
 }
 
 /** Sanity checks
- *  Ensure that VitalCoin is running in a usable environment with all
+ *  Ensure that Vitalcoin is running in a usable environment with all
  *  necessary library support.
  */
 bool InitSanityCheck(void) {
@@ -1227,7 +1227,7 @@ void InitLogging() {
   fLogIPs = gArgs.GetBoolArg("-logips", DEFAULT_LOGIPS);
 
   LogPrintf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-  LogPrintf("VitalCoin version %s\n", FormatFullVersion());
+  LogPrintf("Vitalcoin version %s\n", FormatFullVersion());
 }
 
 namespace { // Variables internal to initialization process only
@@ -1647,7 +1647,7 @@ bool AppInitParameterInteraction() {
 static bool LockDataDirectory(bool probeOnly) {
   std::string strDataDir = GetDataDir().string();
 
-  // Make sure only a single VitalCoin process is using the data directory.
+  // Make sure only a single Vitalcoin process is using the data directory.
   fs::path pathLockFile = GetDataDir() / ".lock";
   FILE *file = fsbridge::fopen(
       pathLockFile, "a"); // empty lock file; created if it doesn't exist.
@@ -2309,7 +2309,7 @@ bool AppInitMain(boost::thread_group &threadGroup, CScheduler &scheduler) {
   }
 
   // Generate coins in the background
-  GenerateVitalCoins(gArgs.GetBoolArg("-gen", DEFAULT_GENERATE),
+  GenerateVitalcoins(gArgs.GetBoolArg("-gen", DEFAULT_GENERATE),
                      gArgs.GetArg("-genproclimit", DEFAULT_GENERATE_THREADS),
                      chainparams);
 

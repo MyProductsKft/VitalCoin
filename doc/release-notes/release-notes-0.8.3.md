@@ -1,5 +1,5 @@
-VitalCoin-Qt version 0.8.3 is now available from:
-  http://sourceforge.net/projects/vitalcoin/files/VitalCoin/vitalcoin-0.8.3/
+Vitalcoin-Qt version 0.8.3 is now available from:
+  http://sourceforge.net/projects/vitalcoin/files/Vitalcoin/vitalcoin-0.8.3/
 
 This is a maintenance release to fix a denial-of-service attack that
 can cause nodes to crash.

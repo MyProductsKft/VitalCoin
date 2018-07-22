@@ -300,7 +300,7 @@ BOOST_AUTO_TEST_CASE(sha256_testvectors) {
       "This is exactly 64 bytes long, not counting the terminating byte",
       "ab64eff7e88e2e46165e29f2bce41826bd4c7b3552f6b382a9e7d3af47c245f8");
   TestSHA256(
-      "As VitalCoin relies on 80 byte header hashes, we want to have an "
+      "As Vitalcoin relies on 80 byte header hashes, we want to have an "
       "example for that.",
       "7406e8de7d6e4fffc573daef05aefb8806e7790f55eab5576f31349743cca743");
   TestSHA256(

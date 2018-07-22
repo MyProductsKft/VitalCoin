@@ -443,7 +443,7 @@ UniValue createrawtransaction(const JSONRPCRequest &request) {
     rawTx.vin.push_back(in);
   }
 
-  std::set<CVitalCoinAddress> setAddress;
+  std::set<CVitalcoinAddress> setAddress;
   std::vector<std::string> addrList = sendTo.getKeys();
   for (const std::string &name_ : addrList) {
 
@@ -454,10 +454,10 @@ UniValue createrawtransaction(const JSONRPCRequest &request) {
       CTxOut out(0, CScript() << OP_RETURN << data);
       rawTx.vout.push_back(out);
     } else {
-      CVitalCoinAddress address(name_);
+      CVitalcoinAddress address(name_);
       if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY,
-                           std::string("Invalid VitalCoin address: ") + name_);
+                           std::string("Invalid Vitalcoin address: ") + name_);
 
       if (setAddress.count(address))
         throw JSONRPCError(
@@ -600,7 +600,7 @@ UniValue decodescript(const JSONRPCRequest &request) {
   if (type.isStr() && type.get_str() != "scripthash") {
     // P2SH cannot be wrapped in a P2SH. If this script is already a P2SH,
     // don't return the address for a P2SH of the P2SH.
-    r.push_back(Pair("p2sh", CVitalCoinAddress(CScriptID(script)).ToString()));
+    r.push_back(Pair("p2sh", CVitalcoinAddress(CScriptID(script)).ToString()));
   }
 
   return r;
@@ -845,7 +845,7 @@ UniValue signrawtransaction(const JSONRPCRequest &request) {
     UniValue keys = request.params[2].get_array();
     for (unsigned int idx = 0; idx < keys.size(); idx++) {
       UniValue k = keys[idx];
-      CVitalCoinSecret vchSecret;
+      CVitalcoinSecret vchSecret;
       bool fGood = vchSecret.SetString(k.get_str());
       if (!fGood)
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid private key");

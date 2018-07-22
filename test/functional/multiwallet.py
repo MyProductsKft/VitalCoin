@@ -9,10 +9,10 @@ Verify that a vitalcoind node can load multiple wallet files
 import os
 import shutil
 
-from test_framework.test_framework import VitalCoinTestFramework
+from test_framework.test_framework import VitalcoinTestFramework
 from test_framework.util import assert_equal, assert_raises_rpc_error
 
-class MultiWalletTest(VitalCoinTestFramework):
+class MultiWalletTest(VitalcoinTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 1

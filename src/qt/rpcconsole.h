@@ -27,7 +27,7 @@ class QMenu;
 class QItemSelection;
 QT_END_NAMESPACE
 
-/** Local VitalCoin RPC console. */
+/** Local Vitalcoin RPC console. */
 class RPCConsole : public QWidget {
   Q_OBJECT
 

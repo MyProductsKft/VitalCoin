@@ -9,7 +9,7 @@
 #define UNUSED
 #endif
 static const char UNUSED *vitalcoin_strings[] = {
-    QT_TRANSLATE_NOOP("vitalcoin-core", "VitalCoin Core"),
+    QT_TRANSLATE_NOOP("vitalcoin-core", "Vitalcoin Core"),
     QT_TRANSLATE_NOOP("vitalcoin-core", "The %s developers"),
     QT_TRANSLATE_NOOP("vitalcoin-core",
                       ""

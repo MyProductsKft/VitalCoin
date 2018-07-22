@@ -256,12 +256,12 @@ bool ReadKeyValue(CWallet *pwallet, CDataStream &ssKey, CDataStream &ssValue,
       std::string strAddress;
       ssKey >> strAddress;
       ssValue >>
-          pwallet->mapAddressBook[CVitalCoinAddress(strAddress).Get()].name;
+          pwallet->mapAddressBook[CVitalcoinAddress(strAddress).Get()].name;
     } else if (strType == "purpose") {
       std::string strAddress;
       ssKey >> strAddress;
       ssValue >>
-          pwallet->mapAddressBook[CVitalCoinAddress(strAddress).Get()].purpose;
+          pwallet->mapAddressBook[CVitalcoinAddress(strAddress).Get()].purpose;
     } else if (strType == "tx") {
       uint256 hash;
       ssKey >> hash;
@@ -450,7 +450,7 @@ bool ReadKeyValue(CWallet *pwallet, CDataStream &ssKey, CDataStream &ssValue,
       ssKey >> strAddress;
       ssKey >> strKey;
       ssValue >> strValue;
-      if (!pwallet->LoadDestData(CVitalCoinAddress(strAddress).Get(), strKey,
+      if (!pwallet->LoadDestData(CVitalcoinAddress(strAddress).Get(), strKey,
                                  strValue)) {
         strErr = "Error reading wallet database: LoadDestData failed";
         return false;

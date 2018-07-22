@@ -113,7 +113,7 @@ HelpMessageDialog::HelpMessageDialog(QWidget *parent, bool about)
       strUsage += HelpMessageOpt(
           "-uiplatform", strprintf("Select platform to customize UI for (one "
                                    "of windows, macosx, other; default: %s)",
-                                   VitalCoinGUI::DEFAULT_UIPLATFORM));
+                                   VitalcoinGUI::DEFAULT_UIPLATFORM));
     }
     QString coreOptions = QString::fromStdString(strUsage);
     text = version + "\n" + header + "\n" + coreOptions;
@@ -185,7 +185,7 @@ ShutdownWindow::ShutdownWindow(QWidget *parent, Qt::WindowFlags f)
   setLayout(layout);
 }
 
-QWidget *ShutdownWindow::showShutdownWindow(VitalCoinGUI *window) {
+QWidget *ShutdownWindow::showShutdownWindow(VitalcoinGUI *window) {
   if (!window)
     return nullptr;
 

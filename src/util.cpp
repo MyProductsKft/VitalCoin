@@ -504,13 +504,13 @@ void PrintExceptionContinue(const std::exception *pex, const char *pszThread) {
 
 fs::path GetDefaultDataDir() {
 // Windows < Vista: C:\Documents and Settings\Username\Application
-// Data\VitalCoin
-// Windows >= Vista: C:\Users\Username\AppData\Roaming\VitalCoin
-// Mac: ~/Library/Application Support/VitalCoin
+// Data\Vitalcoin
+// Windows >= Vista: C:\Users\Username\AppData\Roaming\Vitalcoin
+// Mac: ~/Library/Application Support/Vitalcoin
 // Unix: ~/.vitalcoin
 #ifdef WIN32
   // Windows
-  return GetSpecialFolderPath(CSIDL_APPDATA) / "VitalCoin";
+  return GetSpecialFolderPath(CSIDL_APPDATA) / "Vitalcoin";
 #else
   fs::path pathRet;
   char *pszHome = getenv("HOME");
@@ -520,7 +520,7 @@ fs::path GetDefaultDataDir() {
     pathRet = fs::path(pszHome);
 #ifdef MAC_OSX
   // Mac
-  return pathRet / "Library/Application Support/VitalCoin";
+  return pathRet / "Library/Application Support/Vitalcoin";
 #else
   // Unix
   return pathRet / ".vitalcoin";
@@ -862,10 +862,10 @@ std::string CopyrightHolders(const std::string &strPrefix) {
       strPrefix +
       strprintf(_(COPYRIGHT_HOLDERS), _(COPYRIGHT_HOLDERS_SUBSTITUTION));
 
-  // Check for untranslated substitution to make sure VitalCoin Core copyright
+  // Check for untranslated substitution to make sure Vitalcoin Core copyright
   // is not removed by accident
   if (strprintf(COPYRIGHT_HOLDERS, COPYRIGHT_HOLDERS_SUBSTITUTION)
-          .find("VitalCoin Core") == std::string::npos) {
+          .find("Vitalcoin Core") == std::string::npos) {
     strCopyrightHolders += "\n" + strPrefix + "The Bitcoin Core developers";
   }
   return strCopyrightHolders;

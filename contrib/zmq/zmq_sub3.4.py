@@ -6,7 +6,7 @@
 """
     ZMQ example using python3's asyncio
 
-    VitalCoin should be started with the command line arguments:
+    Vitalcoin should be started with the command line arguments:
         vitalcoind -testnet -daemon \
                 -zmqpubhashblock=tcp://127.0.0.1:28332 \
                 -zmqpubrawtx=tcp://127.0.0.1:28332 \

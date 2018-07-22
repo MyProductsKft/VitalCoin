@@ -1,5 +1,5 @@
-VitalCoin version 0.5.1 is now available for download at:
-http://sourceforge.net/projects/vitalcoin/files/VitalCoin/vitalcoin-0.5.1/
+Vitalcoin version 0.5.1 is now available for download at:
+http://sourceforge.net/projects/vitalcoin/files/Vitalcoin/vitalcoin-0.5.1/
 
 This is a bugfix-only release.
 

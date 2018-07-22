@@ -29,7 +29,7 @@ class QUrl;
 class QWidget;
 QT_END_NAMESPACE
 
-/** Utility functions used by the VitalCoin Qt UI.
+/** Utility functions used by the Vitalcoin Qt UI.
  */
 namespace GUIUtil {
 // Create human-readable string from date
@@ -45,9 +45,9 @@ void setupAmountWidget(QLineEdit *widget, QWidget *parent);
 
 // Parse "vitalcoin:" URI into recipient object, return true on successful
 // parsing
-bool parseVitalCoinURI(const QUrl &uri, SendCoinsRecipient *out);
-bool parseVitalCoinURI(QString uri, SendCoinsRecipient *out);
-QString formatVitalCoinURI(const SendCoinsRecipient &info);
+bool parseVitalcoinURI(const QUrl &uri, SendCoinsRecipient *out);
+bool parseVitalcoinURI(QString uri, SendCoinsRecipient *out);
+QString formatVitalcoinURI(const SendCoinsRecipient &info);
 
 // Returns true if given address+amount meets "dust" definition
 bool isDust(const QString &address, const CAmount &amount);
@@ -128,7 +128,7 @@ bool isObscured(QWidget *w);
 void openDebugLogfile();
 
 // Open the config file
-bool openVitalCoinConf();
+bool openVitalcoinConf();
 
 // Replace invalid default fonts with known good ones
 void SubstituteFonts(const QString &language);

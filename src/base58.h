@@ -102,7 +102,7 @@ public:
   bool operator>(const CBase58Data &b58) const { return CompareTo(b58) > 0; }
 };
 
-/** base58-encoded VitalCoin addresses.
+/** base58-encoded Vitalcoin addresses.
  * Public-key-hash-addresses have version 0 (or 111 testnet).
  * The data vector contains RIPEMD160(SHA256(pubkey)), where pubkey is the
  * serialized public key.
@@ -110,7 +110,7 @@ public:
  * The data vector contains RIPEMD160(SHA256(cscript)), where cscript is the
  * serialized redemption script.
  */
-class CVitalCoinAddress : public CBase58Data {
+class CVitalcoinAddress : public CBase58Data {
 public:
   bool Set(const CKeyID &id);
   bool Set(const CScriptID &id);
@@ -118,10 +118,10 @@ public:
   bool IsValid() const;
   bool IsValid(const CChainParams &params) const;
 
-  CVitalCoinAddress() {}
-  CVitalCoinAddress(const CTxDestination &dest) { Set(dest); }
-  CVitalCoinAddress(const std::string &strAddress) { SetString(strAddress); }
-  CVitalCoinAddress(const char *pszAddress) { SetString(pszAddress); }
+  CVitalcoinAddress() {}
+  CVitalcoinAddress(const CTxDestination &dest) { Set(dest); }
+  CVitalcoinAddress(const std::string &strAddress) { SetString(strAddress); }
+  CVitalcoinAddress(const char *pszAddress) { SetString(pszAddress); }
 
   CTxDestination Get() const;
   bool GetKeyID(CKeyID &keyID) const;
@@ -131,7 +131,7 @@ public:
 /**
  * A base58-encoded secret key
  */
-class CVitalCoinSecret : public CBase58Data {
+class CVitalcoinSecret : public CBase58Data {
 public:
   void SetKey(const CKey &vchSecret);
   CKey GetKey();
@@ -139,12 +139,12 @@ public:
   bool SetString(const char *pszSecret);
   bool SetString(const std::string &strSecret);
 
-  CVitalCoinSecret(const CKey &vchSecret) { SetKey(vchSecret); }
-  CVitalCoinSecret() {}
+  CVitalcoinSecret(const CKey &vchSecret) { SetKey(vchSecret); }
+  CVitalcoinSecret() {}
 };
 
 template <typename K, int Size, CChainParams::Base58Type Type>
-class CVitalCoinExtKeyBase : public CBase58Data {
+class CVitalcoinExtKeyBase : public CBase58Data {
 public:
   void SetKey(const K &key) {
     unsigned char vch[Size];
@@ -162,20 +162,20 @@ public:
     return ret;
   }
 
-  CVitalCoinExtKeyBase(const K &key) { SetKey(key); }
+  CVitalcoinExtKeyBase(const K &key) { SetKey(key); }
 
-  CVitalCoinExtKeyBase(const std::string &strBase58c) {
+  CVitalcoinExtKeyBase(const std::string &strBase58c) {
     SetString(strBase58c.c_str(), Params().Base58Prefix(Type).size());
   }
 
-  CVitalCoinExtKeyBase() {}
+  CVitalcoinExtKeyBase() {}
 };
 
-typedef CVitalCoinExtKeyBase<CExtKey, BIP32_EXTKEY_SIZE,
+typedef CVitalcoinExtKeyBase<CExtKey, BIP32_EXTKEY_SIZE,
                              CChainParams::EXT_SECRET_KEY>
-    CVitalCoinExtKey;
-typedef CVitalCoinExtKeyBase<CExtPubKey, BIP32_EXTKEY_SIZE,
+    CVitalcoinExtKey;
+typedef CVitalcoinExtKeyBase<CExtPubKey, BIP32_EXTKEY_SIZE,
                              CChainParams::EXT_PUBLIC_KEY>
-    CVitalCoinExtPubKey;
+    CVitalcoinExtPubKey;
 
 #endif // VITALCOIN_BASE58_H
