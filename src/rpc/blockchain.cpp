@@ -135,6 +135,9 @@ UniValue blockToJSON(const CBlock &block, const CBlockIndex *blockindex,
       Pair("mediantime", (int64_t)blockindex->GetMedianTimePast()));
   result.push_back(Pair("nonce", (uint64_t)block.nNonce));
   result.push_back(Pair("bits", strprintf("%08x", block.nBits)));
+  arith_uint256 au;
+  au.SetCompact(block.nBits);
+  result.push_back(Pair("bits_long", ArithToUint256(au).ToString()));
   result.push_back(Pair("difficulty", GetDifficulty(blockindex)));
   result.push_back(Pair("chainwork", blockindex->nChainWork.GetHex()));
 

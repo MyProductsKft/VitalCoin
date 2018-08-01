@@ -3439,7 +3439,7 @@ static bool ContextualCheckBlock(const CBlock &block, CValidationState &state,
   if (nHeight >= consensusParams.BIP34Height) {
 
     CScript expect = CScript();
-    if (fork_conforksus.active) {
+    if (nHeight > FORK_BLOCK) {
       expect << std::vector<unsigned char>(FORK_HASH_UINT256.begin(),
                                            FORK_HASH_UINT256.end());
     }
