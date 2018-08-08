@@ -1136,11 +1136,15 @@ bool ReadBlockFromDisk(CBlock &block, const CBlockIndex *pindex,
 
 CAmount GetBlockSubsidy(int nHeight, const Consensus::Params &consensusParams) {
 
+  int FirstForkBlock =
+      (FORK_BLOCK)
+          ? (FORK_BLOCK + 1)
+          : 2; // FORK_BLOCK = 0 has to have the same effect as FORK_BLOCK = 1
   int halvings;
-  if (nHeight > FORK_BLOCK) {
-    halvings = FORK_BLOCK / consensusParams.nSubsidyHalvingInterval;
-    halvings += (nHeight - FORK_BLOCK) /
-                consensusParams.nPostForkSubsidyHalvingInterval;
+
+  if (nHeight >= FirstForkBlock) {
+    halvings = (nHeight - FirstForkBlock) /
+               consensusParams.nPostForkSubsidyHalvingInterval;
   } else {
     halvings = nHeight / consensusParams.nSubsidyHalvingInterval;
   }
@@ -1149,7 +1153,11 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params &consensusParams) {
   if (halvings >= 64)
     return 0;
 
-  CAmount nSubsidy = CAmount(nHeight > FORK_BLOCK ? 1000 : 50) * COIN;
+  CAmount nSubsidy =
+      CAmount(nHeight >= FirstForkBlock ? 250 // Vitalcoin Initial Subsidy
+                                        : 50  //   Vitalcoin Initial Subsidy
+              ) *
+      COIN;
 
   // Subsidy is cut in half every 210,000 blocks which will occur approximately
   // every 4 years.
