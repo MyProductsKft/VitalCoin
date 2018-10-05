@@ -3194,6 +3194,9 @@ static bool FindUndoPos(CValidationState &state, int nFile, CDiskBlockPos &pos,
 static bool CheckBlockHeader(const CBlockHeader &block, CValidationState &state,
                              const Consensus::Params &consensusParams,
                              bool fCheckPOW = true) {
+  if (block.GetHash() == consensusParams.hashGenesisBlock)
+    return true;
+
   // Check proof of work matches claimed amount
   if (fCheckPOW &&
       !CheckProofOfWork(block.GetHash(), block.nBits, consensusParams))
@@ -3259,7 +3262,7 @@ bool CheckBlock(const CBlock &block, CValidationState &state,
 
   // Check transactions
   for (const auto &tx : block.vtx)
-    if (!CheckTransaction(*tx, state, false))
+    if (!CheckTransaction(*tx, state, true))
       return state.Invalid(
           false, state.GetRejectCode(), state.GetRejectReason(),
           strprintf("Transaction check failed (tx hash %s) %s",
