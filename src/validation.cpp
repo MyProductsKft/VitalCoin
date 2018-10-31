@@ -1155,7 +1155,7 @@ CAmount GetBlockSubsidy(int nHeight, const Consensus::Params &consensusParams) {
 
   CAmount nSubsidy =
       CAmount(nHeight >= FirstForkBlock ? 250 // Vitalcoin Initial Subsidy
-                                        : 50  //   Vitalcoin Initial Subsidy
+                                        : 50  //   Bitcoin Initial Subsidy
               ) *
       COIN;
 
