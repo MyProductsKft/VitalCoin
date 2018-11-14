@@ -8,14 +8,15 @@
 #include <QKeyEvent>
 #include <QTreeWidget>
 
-class CoinControlTreeWidget : public QTreeWidget {
-  Q_OBJECT
+class CoinControlTreeWidget : public QTreeWidget
+{
+    Q_OBJECT
 
 public:
-  explicit CoinControlTreeWidget(QWidget *parent = 0);
+    explicit CoinControlTreeWidget(QWidget* parent = 0);
 
 protected:
-  virtual void keyPressEvent(QKeyEvent *event);
+    virtual void keyPressEvent(QKeyEvent* event);
 };
 
 #endif // VITALCOIN_QT_COINCONTROLTREEWIDGET_H

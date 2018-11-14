@@ -1,14 +1,20 @@
-// Copyright (c) 2016 The Bitcoin Core developers
+// Copyright (c) 2016-2018 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef VITALCOIN_WALLET_RPCWALLET_H
 #define VITALCOIN_WALLET_RPCWALLET_H
 
-class CRPCTable;
-class JSONRPCRequest;
+#include <string>
 
-void RegisterWalletRPCCommands(CRPCTable &t);
+class CRPCTable;
+class CWallet;
+class JSONRPCRequest;
+class UniValue;
+struct PartiallySignedTransaction;
+class CTransaction;
+
+void RegisterWalletRPCCommands(CRPCTable& t);
 
 /**
  * Figures out what wallet, if any, to use for a JSONRPCRequest.
@@ -16,10 +22,13 @@ void RegisterWalletRPCCommands(CRPCTable &t);
  * @param[in] request JSONRPCRequest that wishes to access a wallet
  * @return nullptr if no wallet should be used, or a pointer to the CWallet
  */
-CWallet *GetWalletForJSONRPCRequest(const JSONRPCRequest &request);
+std::shared_ptr<CWallet> GetWalletForJSONRPCRequest(const JSONRPCRequest& request);
 
-std::string HelpRequiringPassphrase(CWallet *);
-void EnsureWalletIsUnlocked(CWallet *);
-bool EnsureWalletIsAvailable(CWallet *, bool avoidException);
+std::string HelpRequiringPassphrase(CWallet*);
+void EnsureWalletIsUnlocked(CWallet*);
+bool EnsureWalletIsAvailable(CWallet*, bool avoidException);
 
-#endif // VITALCOIN_WALLET_RPCWALLET_H
+UniValue getaddressinfo(const JSONRPCRequest& request);
+UniValue signrawtransactionwithwallet(const JSONRPCRequest& request);
+bool FillPSBT(const CWallet* pwallet, PartiallySignedTransaction& psbtx, const CTransaction* txConst, int sighash_type = 1, bool sign = true, bool bip32derivs = false);
+#endif //VITALCOIN_WALLET_RPCWALLET_H

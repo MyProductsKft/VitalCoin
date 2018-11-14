@@ -1,72 +1,84 @@
-// Copyright (c) 2011-2016 The Bitcoin Core developers
+// Copyright (c) 2011-2018 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "csvmodelwriter.h"
+#include <qt/csvmodelwriter.h>
 
 #include <QAbstractItemModel>
 #include <QFile>
 #include <QTextStream>
 
-CSVModelWriter::CSVModelWriter(const QString &_filename, QObject *parent)
-    : QObject(parent), filename(_filename), model(0) {}
-
-void CSVModelWriter::setModel(const QAbstractItemModel *_model) {
-  this->model = _model;
+CSVModelWriter::CSVModelWriter(const QString& _filename, QObject* parent) : QObject(parent),
+                                                                            filename(_filename), model(0)
+{
 }
 
-void CSVModelWriter::addColumn(const QString &title, int column, int role) {
-  Column col;
-  col.title = title;
-  col.column = column;
-  col.role = role;
-
-  columns.append(col);
+void CSVModelWriter::setModel(const QAbstractItemModel* _model)
+{
+    this->model = _model;
 }
 
-static void writeValue(QTextStream &f, const QString &value) {
-  QString escaped = value;
-  escaped.replace('"', "\"\"");
-  f << "\"" << escaped << "\"";
+void CSVModelWriter::addColumn(const QString& title, int column, int role)
+{
+    Column col;
+    col.title = title;
+    col.column = column;
+    col.role = role;
+
+    columns.append(col);
 }
 
-static void writeSep(QTextStream &f) { f << ","; }
+static void writeValue(QTextStream& f, const QString& value)
+{
+    QString escaped = value;
+    escaped.replace('"', "\"\"");
+    f << "\"" << escaped << "\"";
+}
 
-static void writeNewline(QTextStream &f) { f << "\n"; }
+static void writeSep(QTextStream& f)
+{
+    f << ",";
+}
 
-bool CSVModelWriter::write() {
-  QFile file(filename);
-  if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-    return false;
-  QTextStream out(&file);
+static void writeNewline(QTextStream& f)
+{
+    f << "\n";
+}
 
-  int numRows = 0;
-  if (model) {
-    numRows = model->rowCount();
-  }
+bool CSVModelWriter::write()
+{
+    QFile file(filename);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+        return false;
+    QTextStream out(&file);
 
-  // Header row
-  for (int i = 0; i < columns.size(); ++i) {
-    if (i != 0) {
-      writeSep(out);
+    int numRows = 0;
+    if (model) {
+        numRows = model->rowCount();
     }
-    writeValue(out, columns[i].title);
-  }
-  writeNewline(out);
 
-  // Data rows
-  for (int j = 0; j < numRows; ++j) {
+    // Header row
     for (int i = 0; i < columns.size(); ++i) {
-      if (i != 0) {
-        writeSep(out);
-      }
-      QVariant data = model->index(j, columns[i].column).data(columns[i].role);
-      writeValue(out, data.toString());
+        if (i != 0) {
+            writeSep(out);
+        }
+        writeValue(out, columns[i].title);
     }
     writeNewline(out);
-  }
 
-  file.close();
+    // Data rows
+    for (int j = 0; j < numRows; ++j) {
+        for (int i = 0; i < columns.size(); ++i) {
+            if (i != 0) {
+                writeSep(out);
+            }
+            QVariant data = model->index(j, columns[i].column).data(columns[i].role);
+            writeValue(out, data.toString());
+        }
+        writeNewline(out);
+    }
 
-  return file.error() == QFile::NoError;
+    file.close();
+
+    return file.error() == QFile::NoError;
 }

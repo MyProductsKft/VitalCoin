@@ -1,24 +1,22 @@
-// Copyright (c) 2016 The Bitcoin Core developers
+// Copyright (c) 2016-2018 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef VITALCOIN_QT_TEST_RPC_NESTED_TESTS_H
-#define VITALCOIN_QT_TEST_RPC_NESTED_TESTS_H
+#ifndef VITALCOIN_QT_TEST_RPCNESTEDTESTS_H
+#define VITALCOIN_QT_TEST_RPCNESTEDTESTS_H
 
 #include <QObject>
 #include <QTest>
 
-#include "txdb.h"
-#include "txmempool.h"
+#include <txdb.h>
+#include <txmempool.h>
 
-class RPCNestedTests : public QObject {
-  Q_OBJECT
+class RPCNestedTests : public QObject
+{
+    Q_OBJECT
 
 private Q_SLOTS:
-  void rpcNestedTests();
-
-private:
-  CCoinsViewDB *pcoinsdbview;
+    void rpcNestedTests();
 };
 
-#endif // VITALCOIN_QT_TEST_RPC_NESTED_TESTS_H
+#endif // VITALCOIN_QT_TEST_RPCNESTEDTESTS_H

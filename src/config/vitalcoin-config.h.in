@@ -7,6 +7,9 @@
 /* Define if building universal (internal helper macro) */
 #undef AC_APPLE_UNIVERSAL_BUILD
 
+/* Define this symbol if type char equals int8_t */
+#undef CHAR_EQUALS_INT8
+
 /* Version Build */
 #undef CLIENT_VERSION_BUILD
 
@@ -34,14 +37,20 @@
 /* Copyright year */
 #undef COPYRIGHT_YEAR
 
+/* Define this symbol to build code that uses AVX2 intrinsics */
+#undef ENABLE_AVX2
+
+/* Define this symbol to build code that uses SHA-NI intrinsics */
+#undef ENABLE_SHANI
+
+/* Define this symbol to build code that uses SSE4.1 intrinsics */
+#undef ENABLE_SSE41
+
 /* Define to 1 to enable wallet functions */
 #undef ENABLE_WALLET
 
 /* Define to 1 to enable ZMQ functions */
 #undef ENABLE_ZMQ
-
-/* Define this symbol to build in experimental assembly routines */
-#undef EXPERIMENTAL_ASM
 
 /* parameter and return value type for __fdelt_chk */
 #undef FDELT_TYPE
@@ -54,9 +63,6 @@
 
 /* define if the Boost::Filesystem library is available */
 #undef HAVE_BOOST_FILESYSTEM
-
-/* define if the Boost::PROGRAM_OPTIONS library is available */
-#undef HAVE_BOOST_PROGRAM_OPTIONS
 
 /* define if the Boost::System library is available */
 #undef HAVE_BOOST_SYSTEM
@@ -279,12 +285,6 @@
 /* Define to 1 if you have the <miniupnpc/upnperrors.h> header file. */
 #undef HAVE_MINIUPNPC_UPNPERRORS_H
 
-/* Define this symbol if you have MSG_DONTWAIT */
-#undef HAVE_MSG_DONTWAIT
-
-/* Define this symbol if you have MSG_NOSIGNAL */
-#undef HAVE_MSG_NOSIGNAL
-
 /* Define if you have POSIX threads libraries and header files. */
 #undef HAVE_PTHREAD
 
@@ -329,6 +329,9 @@
 
 /* Define to 1 if you have the <sys/types.h> header file. */
 #undef HAVE_SYS_TYPES_H
+
+/* Define if thread_local is supported. */
+#undef HAVE_THREAD_LOCAL
 
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
@@ -387,6 +390,9 @@
 
 /* Define to 1 if strerror_r returns char *. */
 #undef STRERROR_R_CHAR_P
+
+/* Define this symbol to build in assembly routines */
+#undef USE_ASM
 
 /* Define this symbol if coverage is enabled */
 #undef USE_COVERAGE

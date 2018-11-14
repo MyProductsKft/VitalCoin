@@ -8,11 +8,12 @@
 #include <QObject>
 #include <QTest>
 
-class CompatTests : public QObject {
-  Q_OBJECT
+class CompatTests : public QObject
+{
+    Q_OBJECT
 
 private Q_SLOTS:
-  void bswapTests();
+    void bswapTests();
 };
 
 #endif // VITALCOIN_QT_TEST_COMPATTESTS_H

@@ -1,15 +1,15 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2016 The Bitcoin Core developers
+// Copyright (c) 2009-2018 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef VITALCOIN_VITALCOINCONSENSUS_H
-#define VITALCOIN_VITALCOINCONSENSUS_H
+#ifndef VITALCOIN_SCRIPT_VITALCOINCONSENSUS_H
+#define VITALCOIN_SCRIPT_VITALCOINCONSENSUS_H
 
 #include <stdint.h>
 
 #if defined(BUILD_VITALCOIN_INTERNAL) && defined(HAVE_CONFIG_H)
-#include "config/vitalcoin-config.h"
+#include <config/vitalcoin-config.h>
 #if defined(_WIN32)
 #if defined(DLL_EXPORT)
 #if defined(HAVE_FUNC_ATTRIBUTE_DLLEXPORT)
@@ -36,51 +36,35 @@ extern "C" {
 #define VITALCOINCONSENSUS_API_VER 1
 
 typedef enum vitalcoinconsensus_error_t {
-  vitalcoinconsensus_ERR_OK = 0,
-  vitalcoinconsensus_ERR_TX_INDEX,
-  vitalcoinconsensus_ERR_TX_SIZE_MISMATCH,
-  vitalcoinconsensus_ERR_TX_DESERIALIZE,
-  vitalcoinconsensus_ERR_AMOUNT_REQUIRED,
-  vitalcoinconsensus_ERR_INVALID_FLAGS,
+    vitalcoinconsensus_ERR_OK = 0,
+    vitalcoinconsensus_ERR_TX_INDEX,
+    vitalcoinconsensus_ERR_TX_SIZE_MISMATCH,
+    vitalcoinconsensus_ERR_TX_DESERIALIZE,
+    vitalcoinconsensus_ERR_AMOUNT_REQUIRED,
+    vitalcoinconsensus_ERR_INVALID_FLAGS,
 } vitalcoinconsensus_error;
 
 /** Script verification flags */
 enum {
-  vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_NONE = 0,
-  vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_P2SH =
-      (1U << 0), // evaluate P2SH (BIP16) subscripts
-  vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_DERSIG =
-      (1U << 2), // enforce strict DER (BIP66) compliance
-  vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_NULLDUMMY =
-      (1U << 4), // enforce NULLDUMMY (BIP147)
-  vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_CHECKLOCKTIMEVERIFY =
-      (1U << 9), // enable CHECKLOCKTIMEVERIFY (BIP65)
-  vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_CHECKSEQUENCEVERIFY =
-      (1U << 10), // enable CHECKSEQUENCEVERIFY (BIP112)
-  vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_WITNESS =
-      (1U << 11), // enable WITNESS (BIP141)
-  vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_ALL =
-      vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_P2SH |
-      vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_DERSIG |
-      vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_NULLDUMMY |
-      vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_CHECKLOCKTIMEVERIFY |
-      vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_CHECKSEQUENCEVERIFY |
-      vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_WITNESS
+    vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_NONE = 0,
+    vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_P2SH = (1U << 0),                 // evaluate P2SH (BIP16) subscripts
+    vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_DERSIG = (1U << 2),               // enforce strict DER (BIP66) compliance
+    vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_NULLDUMMY = (1U << 4),            // enforce NULLDUMMY (BIP147)
+    vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_CHECKLOCKTIMEVERIFY = (1U << 9),  // enable CHECKLOCKTIMEVERIFY (BIP65)
+    vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_CHECKSEQUENCEVERIFY = (1U << 10), // enable CHECKSEQUENCEVERIFY (BIP112)
+    vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_WITNESS = (1U << 11),             // enable WITNESS (BIP141)
+    vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_ALL = vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_P2SH | vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_DERSIG |
+                                                 vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_NULLDUMMY | vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_CHECKLOCKTIMEVERIFY |
+                                                 vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_CHECKSEQUENCEVERIFY | vitalcoinconsensus_SCRIPT_FLAGS_VERIFY_WITNESS
 };
 
 /// Returns 1 if the input nIn of the serialized transaction pointed to by
 /// txTo correctly spends the scriptPubKey pointed to by scriptPubKey under
 /// the additional constraints specified by flags.
 /// If not nullptr, err will contain an error/success code for the operation
-EXPORT_SYMBOL int vitalcoinconsensus_verify_script(
-    const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen,
-    const unsigned char *txTo, unsigned int txToLen, unsigned int nIn,
-    unsigned int flags, vitalcoinconsensus_error *err);
+EXPORT_SYMBOL int vitalcoinconsensus_verify_script(const unsigned char* scriptPubKey, unsigned int scriptPubKeyLen, const unsigned char* txTo, unsigned int txToLen, unsigned int nIn, unsigned int flags, vitalcoinconsensus_error* err);
 
-EXPORT_SYMBOL int vitalcoinconsensus_verify_script_with_amount(
-    const unsigned char *scriptPubKey, unsigned int scriptPubKeyLen,
-    int64_t amount, const unsigned char *txTo, unsigned int txToLen,
-    unsigned int nIn, unsigned int flags, vitalcoinconsensus_error *err);
+EXPORT_SYMBOL int vitalcoinconsensus_verify_script_with_amount(const unsigned char* scriptPubKey, unsigned int scriptPubKeyLen, int64_t amount, const unsigned char* txTo, unsigned int txToLen, unsigned int nIn, unsigned int flags, vitalcoinconsensus_error* err);
 
 EXPORT_SYMBOL unsigned int vitalcoinconsensus_version();
 
@@ -90,4 +74,4 @@ EXPORT_SYMBOL unsigned int vitalcoinconsensus_version();
 
 #undef EXPORT_SYMBOL
 
-#endif // VITALCOIN_VITALCOINCONSENSUS_H
+#endif // VITALCOIN_SCRIPT_VITALCOINCONSENSUS_H

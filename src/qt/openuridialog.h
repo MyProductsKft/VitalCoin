@@ -11,23 +11,24 @@ namespace Ui {
 class OpenURIDialog;
 }
 
-class OpenURIDialog : public QDialog {
-  Q_OBJECT
+class OpenURIDialog : public QDialog
+{
+    Q_OBJECT
 
 public:
-  explicit OpenURIDialog(QWidget *parent);
-  ~OpenURIDialog();
+    explicit OpenURIDialog(QWidget* parent);
+    ~OpenURIDialog();
 
-  QString getURI();
+    QString getURI();
 
 protected Q_SLOTS:
-  void accept();
+    void accept();
 
 private Q_SLOTS:
-  void on_selectFileButton_clicked();
+    void on_selectFileButton_clicked();
 
 private:
-  Ui::OpenURIDialog *ui;
+    Ui::OpenURIDialog* ui;
 };
 
 #endif // VITALCOIN_QT_OPENURIDIALOG_H

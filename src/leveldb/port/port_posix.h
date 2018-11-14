@@ -11,8 +11,8 @@
 #if defined(OS_MACOSX)
 #include <machine/endian.h>
 #if defined(__DARWIN_LITTLE_ENDIAN) && defined(__DARWIN_BYTE_ORDER)
-#define PLATFORM_IS_LITTLE_ENDIAN                                              \
-  (__DARWIN_BYTE_ORDER == __DARWIN_LITTLE_ENDIAN)
+#define PLATFORM_IS_LITTLE_ENDIAN \
+    (__DARWIN_BYTE_ORDER == __DARWIN_LITTLE_ENDIAN)
 #endif
 #elif defined(OS_SOLARIS)
 #include <sys/isa_defs.h>
@@ -21,10 +21,10 @@
 #else
 #define PLATFORM_IS_LITTLE_ENDIAN false
 #endif
-#elif defined(OS_FREEBSD) || defined(OS_OPENBSD) || defined(OS_NETBSD) ||      \
-    defined(OS_DRAGONFLYBSD)
-#include <sys/endian.h>
+#elif defined(OS_FREEBSD) || defined(OS_OPENBSD) || \
+    defined(OS_NETBSD) || defined(OS_DRAGONFLYBSD)
 #include <sys/types.h>
+#include <sys/endian.h>
 #define PLATFORM_IS_LITTLE_ENDIAN (_BYTE_ORDER == _LITTLE_ENDIAN)
 #elif defined(OS_HPUX)
 #define PLATFORM_IS_LITTLE_ENDIAN false
@@ -42,16 +42,16 @@
 #ifdef SNAPPY
 #include <snappy.h>
 #endif
-#include "port/atomic_pointer.h"
 #include <stdint.h>
 #include <string>
+#include "port/atomic_pointer.h"
 
 #ifndef PLATFORM_IS_LITTLE_ENDIAN
 #define PLATFORM_IS_LITTLE_ENDIAN (__BYTE_ORDER == __LITTLE_ENDIAN)
 #endif
 
-#if defined(OS_MACOSX) || defined(OS_SOLARIS) || defined(OS_FREEBSD) ||        \
-    defined(OS_NETBSD) || defined(OS_OPENBSD) || defined(OS_DRAGONFLYBSD) ||   \
+#if defined(OS_MACOSX) || defined(OS_SOLARIS) || defined(OS_FREEBSD) ||      \
+    defined(OS_NETBSD) || defined(OS_OPENBSD) || defined(OS_DRAGONFLYBSD) || \
     defined(OS_ANDROID) || defined(OS_HPUX) || defined(CYGWIN)
 // Use fread/fwrite/fflush on platforms without _unlocked variants
 #define fread_unlocked fread
@@ -59,7 +59,8 @@
 #define fflush_unlocked fflush
 #endif
 
-#if defined(OS_FREEBSD) || defined(OS_OPENBSD) || defined(OS_DRAGONFLYBSD)
+#if defined(OS_FREEBSD) || \
+    defined(OS_OPENBSD) || defined(OS_DRAGONFLYBSD)
 // Use fsync() on platforms without fdatasync()
 #define fdatasync fsync
 #endif
@@ -82,77 +83,81 @@ static const bool kLittleEndian = PLATFORM_IS_LITTLE_ENDIAN;
 
 class CondVar;
 
-class Mutex {
+class Mutex
+{
 public:
-  Mutex();
-  ~Mutex();
+    Mutex();
+    ~Mutex();
 
-  void Lock();
-  void Unlock();
-  void AssertHeld() {}
+    void Lock();
+    void Unlock();
+    void AssertHeld() {}
 
 private:
-  friend class CondVar;
-  pthread_mutex_t mu_;
+    friend class CondVar;
+    pthread_mutex_t mu_;
 
-  // No copying
-  Mutex(const Mutex &);
-  void operator=(const Mutex &);
+    // No copying
+    Mutex(const Mutex&);
+    void operator=(const Mutex&);
 };
 
-class CondVar {
+class CondVar
+{
 public:
-  explicit CondVar(Mutex *mu);
-  ~CondVar();
-  void Wait();
-  void Signal();
-  void SignalAll();
+    explicit CondVar(Mutex* mu);
+    ~CondVar();
+    void Wait();
+    void Signal();
+    void SignalAll();
 
 private:
-  pthread_cond_t cv_;
-  Mutex *mu_;
+    pthread_cond_t cv_;
+    Mutex* mu_;
 };
 
 typedef pthread_once_t OnceType;
 #define LEVELDB_ONCE_INIT PTHREAD_ONCE_INIT
-extern void InitOnce(OnceType *once, void (*initializer)());
+extern void InitOnce(OnceType* once, void (*initializer)());
 
-inline bool Snappy_Compress(const char *input, size_t length,
-                            ::std::string *output) {
+inline bool Snappy_Compress(const char* input, size_t length, ::std::string* output)
+{
 #ifdef SNAPPY
-  output->resize(snappy::MaxCompressedLength(length));
-  size_t outlen;
-  snappy::RawCompress(input, length, &(*output)[0], &outlen);
-  output->resize(outlen);
-  return true;
+    output->resize(snappy::MaxCompressedLength(length));
+    size_t outlen;
+    snappy::RawCompress(input, length, &(*output)[0], &outlen);
+    output->resize(outlen);
+    return true;
 #endif
 
-  return false;
+    return false;
 }
 
-inline bool Snappy_GetUncompressedLength(const char *input, size_t length,
-                                         size_t *result) {
+inline bool Snappy_GetUncompressedLength(const char* input, size_t length, size_t* result)
+{
 #ifdef SNAPPY
-  return snappy::GetUncompressedLength(input, length, result);
+    return snappy::GetUncompressedLength(input, length, result);
 #else
-  return false;
+    return false;
 #endif
 }
 
-inline bool Snappy_Uncompress(const char *input, size_t length, char *output) {
+inline bool Snappy_Uncompress(const char* input, size_t length, char* output)
+{
 #ifdef SNAPPY
-  return snappy::RawUncompress(input, length, output);
+    return snappy::RawUncompress(input, length, output);
 #else
-  return false;
+    return false;
 #endif
 }
 
-inline bool GetHeapProfile(void (*func)(void *, const char *, int), void *arg) {
-  return false;
+inline bool GetHeapProfile(void (*func)(void*, const char*, int), void* arg)
+{
+    return false;
 }
 
 bool HasAcceleratedCRC32C();
-uint32_t AcceleratedCRC32C(uint32_t crc, const char *buf, size_t size);
+uint32_t AcceleratedCRC32C(uint32_t crc, const char* buf, size_t size);
 
 } // namespace port
 } // namespace leveldb

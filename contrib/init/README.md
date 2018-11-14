@@ -5,7 +5,7 @@ Upstart: vitalcoind.conf
 OpenRC:  vitalcoind.openrc
          vitalcoind.openrcconf
 CentOS:  vitalcoind.init
-OS X:    org.vitalcoin.vitalcoind.plist
+macOS:    org.vitalcoin.vitalcoind.plist
 ```
 have been made available to assist packagers in creating node packages here.
 

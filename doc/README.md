@@ -9,7 +9,7 @@ To download Vitalcoin Core, visit [vitalcoincore.org](https://vitalcoincore.org/
 
 Running
 ---------------------
-The following are some helpful notes on how to run Vitalcoin on your native platform.
+The following are some helpful notes on how to run Vitalcoin Core on your native platform.
 
 ### Unix
 
@@ -22,9 +22,9 @@ Unpack the files into a directory and run:
 
 Unpack the files into a directory, and then run vitalcoin-qt.exe.
 
-### OS X
+### macOS
 
-Drag Vitalcoin-Core to your applications folder, and then run Vitalcoin-Core.
+Drag Vitalcoin Core to your applications folder, and then run Vitalcoin Core.
 
 ### Need Help?
 
@@ -35,12 +35,14 @@ for help and more information.
 
 Building
 ---------------------
-The following are developer notes on how to build Vitalcoin on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build Vitalcoin Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
-- [OS X Build Notes](build-osx.md)
+- [Dependencies](dependencies.md)
+- [macOS Build Notes](build-osx.md)
 - [Unix Build Notes](build-unix.md)
 - [Windows Build Notes](build-windows.md)
 - [OpenBSD Build Notes](build-openbsd.md)
+- [NetBSD Build Notes](build-netbsd.md)
 - [Gitian Building Guide](gitian-building.md)
 
 Development

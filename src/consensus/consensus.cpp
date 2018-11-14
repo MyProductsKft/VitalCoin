@@ -5,16 +5,14 @@
 
 #include "consensus.h"
 
-/** The maximum allowed size for a serialized block, in bytes (only for buffer
- * size limits) */
+
+/** The maximum allowed size for a serialized block, in bytes (only for buffer size limits) */
 unsigned int MAX_BLOCK_SERIALIZED_SIZE = 4000000;
 /** The maximum allowed weight for a block, see BIP 141 (network rule) */
 unsigned int MAX_BLOCK_WEIGHT = 4000000;
-/** The maximum allowed number of signature check operations in a block (network
- * rule) */
+/** The maximum allowed number of signature check operations in a block (network rule) */
 int64_t MAX_BLOCK_SIGOPS_COST = 80000;
-/** Coinbase transaction outputs can only be spent after this number of new
- * blocks (network rule) */
+/** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
 int COINBASE_MATURITY = 100;
 /** Fork block number */
 int FORK_BLOCK = 528192;
@@ -22,31 +20,36 @@ int FORK_BLOCK = 528192;
 bool FORK_ALLOWED = true;
 
 /** Fork hash */
-std::string FORK_HASH =
-    "179ac1d7e8a5c6f882acf4b86078583b6e2ef5c03d04c36691e5a04ecb8a098e";
+std::string FORK_HASH = "179ac1d7e8a5c6f882acf4b86078583b6e2ef5c03d04c36691e5a04ecb8a098e";
 uint256 FORK_HASH_UINT256 = uint256S(FORK_HASH);
 
 const int WITNESS_SCALE_FACTOR = 4;
 
-const size_t MIN_TRANSACTION_WEIGHT =
-    WITNESS_SCALE_FACTOR *
-    60; // 60 is the lower bound for the size of a valid serialized CTransaction
-const size_t MIN_SERIALIZABLE_TRANSACTION_WEIGHT =
-    WITNESS_SCALE_FACTOR *
-    10; // 10 is the lower bound for the size of a serialized CTransaction
+const size_t MIN_TRANSACTION_WEIGHT = WITNESS_SCALE_FACTOR * 60;              // 60 is the lower bound for the size of a valid serialized CTransaction
+const size_t MIN_SERIALIZABLE_TRANSACTION_WEIGHT = WITNESS_SCALE_FACTOR * 10; // 10 is the lower bound for the size of a serialized CTransaction
 
-Conforksus fork_conforksus(4000000, 4000000, 100, 140, 140 * 4320);
+Conforksus fork_conforksus(
+    4000000,
+    4000000,
+    100,
+    140,
+    140 * 4320);
 
-Conforksus base_conforksus(MAX_BLOCK_SERIALIZED_SIZE, MAX_BLOCK_WEIGHT,
-                           COINBASE_MATURITY, 10 * 60, 14 * 24 * 60 * 60);
+Conforksus base_conforksus(
+    MAX_BLOCK_SERIALIZED_SIZE,
+    MAX_BLOCK_WEIGHT,
+    COINBASE_MATURITY,
+    10 * 60,
+    14 * 24 * 60 * 60);
 
-void conforksus_init(int current_height, bool is_regtest) {
-  if (is_regtest && FORK_ALLOWED) {
-    // we do all forks at block 500 in regtest mode
-    FORK_BLOCK = 500;
-  }
-  if (current_height >= FORK_BLOCK) {
-    // we are beyond the fork point; use new rules
-    fork_conforksus.enable();
-  }
+void conforksus_init(int current_height, bool is_regtest)
+{
+    if (is_regtest && FORK_ALLOWED) {
+        // we do all forks at block 500 in regtest mode
+        FORK_BLOCK = 500;
+    }
+    if (current_height >= FORK_BLOCK) {
+        // we are beyond the fork point; use new rules
+        fork_conforksus.enable();
+    }
 }

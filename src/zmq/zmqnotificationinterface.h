@@ -1,44 +1,44 @@
-// Copyright (c) 2015-2016 The Bitcoin Core developers
+// Copyright (c) 2015-2018 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef VITALCOIN_ZMQ_ZMQNOTIFICATIONINTERFACE_H
 #define VITALCOIN_ZMQ_ZMQNOTIFICATIONINTERFACE_H
 
-#include "validationinterface.h"
-#include <list>
-#include <map>
+#include <validationinterface.h>
 #include <string>
+#include <map>
+#include <list>
 
 class CBlockIndex;
 class CZMQAbstractNotifier;
 
-class CZMQNotificationInterface : public CValidationInterface {
+class CZMQNotificationInterface final : public CValidationInterface
+{
 public:
-  virtual ~CZMQNotificationInterface();
+    virtual ~CZMQNotificationInterface();
 
-  static CZMQNotificationInterface *Create();
+    std::list<const CZMQAbstractNotifier*> GetActiveNotifiers() const;
+
+    static CZMQNotificationInterface* Create();
 
 protected:
-  bool Initialize();
-  void Shutdown();
+    bool Initialize();
+    void Shutdown();
 
-  // CValidationInterface
-  void TransactionAddedToMempool(const CTransactionRef &tx) override;
-  void
-  BlockConnected(const std::shared_ptr<const CBlock> &pblock,
-                 const CBlockIndex *pindexConnected,
-                 const std::vector<CTransactionRef> &vtxConflicted) override;
-  void BlockDisconnected(const std::shared_ptr<const CBlock> &pblock) override;
-  void UpdatedBlockTip(const CBlockIndex *pindexNew,
-                       const CBlockIndex *pindexFork,
-                       bool fInitialDownload) override;
+    // CValidationInterface
+    void TransactionAddedToMempool(const CTransactionRef& tx) override;
+    void BlockConnected(const std::shared_ptr<const CBlock>& pblock, const CBlockIndex* pindexConnected, const std::vector<CTransactionRef>& vtxConflicted) override;
+    void BlockDisconnected(const std::shared_ptr<const CBlock>& pblock) override;
+    void UpdatedBlockTip(const CBlockIndex* pindexNew, const CBlockIndex* pindexFork, bool fInitialDownload) override;
 
 private:
-  CZMQNotificationInterface();
+    CZMQNotificationInterface();
 
-  void *pcontext;
-  std::list<CZMQAbstractNotifier *> notifiers;
+    void* pcontext;
+    std::list<CZMQAbstractNotifier*> notifiers;
 };
+
+extern CZMQNotificationInterface* g_zmq_notification_interface;
 
 #endif // VITALCOIN_ZMQ_ZMQNOTIFICATIONINTERFACE_H

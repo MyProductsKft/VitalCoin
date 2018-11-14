@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2015 The Bitcoin Core developers
+// Copyright (c) 2014-2018 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -10,25 +10,26 @@
 #include <vector>
 
 /**
- * CBaseChainParams defines the base parameters (shared between vitalcoin-cli
- * and vitalcoind)
+ * CBaseChainParams defines the base parameters (shared between vitalcoin-cli and vitalcoind)
  * of a given instance of the Vitalcoin system.
  */
-class CBaseChainParams {
+class CBaseChainParams
+{
 public:
-  /** BIP70 chain name strings (main, test or regtest) */
-  static const std::string MAIN;
-  static const std::string TESTNET;
-  static const std::string REGTEST;
+    /** BIP70 chain name strings (main, test or regtest) */
+    static const std::string MAIN;
+    static const std::string TESTNET;
+    static const std::string REGTEST;
 
-  const std::string &DataDir() const { return strDataDir; }
-  int RPCPort() const { return nRPCPort; }
+    const std::string& DataDir() const { return strDataDir; }
+    int RPCPort() const { return nRPCPort; }
 
-protected:
-  CBaseChainParams() {}
+    CBaseChainParams() = delete;
+    CBaseChainParams(const std::string& data_dir, int rpc_port) : nRPCPort(rpc_port), strDataDir(data_dir) {}
 
-  int nRPCPort;
-  std::string strDataDir;
+private:
+    int nRPCPort;
+    std::string strDataDir;
 };
 
 /**
@@ -36,29 +37,20 @@ protected:
  * @returns a CBaseChainParams* of the chosen chain.
  * @throws a std::runtime_error if the chain is not supported.
  */
-std::unique_ptr<CBaseChainParams>
-CreateBaseChainParams(const std::string &chain);
+std::unique_ptr<CBaseChainParams> CreateBaseChainParams(const std::string& chain);
 
 /**
- * Append the help messages for the chainparams options to the
- * parameter string.
+ *Set the arguments for chainparams
  */
-void AppendParamsHelpMessages(std::string &strUsage, bool debugHelp = true);
+void SetupChainParamsBaseOptions();
 
 /**
  * Return the currently selected parameters. This won't change after app
  * startup, except for unit tests.
  */
-const CBaseChainParams &BaseParams();
+const CBaseChainParams& BaseParams();
 
 /** Sets the params returned by Params() to those for the given network. */
-void SelectBaseParams(const std::string &chain);
-
-/**
- * Looks for -regtest, -testnet and returns the appropriate BIP70 chain name.
- * @return CBaseChainParams::MAX_NETWORK_TYPES if an invalid combination is
- * given. CBaseChainParams::MAIN by default.
- */
-std::string ChainNameFromCommandLine();
+void SelectBaseParams(const std::string& chain);
 
 #endif // VITALCOIN_CHAINPARAMSBASE_H

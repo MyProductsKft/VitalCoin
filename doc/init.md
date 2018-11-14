@@ -10,14 +10,14 @@ can be found in the contrib/init folder.
     contrib/init/vitalcoind.conf:       Upstart service configuration file
     contrib/init/vitalcoind.init:       CentOS compatible SysV style init script
 
-1. Service User
+Service User
 ---------------------------------
 
 All three Linux startup configurations assume the existence of a "vitalcoin" user
 and group.  They must be created before attempting to use these scripts.
-The OS X configuration assumes vitalcoind will be set up for the current user.
+The macOS configuration assumes vitalcoind will be set up for the current user.
 
-2. Configuration
+Configuration
 ---------------------------------
 
 At a bare minimum, vitalcoind requires that the rpcpassword setting be set
@@ -44,12 +44,12 @@ This allows for running vitalcoind without having to do any manual configuration
 relative to the data directory. `wallet` *only* supports relative paths.
 
 For an example configuration file that describes the configuration settings,
-see `contrib/debian/examples/vitalcoin.conf`.
+see `share/examples/vitalcoin.conf`.
 
-3. Paths
+Paths
 ---------------------------------
 
-3a) Linux
+### Linux
 
 All three configurations assume several paths that might need to be adjusted.
 
@@ -65,17 +65,17 @@ reasons to make the configuration file and data directory only readable by the
 vitalcoin user and group.  Access to vitalcoin-cli and other vitalcoind rpc clients
 can then be controlled by group membership.
 
-3b) Mac OS X
+### macOS
 
 Binary:              `/usr/local/bin/vitalcoind`  
 Configuration file:  `~/Library/Application Support/Vitalcoin/vitalcoin.conf`  
-Data directory:      `~/Library/Application Support/Vitalcoin`
-Lock file:           `~/Library/Application Support/Vitalcoin/.lock`
+Data directory:      `~/Library/Application Support/Vitalcoin`  
+Lock file:           `~/Library/Application Support/Vitalcoin/.lock`  
 
-4. Installing Service Configuration
+Installing Service Configuration
 -----------------------------------
 
-4a) systemd
+### systemd
 
 Installing this .service file consists of just copying it to
 /usr/lib/systemd/system directory, followed by the command
@@ -84,14 +84,18 @@ Installing this .service file consists of just copying it to
 To test, run `systemctl start vitalcoind` and to enable for system startup run
 `systemctl enable vitalcoind`
 
-4b) OpenRC
+NOTE: When installing for systemd in Debian/Ubuntu the .service file needs to be copied to the /lib/systemd/system directory instead.
+
+### OpenRC
 
 Rename vitalcoind.openrc to vitalcoind and drop it in /etc/init.d.  Double
 check ownership and permissions and make it executable.  Test it with
 `/etc/init.d/vitalcoind start` and configure it to run on startup with
 `rc-update add vitalcoind`
 
-4c) Upstart (for Debian/Ubuntu based distributions)
+### Upstart (for Debian/Ubuntu based distributions)
+
+Upstart is the default init system for Debian/Ubuntu versions older than 15.04. If you are using version 15.04 or newer and haven't manually configured upstart you should follow the systemd instructions instead.
 
 Drop vitalcoind.conf in /etc/init.  Test by running `service vitalcoind start`
 it will automatically start on reboot.
@@ -99,7 +103,7 @@ it will automatically start on reboot.
 NOTE: This script is incompatible with CentOS 5 and Amazon Linux 2014 as they
 use old versions of Upstart and do not supply the start-stop-daemon utility.
 
-4d) CentOS
+### CentOS
 
 Copy vitalcoind.init to /etc/init.d/vitalcoind. Test by running `service vitalcoind start`.
 
@@ -107,7 +111,7 @@ Using this script, you can adjust the path and flags to the vitalcoind program b
 setting the VITALCOIND and FLAGS environment variables in the file
 /etc/sysconfig/vitalcoind. You can also use the DAEMONOPTS environment variable here.
 
-4e) Mac OS X
+### macOS
 
 Copy org.vitalcoin.vitalcoind.plist into ~/Library/LaunchAgents. Load the launch agent by
 running `launchctl load ~/Library/LaunchAgents/org.vitalcoin.vitalcoind.plist`.
@@ -118,7 +122,7 @@ NOTE: This approach is intended for those wanting to run vitalcoind as the curre
 You will need to modify org.vitalcoin.vitalcoind.plist if you intend to use it as a
 Launch Daemon with a dedicated vitalcoin user.
 
-5. Auto-respawn
+Auto-respawn
 -----------------------------------
 
 Auto respawning is currently only configured for Upstart and systemd.

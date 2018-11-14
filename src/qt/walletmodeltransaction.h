@@ -1,47 +1,45 @@
-// Copyright (c) 2011-2014 The Bitcoin Core developers
+// Copyright (c) 2011-2018 The Bitcoin Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef VITALCOIN_QT_WALLETMODELTRANSACTION_H
 #define VITALCOIN_QT_WALLETMODELTRANSACTION_H
 
-#include "walletmodel.h"
+#include <qt/walletmodel.h>
+
+#include <memory>
 
 #include <QObject>
 
 class SendCoinsRecipient;
 
-class CReserveKey;
-class CWallet;
-class CWalletTx;
+namespace interfaces {
+class Node;
+class PendingWalletTx;
+} // namespace interfaces
 
 /** Data model for a walletmodel transaction. */
-class WalletModelTransaction {
+class WalletModelTransaction
+{
 public:
-  explicit WalletModelTransaction(const QList<SendCoinsRecipient> &recipients);
-  ~WalletModelTransaction();
+    explicit WalletModelTransaction(const QList<SendCoinsRecipient>& recipients);
 
-  QList<SendCoinsRecipient> getRecipients();
+    QList<SendCoinsRecipient> getRecipients() const;
 
-  CWalletTx *getTransaction();
-  unsigned int getTransactionSize();
+    std::unique_ptr<interfaces::PendingWalletTx>& getWtx();
+    unsigned int getTransactionSize();
 
-  void setTransactionFee(const CAmount &newFee);
-  CAmount getTransactionFee();
+    void setTransactionFee(const CAmount& newFee);
+    CAmount getTransactionFee() const;
 
-  CAmount getTotalTransactionAmount();
+    CAmount getTotalTransactionAmount() const;
 
-  void newPossibleKeyChange(CWallet *wallet);
-  CReserveKey *getPossibleKeyChange();
-
-  void reassignAmounts(
-      int nChangePosRet); // needed for the subtract-fee-from-amount feature
+    void reassignAmounts(int nChangePosRet); // needed for the subtract-fee-from-amount feature
 
 private:
-  QList<SendCoinsRecipient> recipients;
-  CWalletTx *walletTransaction;
-  CReserveKey *keyChange;
-  CAmount fee;
+    QList<SendCoinsRecipient> recipients;
+    std::unique_ptr<interfaces::PendingWalletTx> wtx;
+    CAmount fee;
 };
 
 #endif // VITALCOIN_QT_WALLETMODELTRANSACTION_H
