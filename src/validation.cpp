@@ -1172,26 +1172,35 @@ bool ReadRawBlockFromDisk(std::vector<uint8_t>& block, const CBlockIndex* pindex
     return ReadRawBlockFromDisk(block, block_pos, message_start);
 }
 
-CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
-{
-    int halvings;
-    if (nHeight > FORK_BLOCK) {
-        halvings = FORK_BLOCK / consensusParams.nSubsidyHalvingInterval;
-        halvings += (((FORK_BLOCK % consensusParams.nSubsidyHalvingInterval) % consensusParams.nPostForkSubsidyHalvingInterval) + nHeight - FORK_BLOCK) / consensusParams.nPostForkSubsidyHalvingInterval;
-    } else {
-        halvings = nHeight / consensusParams.nSubsidyHalvingInterval;
-    }
+CAmount GetBlockSubsidy(int nHeight, const Consensus::Params &consensusParams) {
 
-    // Force block reward to zero when right shift is undefined.
-    if (halvings >= 64)
-        return 0;
+  int FirstForkBlock =
+      (FORK_BLOCK)
+          ? (FORK_BLOCK + 1)
+          : 2; // FORK_BLOCK = 0 has to have the same effect as FORK_BLOCK = 1
+  int halvings;
 
+  if (nHeight >= FirstForkBlock) {
+    halvings = (nHeight - FirstForkBlock) /
+               consensusParams.nPostForkSubsidyHalvingInterval;
+  } else {
+    halvings = nHeight / consensusParams.nSubsidyHalvingInterval;
+  }
 
-    CAmount nSubsidy = CAmount(nHeight > FORK_BLOCK ? 1000 : 50) * COIN;
+  // Force block reward to zero when right shift is undefined.
+  if (halvings >= 64)
+    return 0;
 
-    // Subsidy is cut in half every 210,000 blocks which will occur approximately every 4 years.
-    nSubsidy >>= halvings;
-    return nSubsidy;
+  CAmount nSubsidy =
+      CAmount(nHeight >= FirstForkBlock ? 250 // Vitalcoin Initial Subsidy
+                                        : 50  //   Bitcoin Initial Subsidy
+              ) *
+      COIN;
+
+  // Subsidy is cut in half every 210,000 blocks which will occur approximately
+  // every 4 years.
+  nSubsidy >>= halvings;
+  return nSubsidy;
 }
 
 bool IsInitialBlockDownload()
