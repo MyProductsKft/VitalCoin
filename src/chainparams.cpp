@@ -74,18 +74,28 @@ void CChainParams::ActivateConsensusRules()
             vSeeds.clear();
             vFixedSeeds.clear();
         }
+
         consensus.nPowTargetTimespan = fork_conforksus.pow_target_timespan;
         consensus.nPowTargetSpacing = fork_conforksus.pow_target_spacing;
         consensus.nMinerConfirmationWindow = fork_conforksus.pow_target_timespan / fork_conforksus.pow_target_spacing;
-        consensus.nRuleChangeActivationThreshold = (consensus.nMinerConfirmationWindow * 100) / 95;
+        consensus.nRuleChangeActivationThreshold = (consensus.nMinerConfirmationWindow * 95) / 100;
+
+    } else {
+        if (!consensus.postForkPowLimit.IsNull()) {
+            consensus.powLimit = uint256S("00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+            LogPrintf("Reverting pow limit\n");
+        }
+
+        consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
+        consensus.nPowTargetSpacing = 10 * 60;
+        consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016
+        consensus.nMinerConfirmationWindow = 2016;       // nPowTargetTimespan / nPowTargetSpacing
     }
 }
 
 void CChainParams::ActivateConsensusRules() const
 {
-    if (nDefaultPostForkPort && nDefaultPostForkPort != nDefaultPort && fork_conforksus.active) {
-        (const_cast<CChainParams*>(this))->ActivateConsensusRules();
-    }
+    (const_cast<CChainParams*>(this))->ActivateConsensusRules();
 }
 
 /**
@@ -142,9 +152,12 @@ public:
         // consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000028822fef1c230963535a90d");
 
         // By default assume that the signatures in ancestors of this block are valid.
-        // If forking after the current height, replace below line with commented out version
-        consensus.defaultAssumeValid = uint256S("0x00");
-        // consensus.defaultAssumeValid = uint256S("0x0000000000000000002e63058c023a9a1de233554f28c7b21380b6c9003f36a8"); //534292
+
+        consensus.defaultAssumeValid = uint256S("000000000000000000063df1c3a28e5d78b941e7a48cd8466f6265d768b5416a");
+
+
+        consensus.laxRulesetTimeout = 1545264000; // December 20, 2018
+
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -183,14 +196,14 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
 
-        bech32_hrp = "bc";
+        bech32_hrp = "vtc";
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
 
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
         fMineBlocksOnDemand = false;
-        fMiningRequiresPeers = true;
+        fMiningRequiresPeers = false;
 
         checkpointData = {
             {
@@ -220,8 +233,9 @@ public:
             // /* dTxRate  */ 2.4
         };
 
-        /* disable fallback fee on mainnet */
-        m_fallback_fee_enabled = false;
+        /* enable fallback fee on mainnet (this is disabled for vitalcoin, but unless your fork has A LOT of traffic,
+         * disabling it will result in error messages for users when trying to send) */
+        m_fallback_fee_enabled = true;
     }
 };
 
@@ -304,7 +318,7 @@ public:
         fDefaultConsistencyChecks = false;
         fRequireStandard = false;
         fMineBlocksOnDemand = false;
-        fMiningRequiresPeers = true;
+        fMiningRequiresPeers = false;
 
 
         checkpointData = {

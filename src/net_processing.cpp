@@ -493,7 +493,7 @@ static bool TipMayBeStale(const Consensus::Params& consensusParams) EXCLUSIVE_LO
 
 static bool CanDirectFetch(const Consensus::Params& consensusParams) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
 {
-    return chainActive.Tip()->GetBlockTime() > GetAdjustedTime() - consensusParams.nPowTargetSpacing * 20;
+    return chainActive.Tip()->nHeight == 0 || chainActive.Tip()->GetBlockTime() > GetAdjustedTime() - consensusParams.nPowTargetSpacing * 20;
 }
 
 static bool PeerHasHeader(CNodeState* state, const CBlockIndex* pindex) EXCLUSIVE_LOCKS_REQUIRED(cs_main)
@@ -1490,7 +1490,7 @@ bool static ProcessHeadersMessage(CNode* pfrom, CConnman* connman, const std::ve
             // very large reorg at a time we think we're close to caught up to
             // the main chain -- this shouldn't really happen.  Bail out on the
             // direct fetch and rely on parallel download instead.
-            if (!chainActive.Contains(pindexWalk)) {
+            if (!chainActive.Contains(pindexWalk) && fork_conforksus.active) {
                 LogPrint(BCLog::NET, "Large reorg, won't direct fetch to %s (%d)\n",
                     pindexLast->GetBlockHash().ToString(),
                     pindexLast->nHeight);
@@ -2903,8 +2903,8 @@ static bool SendRejectsAndCheckIfBanned(CNode* pnode, CConnman* connman, bool en
         state.fShouldBan = false;
         if (pnode->fWhitelisted)
             LogPrintf("Warning: not punishing whitelisted peer %s!\n", pnode->addr.ToString());
-        else if (pnode->m_manual_connection)
-            LogPrintf("Warning: not punishing manually-connected peer %s!\n", pnode->addr.ToString());
+        // else if (pnode->m_manual_connection)
+        //     LogPrintf("Warning: not punishing manually-connected peer %s!\n", pnode->addr.ToString());
         else {
             pnode->fDisconnect = true;
             if (pnode->addr.IsLocal())
@@ -3639,6 +3639,10 @@ bool PeerLogicValidation::SendMessages(CNode* pto)
             std::vector<const CBlockIndex*> vToDownload;
             NodeId staller = -1;
             FindNextBlocksToDownload(pto->GetId(), MAX_BLOCKS_IN_TRANSIT_PER_PEER - state.nBlocksInFlight, vToDownload, staller, consensusParams);
+            if (vToDownload.size() == 0 && !pto->got_headers) {
+                pto->got_headers = true;
+                connman->PushMessage(pto, msgMaker.Make(NetMsgType::GETHEADERS, chainActive.GetLocator(pindexBestHeader), uint256()));
+            }
             for (const CBlockIndex* pindex : vToDownload) {
                 uint32_t nFetchFlags = GetFetchFlags(pto);
                 vGetData.push_back(CInv(MSG_BLOCK | nFetchFlags, pindex->GetBlockHash()));

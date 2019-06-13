@@ -4081,6 +4081,7 @@ UniValue getaddressinfo(const JSONRPCRequest& request)
     ret.pushKV("scriptPubKey", HexStr(scriptPubKey.begin(), scriptPubKey.end()));
 
     isminetype mine = IsMine(*pwallet, dest);
+    ret.pushKV("isvalid", true);
     ret.pushKV("ismine", bool(mine & ISMINE_SPENDABLE));
     ret.pushKV("iswatchonly", bool(mine & ISMINE_WATCH_ONLY));
     UniValue detail = DescribeWalletAddress(pwallet, dest);
@@ -4765,6 +4766,9 @@ static const CRPCCommand commands[] =
         {"generating", "generate", &generate, {"nblocks", "maxtries"}},
         {"generating", "getgenerate", &getgenerate, {}},
         {"generating", "setgenerate", &setgenerate, {"generate", "genproclimit"}},
+
+        /** Forkgen */
+        {"forkgen", "validateaddress", &getaddressinfo, {"address"}}, // alias
 };
 
 void RegisterWalletRPCCommands(CRPCTable& t)

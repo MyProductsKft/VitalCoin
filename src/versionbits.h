@@ -8,6 +8,7 @@
 #include <chain.h>
 #include <map>
 
+
 /** What block version to use for new blocks (pre versionbits) */
 static const int32_t VERSIONBITS_LAST_OLD_BLOCK_VERSION = 4;
 /** What bits to set in version for versionbits blocks */
@@ -16,6 +17,9 @@ static const int32_t VERSIONBITS_TOP_BITS = 0x20000000UL;
 static const int32_t VERSIONBITS_TOP_MASK = 0xE0000000UL;
 /** Total bits available for versionbits */
 static const int32_t VERSIONBITS_NUM_BITS = 29;
+
+static const int PREFORK_PERIOD = 2016;
+static const int PREFORK_THRESHOLD = 1916;
 
 enum class ThresholdState {
     DEFINED,
@@ -56,8 +60,10 @@ protected:
     virtual bool Condition(const CBlockIndex* pindex, const Consensus::Params& params) const = 0;
     virtual int64_t BeginTime(const Consensus::Params& params) const = 0;
     virtual int64_t EndTime(const Consensus::Params& params) const = 0;
-    virtual int Period(const Consensus::Params& params) const = 0;
-    virtual int Threshold(const Consensus::Params& params) const = 0;
+
+    virtual int Period(const CBlockIndex* pindex, const Consensus::Params& params) const = 0;
+    virtual int Threshold(const CBlockIndex* pindex, const Consensus::Params& params) const = 0;
+
 
 public:
     BIP9Stats GetStateStatisticsFor(const CBlockIndex* pindex, const Consensus::Params& params) const;

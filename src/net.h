@@ -662,6 +662,7 @@ public:
     bool fClient;
     bool m_limited_node; //after BIP159
     const bool fInbound;
+    bool got_headers; // ask each peer for headers once, no matter what
     std::atomic_bool fSuccessfullyConnected;
     std::atomic_bool fDisconnect;
     // We use fRelayTxes for two purposes -

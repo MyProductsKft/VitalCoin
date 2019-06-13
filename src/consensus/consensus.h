@@ -56,11 +56,28 @@ struct Conforksus {
     unsigned int C_MAX_BLOCK_SERIALIZED_SIZE;
     unsigned int C_MAX_BLOCK_WEIGHT;
     int C_COINBASE_MATURITY;
+
     int64_t pow_target_spacing;
     int64_t pow_target_timespan;
+
     bool active;
-    Conforksus(unsigned int mbss, unsigned int mbw, int cm, int64_t pts, int64_t ptt)
-        : C_MAX_BLOCK_SERIALIZED_SIZE(mbss), C_MAX_BLOCK_WEIGHT(mbw), C_COINBASE_MATURITY(cm), pow_target_spacing(pts), pow_target_timespan(ptt), active(false)
+    Conforksus(
+        unsigned int mbss,
+        unsigned int mbw,
+        int cm
+
+        ,
+        int64_t pts,
+        int64_t ptt
+
+        )
+        : C_MAX_BLOCK_SERIALIZED_SIZE(mbss), C_MAX_BLOCK_WEIGHT(mbw), C_COINBASE_MATURITY(cm)
+
+          ,
+          pow_target_spacing(pts), pow_target_timespan(ptt)
+
+          ,
+          active(false)
     {
     }
 

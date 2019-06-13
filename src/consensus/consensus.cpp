@@ -31,16 +31,24 @@ const size_t MIN_SERIALIZABLE_TRANSACTION_WEIGHT = WITNESS_SCALE_FACTOR * 10; //
 Conforksus fork_conforksus(
     4000000,
     4000000,
-    100,
+    100
+
+    ,
     140,
-    140 * 4320);
+    140 * 4320
+
+);
 
 Conforksus base_conforksus(
     MAX_BLOCK_SERIALIZED_SIZE,
     MAX_BLOCK_WEIGHT,
-    COINBASE_MATURITY,
+    COINBASE_MATURITY
+
+    ,
     10 * 60,
-    14 * 24 * 60 * 60);
+    14 * 24 * 60 * 60
+
+);
 
 void conforksus_init(int current_height, bool is_regtest)
 {

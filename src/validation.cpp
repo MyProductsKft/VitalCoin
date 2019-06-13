@@ -14,6 +14,7 @@
 #include <consensus/merkle.h>
 #include <consensus/tx_verify.h>
 #include <consensus/validation.h>
+
 #include <cuckoocache.h>
 #include <hash.h>
 #include <index/txindex.h>
@@ -72,7 +73,7 @@ void conforksus_block_tip_changed(int height)
 {
     if (!fork_conforksus.active && height >= FORK_BLOCK) {
         // HARD FORK BLOCK REACHED !!!!oneoneone
-        printf("*** FORKING ***\n");
+        LogPrintf("*** FORKING ***\n");
         fork_conforksus.enable();
         mempool.clear();
         Params().ActivateConsensusRules();
@@ -80,9 +81,10 @@ void conforksus_block_tip_changed(int height)
         g_connman->InitiatedConsensusChange();
     } else if (fork_conforksus.active && height < FORK_BLOCK) {
         // enoenoeno!!!! DEHCAER KCOLB KROF DRAH
-        printf("*** UN-FORKING ***\n");
+        LogPrintf("*** UN-FORKING ***\n");
         fork_conforksus.elbane();
         mempool.clear();
+        Params().ActivateConsensusRules();
     }
 }
 
@@ -1077,7 +1079,7 @@ static bool WriteBlockToDisk(const CBlock& block, CDiskBlockPos& pos, const CMes
     return true;
 }
 
-bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos, const Consensus::Params& consensusParams)
+bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos, const Consensus::Params& consensusParams, int height)
 {
     block.SetNull();
 
@@ -1094,8 +1096,14 @@ bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos, const Consensus:
     }
 
     // Check the header
-    if (!CheckProofOfWork(block.GetHash(), block.nBits, consensusParams))
+    if (!CheckProofOfWork(block.GetHash(), block.nBits, consensusParams)) {
+        // If this is a block < the fork block and we have forked, we skip this
+        // error
+        if (fork_conforksus.active && height <= FORK_BLOCK) {
+            return true;
+        }
         return error("ReadBlockFromDisk: Errors in block header at %s", pos.ToString());
+    }
 
     return true;
 }
@@ -1108,8 +1116,10 @@ bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex, const Consensus
         blockPos = pindex->GetBlockPos();
     }
 
-    if (!ReadBlockFromDisk(block, blockPos, consensusParams))
+    if (!ReadBlockFromDisk(block, blockPos, consensusParams, pindex->nHeight)) {
+        LogPrintf("Error reading block %d\n", pindex->nHeight);
         return false;
+    }
     if (block.GetHash() != pindex->GetBlockHash())
         return error("ReadBlockFromDisk(CBlock&, CBlockIndex*): GetHash() doesn't match index for %s at %s",
             pindex->ToString(), pindex->GetBlockPos().ToString());
@@ -1162,35 +1172,26 @@ bool ReadRawBlockFromDisk(std::vector<uint8_t>& block, const CBlockIndex* pindex
     return ReadRawBlockFromDisk(block, block_pos, message_start);
 }
 
-CAmount GetBlockSubsidy(int nHeight, const Consensus::Params &consensusParams) {
+CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
+{
+    int halvings;
+    if (nHeight > FORK_BLOCK) {
+        halvings = FORK_BLOCK / consensusParams.nSubsidyHalvingInterval;
+        halvings += (((FORK_BLOCK % consensusParams.nSubsidyHalvingInterval) % consensusParams.nPostForkSubsidyHalvingInterval) + nHeight - FORK_BLOCK) / consensusParams.nPostForkSubsidyHalvingInterval;
+    } else {
+        halvings = nHeight / consensusParams.nSubsidyHalvingInterval;
+    }
 
-  int FirstForkBlock =
-      (FORK_BLOCK)
-          ? (FORK_BLOCK + 1)
-          : 2; // FORK_BLOCK = 0 has to have the same effect as FORK_BLOCK = 1
-  int halvings;
+    // Force block reward to zero when right shift is undefined.
+    if (halvings >= 64)
+        return 0;
 
-  if (nHeight >= FirstForkBlock) {
-    halvings = (nHeight - FirstForkBlock) /
-               consensusParams.nPostForkSubsidyHalvingInterval;
-  } else {
-    halvings = nHeight / consensusParams.nSubsidyHalvingInterval;
-  }
 
-  // Force block reward to zero when right shift is undefined.
-  if (halvings >= 64)
-    return 0;
+    CAmount nSubsidy = CAmount(nHeight > FORK_BLOCK ? 1000 : 50) * COIN;
 
-  CAmount nSubsidy =
-      CAmount(nHeight >= FirstForkBlock ? 250 // Vitalcoin Initial Subsidy
-                                        : 50  //   Bitcoin Initial Subsidy
-              ) *
-      COIN;
-
-  // Subsidy is cut in half every 210,000 blocks which will occur approximately
-  // every 4 years.
-  nSubsidy >>= halvings;
-  return nSubsidy;
+    // Subsidy is cut in half every 210,000 blocks which will occur approximately every 4 years.
+    nSubsidy >>= halvings;
+    return nSubsidy;
 }
 
 bool IsInitialBlockDownload()
@@ -1736,8 +1737,10 @@ public:
 
     int64_t BeginTime(const Consensus::Params& params) const override { return 0; }
     int64_t EndTime(const Consensus::Params& params) const override { return std::numeric_limits<int64_t>::max(); }
-    int Period(const Consensus::Params& params) const override { return params.nMinerConfirmationWindow; }
-    int Threshold(const Consensus::Params& params) const override { return params.nRuleChangeActivationThreshold; }
+
+    int Period(const CBlockIndex* pindex, const Consensus::Params& params) const override { return !pindex || pindex->nHeight <= FORK_BLOCK ? 2016 : fork_conforksus.pow_target_timespan / fork_conforksus.pow_target_spacing; }
+    int Threshold(const CBlockIndex* pindex, const Consensus::Params& params) const override { return !pindex || pindex->nHeight <= FORK_BLOCK ? 1916 : ((fork_conforksus.pow_target_timespan / fork_conforksus.pow_target_spacing) * 95) / 100; }
+
 
     bool Condition(const CBlockIndex* pindex, const Consensus::Params& params) const override
     {
@@ -1815,6 +1818,8 @@ static int64_t nTimeCallbacks = 0;
 static int64_t nTimeTotal = 0;
 static int64_t nBlocksTotal = 0;
 
+static bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& state, const CChainParams& params, const CBlockIndex* pindexPrev, int64_t nAdjustedTime);
+
 /** Apply the effects of this block (with given index) on the UTXO set represented by coins.
  *  Validity checks that depend on the UTXO set are also done; ConnectBlock()
  *  can fail if those validity checks fail (among other reasons). */
@@ -1839,6 +1844,11 @@ bool CChainState::ConnectBlock(const CBlock& block, CValidationState& state, CBl
     // is enforced in ContextualCheckBlockHeader(); we wouldn't want to
     // re-enforce that rule here (at least until we make it impossible for
     // GetAdjustedTime() to go backward).
+    if (pindex->nHeight == FORK_BLOCK + 1) {
+        if (!ContextualCheckBlockHeader(block, state, chainparams, pindex->pprev, GetAdjustedTime())) {
+            return error("%s (FORK BLOCK): ContextualCheckBlockHeader: %s", __func__, FormatStateMessage(state));
+        }
+    }
     if (!CheckBlock(block, state, chainparams.GetConsensus(), !fJustCheck, !fJustCheck)) {
         if (state.CorruptionPossible()) {
             // We don't write down blocks to disk if they may have been
@@ -3359,34 +3369,38 @@ static bool ContextualCheckBlock(const CBlock& block, CValidationState& state, c
     // * There must be at least one output whose scriptPubKey is a single 36-byte push, the first 4 bytes of which are
     //   {0xaa, 0x21, 0xa9, 0xed}, and the following 32 bytes are SHA256^2(witness root, witness reserved value). In case there are
     //   multiple, the last one is used.
-    bool fHaveWitness = false;
-    if (VersionBitsState(pindexPrev, consensusParams, Consensus::DEPLOYMENT_SEGWIT, versionbitscache) == ThresholdState::ACTIVE) {
-        int commitpos = GetWitnessCommitmentIndex(block);
-        if (commitpos != -1) {
-            bool malleated = false;
-            uint256 hashWitness = BlockWitnessMerkleRoot(block, &malleated);
-            // The malleation check is ignored; as the transaction tree itself
-            // already does not permit it, it is impossible to trigger in the
-            // witness tree.
-            if (block.vtx[0]->vin[0].scriptWitness.stack.size() != 1 || block.vtx[0]->vin[0].scriptWitness.stack[0].size() != 32) {
-                return state.DoS(100, false, REJECT_INVALID, "bad-witness-nonce-size", true, strprintf("%s : invalid witness reserved value size", __func__));
+
+    if (pindexPrev && pindexPrev->GetMedianTimePast() > consensusParams.laxRulesetTimeout) {
+        bool fHaveWitness = false;
+        if (VersionBitsState(pindexPrev, consensusParams, Consensus::DEPLOYMENT_SEGWIT, versionbitscache) == ThresholdState::ACTIVE) {
+            int commitpos = GetWitnessCommitmentIndex(block);
+            if (commitpos != -1) {
+                bool malleated = false;
+                uint256 hashWitness = BlockWitnessMerkleRoot(block, &malleated);
+                // The malleation check is ignored; as the transaction tree itself
+                // already does not permit it, it is impossible to trigger in the
+                // witness tree.
+                if (block.vtx[0]->vin[0].scriptWitness.stack.size() != 1 || block.vtx[0]->vin[0].scriptWitness.stack[0].size() != 32) {
+                    return state.DoS(100, false, REJECT_INVALID, "bad-witness-nonce-size", true, strprintf("%s : invalid witness reserved value size", __func__));
+                }
+                CHash256().Write(hashWitness.begin(), 32).Write(&block.vtx[0]->vin[0].scriptWitness.stack[0][0], 32).Finalize(hashWitness.begin());
+                if (memcmp(hashWitness.begin(), &block.vtx[0]->vout[commitpos].scriptPubKey[6], 32)) {
+                    return state.DoS(100, false, REJECT_INVALID, "bad-witness-merkle-match", true, strprintf("%s : witness merkle commitment mismatch", __func__));
+                }
+                fHaveWitness = true;
             }
-            CHash256().Write(hashWitness.begin(), 32).Write(&block.vtx[0]->vin[0].scriptWitness.stack[0][0], 32).Finalize(hashWitness.begin());
-            if (memcmp(hashWitness.begin(), &block.vtx[0]->vout[commitpos].scriptPubKey[6], 32)) {
-                return state.DoS(100, false, REJECT_INVALID, "bad-witness-merkle-match", true, strprintf("%s : witness merkle commitment mismatch", __func__));
+        }
+
+        // No witness data is allowed in blocks that don't commit to witness data, as this would otherwise leave room for spam
+        if (!fHaveWitness) {
+            for (const auto& tx : block.vtx) {
+                if (tx->HasWitness()) {
+                    return state.DoS(100, false, REJECT_INVALID, "unexpected-witness", true, strprintf("%s : unexpected witness data found", __func__));
+                }
             }
-            fHaveWitness = true;
         }
     }
 
-    // No witness data is allowed in blocks that don't commit to witness data, as this would otherwise leave room for spam
-    if (!fHaveWitness) {
-        for (const auto& tx : block.vtx) {
-            if (tx->HasWitness()) {
-                return state.DoS(100, false, REJECT_INVALID, "unexpected-witness", true, strprintf("%s : unexpected witness data found", __func__));
-            }
-        }
-    }
 
     // After the coinbase witness reserved value and commitment are verified,
     // we can check if the block weight passes (before we've checked the
@@ -3550,7 +3564,7 @@ bool CChainState::AcceptBlock(const std::shared_ptr<const CBlock>& pblock, CVali
     }
 
     if (!CheckBlock(block, state, chainparams.GetConsensus()) ||
-        !ContextualCheckBlock(block, state, chainparams.GetConsensus(), pindex->pprev)) {
+        (fork_conforksus.active && !ContextualCheckBlock(block, state, chainparams.GetConsensus(), pindex->pprev))) {
         if (state.IsInvalid() && !state.CorruptionPossible()) {
             pindex->nStatus |= BLOCK_FAILED_VALID;
             setDirtyBlockIndex.insert(pindex);
@@ -4501,7 +4515,7 @@ bool LoadExternalBlockFile(const CChainParams& chainparams, FILE* fileIn, CDiskB
                     while (range.first != range.second) {
                         std::multimap<uint256, CDiskBlockPos>::iterator it = range.first;
                         std::shared_ptr<CBlock> pblockrecursive = std::make_shared<CBlock>();
-                        if (ReadBlockFromDisk(*pblockrecursive, it->second, chainparams.GetConsensus())) {
+                        if (ReadBlockFromDisk(*pblockrecursive, it->second, chainparams.GetConsensus(), FORK_BLOCK)) {
                             LogPrint(BCLog::REINDEX, "%s: Processing out of order child %s of %s\n", __func__, pblockrecursive->GetHash().ToString(),
                                 head.ToString());
                             LOCK(cs_main);
